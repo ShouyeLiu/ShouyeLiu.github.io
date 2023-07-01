@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-06-30 Fri 23:06 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mathmatical Statistical Bayesian Liear Regression</title>
+<meta name="author" content="ShouyeLiu" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Mathmatical Statistical Bayesian Liear Regression</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org392872e">1. Some key concepts</a>
+<ul>
+<li><a href="#org523590d">1.1. PIP (Posterior Inclusion Probability)</a></li>
+<li><a href="#org5777069">1.2. FDR</a></li>
+<li><a href="#org77ee383">1.3. Centered and scaled genotype matrix W</a></li>
+</ul>
+</li>
+<li><a href="#org0076aa2">2. SBayesR</a>
+<ul>
+<li><a href="#orgc967797">2.1. Model</a></li>
+<li><a href="#org091427c">2.2. Assumption</a></li>
+<li><a href="#orgb6b082d">2.3. Bayesian inference</a>
+<ul>
+<li><a href="#orgebcb40c">2.3.1. Gibbs sampling scheme</a>
+<ul>
+<li><a href="#orgd5a65ae">2.3.1.1. Derive posterior update for \(\mathbf{\beta}\)</a></li>
+<li><a href="#orgb1196b9">2.3.1.2. Derive posterior update for \(\boldsymbol{\pi}\)</a></li>
+<li><a href="#orgc29b4f8">2.3.1.3. Derive posterior update for \(\sigma_{\beta}^2\)</a></li>
+<li><a href="#org4784d21">2.3.1.4. Derive posterior update for \(\sigma_e^2\)</a></li>
+<li><a href="#orgb2f3aa2">2.3.1.5. Joint sampling of \(\delta_j\) and \(\beta_j\)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgc67b076">3. LDPred</a>
+<ul>
+<li><a href="#orgdd1a074">3.1. Posterior of \(\pi_i\) conditioned on marginal effect \(\tilde \beta\)</a>
+<ul>
+<li><a href="#org4afba31">3.1.1. Assumption:</a></li>
+<li><a href="#org9fd43f1">3.1.2. Conclusion:</a></li>
+</ul>
+</li>
+<li><a href="#org54da547">3.2. Gibbs sampling in new model</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org392872e" class="outline-2">
+<h2 id="org392872e"><span class="section-number-2">1.</span> Some key concepts</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org523590d" class="outline-3">
+<h3 id="org523590d"><span class="section-number-3">1.1.</span> PIP (Posterior Inclusion Probability)</h3>
+</div>
+
+<div id="outline-container-org5777069" class="outline-3">
+<h3 id="org5777069"><span class="section-number-3">1.2.</span> FDR</h3>
+</div>
+<div id="outline-container-org77ee383" class="outline-3">
+<h3 id="org77ee383"><span class="section-number-3">1.3.</span> Centered and scaled genotype matrix W</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Ref: <a href="http://psoerensen.github.io/qgg/articles/prepare_genotype_data.html">W</a>
+The additive genomic relationship matrix \(\mathbf{G}\) (VanRaden PM. 2008. J Dairy Sci. 91:4414-4423) is constructed using all genetic markers as follows: \(\mathbf{G}=\mathbf{W}\mathbf{W}^{\intercal}/m\), where \(W\) is the centered and scaled genotype matrix, and \(m\) is the total number of markers. Each column vector of \(\mathbf{W}\) was calculated as follows: \(\mathbf{w}_i = (m_i -2p_i)/\sqrt{2p_i(1-p_i)}\) , where \(p_i\) is the minor allele frequency of the \(i\) -th genetic marker and \(\mathbf{m}_i\) is the ith column vector of the allele count matrix, \(\mathbf{M}\), which contains the genotypes coded as 0, 1 or 2 counting the number of minor allele.
+</p>
+
+<p>
+How to scale and center genotype:
+</p>
+
+<p>
+we assume the allele frequency of allele \(a\) is \(1 - p_i\),the allele frequence of other allele \(A\) is \(p_i\). According to <a href="https://en.wikipedia.org/wiki/Hardy%E2%80%93Weinberg_principle">Hardy-Weinberg principle</a>, the genotypes \(aa\),\(Aa\) and \(AA\) (coded as 0, 1 or 2) follow the following distribution:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Marker</th>
+<th scope="col" class="org-right">0</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Frequency</td>
+<td class="org-right">\((1-p_i)^2\)</td>
+<td class="org-right">\(2p_i(1-p_i)\)</td>
+<td class="org-right">\(p_i^2\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The mean of the genotype is
+</p>
+\begin{aligned}
+E(\mathbf{m}_i) = 0 * (1-p_i)^2 + 1 * 2p_i(1-p_i) + 2 * p_i^2 = 2p_i
+\end{aligned}
+<p>
+The variace of the genotype is
+</p>
+
+\begin{align}
+Var(\mathbf{m}_i) &= E(\mathbf{m}_i^2) - E(\mathbf{m}_i)^2 \\\
+&=\big [ 0 * (1-p_i)^2 + 1 * 2p_i(1-p_i) + 4 * p_i^2  \big ] - \\\
+&\quad \big [ 0 * (1-p_i)^2 + 1 * 2p_i(1-p_i) + 2 * p_i^2 \big ]^2 \\\
+&=  2p_i(1-p_i) + 4 * p_i^2 - (2p_i)^2 \\\
+&=  2p_i(1-p_i)
+\end{align}
+
+<p>
+So after centering and scaling genotype,we get
+</p>
+\begin{align}
+\mathbf{w}_i = (m_i -2p_i)/\sqrt{2p_i(1-p_i)}
+\end{align}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0076aa2" class="outline-2">
+<h2 id="org0076aa2"><span class="section-number-2">2.</span> SBayesR</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgc967797" class="outline-3">
+<h3 id="orgc967797"><span class="section-number-3">2.1.</span> Model</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+\[\mathbf{y} = \mathbf{X}\boldsymbol{\beta} + \mathbf{e} \tag{1.1.1}\]
+</p>
+</div>
+</div>
+<div id="outline-container-org091427c" class="outline-3">
+<h3 id="org091427c"><span class="section-number-3">2.2.</span> Assumption</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+\[\mathbf{e}|\sigma^2_e \sim \mathcal{N}(\mathbf{0},\mathbf{R}\sigma^2_e), \mathbf{R}=\mathbf{I} \tag{1.2.1} \]
+\[f(\sigma_e^2;\nu_e,S^2_e)=\frac{(S^2_e\frac{\nu_e}{2})^{\frac{\nu_e}{2}}}{\Gamma(\frac{\nu_e}{2})}\bullet \frac{exp(-\frac{S^2_e}{\sigma_e^2}\frac{\nu_e}{2})}{(\sigma_e^2)^{1+\frac{\nu_e}{2}}}\tag{1.2.2}\]
+\[\beta_j|\boldsymbol{\pi},\sigma^2_{\beta} =\begin{cases}
+0 ,         & \pi_1 \\\
+\vdots & \vdots \\\
+\sim \mathcal{N}(0,\gamma_c\sigma^2_{\beta}), & \pi_c \\\
+\vdots & \vdots \\\
+\sim \mathcal{N}(0,\gamma_C\sigma^2_{\beta}), & \pi_C = 1- \sum^{C-1}_{c=1} \pi_c
+\end{cases} \tag{1.2.3}\]
+\[f(\sigma_{\beta}^2;\nu_{\beta},S^2_{\beta})=\frac{(S^2_{{\beta}}\frac{\nu_{\beta}}{2})^{\frac{\nu_{\beta}}{2}}}{\Gamma(\frac{\nu_{\beta}}{2})} \bullet \frac{exp(-\frac{S^2_{\beta}}{\sigma_{\beta}^2}\frac{\nu_{\beta}}{2})}{(\sigma_{\beta}^2)^{1+\frac{\nu_{\beta}}{2}}}\tag{1.2.4}\]
+\[\boldsymbol{\delta}|\boldsymbol{\pi}\sim Categorical(C,\boldsymbol{\pi})\tag{1.2.5};
+f(\boldsymbol{\delta}|\boldsymbol{\pi})=\prod^p_{j=1}\prod^C_{c=1} \pi_c^{[\delta_j=c]},
+where \quad [\delta_j=c]=\begin{cases} 1, & \delta_j=c \\\
+0,&\delta_j \neq c \end{cases}\]
+\[\boldsymbol{\pi}|\boldsymbol{\alpha} \sim Dirichlet(C,\boldsymbol{\alpha}),\boldsymbol{\alpha}=\mathbf{1}_C^T;
+\boldsymbol{\pi}|\boldsymbol{\alpha}=\frac{1}{B(\boldsymbol{\alpha})}\prod^C_{c=1} \pi_c^{\alpha_c-1}
+\tag{1.2.6}\]
+</p>
+
+
+
+<p>
+Here, Target parameter vector is \(\boldsymbol{\theta}=[\boldsymbol{\beta}^T \vdots \boldsymbol{\pi}^T \vdots \sigma_{\beta}^2 \vdots \sigma_e^2]^T\), and ohter unknown parameter vector are \([\boldsymbol{\gamma}\vdots \boldsymbol{\pi}\vdots \boldsymbol{\delta}\vdots \boldsymbol{\alpha}]\). Currently, \(\boldsymbol{\gamma}\) and \(\boldsymbol{\alpha}\) are pre-specified.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb6b082d" class="outline-3">
+<h3 id="orgb6b082d"><span class="section-number-3">2.3.</span> Bayesian inference</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-orgebcb40c" class="outline-4">
+<h4 id="orgebcb40c"><span class="section-number-4">2.3.1.</span> Gibbs sampling scheme</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+The full conditional of \(\theta_i\) can be expressed as
+\[f(\theta_i|\boldsymbol{\theta}_{-i},y) \propto f(\theta_i,\boldsymbol{\theta}_{-i},\mathbf{y})=f(\mathbf{y})f(\theta_i)f(\boldsymbol{\theta}_{-i})\tag{2.1.1} \]
+</p>
+</div>
+<div id="outline-container-orgd5a65ae" class="outline-5">
+<h5 id="orgd5a65ae"><span class="section-number-5">2.3.1.1.</span> Derive posterior update for \(\mathbf{\beta}\)</h5>
+<div class="outline-text-5" id="text-2-3-1-1">
+<p>
+\[f(\mathbf{y}|\boldsymbol{\theta})=(2\pi \sigma_e^2)^{-n/2} exp \bigg [-\frac{(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})}{2\sigma_e^2} \bigg ]\tag{2.1.2}\]
+</p>
+
+<p>
+\[f(\boldsymbol{\beta}|\boldsymbol{\delta}=c,\gamma_c\sigma_{\beta}^2)=\prod^{k_c}_{j=1}(2\pi\gamma_c\sigma_{\beta}^2)^{-1/2}exp \bigg[ -\frac{\beta_j^2}{2\gamma_c\sigma^2_{\beta}}\bigg]\tag{2.1.3}\]
+In terms of \((2.1.1)\), based on formulas \((1.2.2)\),\((1.2.4)\),\((2.1.2)\) and \((2.1.3)\), the full conditional for \(\beta_j\) can be expressed as
+</p>
+\begin{align}
+\tag{2.1.4}
+f(\beta_j|\delta_j =c, \boldsymbol{\theta}_{-\beta_j},\mathbf{y}) &=  exp \bigg [-\frac{(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})}{2\sigma_e^2} \bigg ] exp \bigg[ -\frac{\beta_j^2}{2\gamma_c\sigma^2_{\beta}}\bigg] \bullet Constant \\\
+&\propto  exp \bigg \{-\frac{1}{2\sigma_e^2}\bigg [(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T(\mathbf{y}-\mathbf{X}\boldsymbol{\beta}) +\frac{\beta_j^2\sigma_e^2}{\gamma_c\sigma^2_{\beta}}\bigg] \bigg \} \\\
+& \propto  exp \bigg \{-\frac{1}{2\sigma_e^2}\bigg [(\mathbf{w}-\mathbf{x}_j\beta_j)^T(\mathbf{w}-\mathbf{x}_j\beta_j) +\frac{\beta_j^2\sigma_e^2}{\gamma_c\sigma^2_{\beta}}\bigg] \bigg \} \\\
+& \propto  exp \bigg \{-\frac{1}{2\sigma_e^2}\bigg [(\mathbf{w}^T\mathbf{w}-2\bullet\mathbf{x}^T_j \mathbf{w}\bullet\beta_j
++\color{red}{\underbrace{ (\mathbf{x}^T_j\mathbf{x}_j + \frac{\sigma_e^2}{\gamma_c\sigma^2_{\beta}})}_{l_{jc}}} \bullet \beta_j^2\bigg] \bigg \} \\\
+& \propto  exp \bigg \{-\frac{1}{2\sigma_e^2}\bigg [(\mathbf{w}^T\mathbf{w}+
+l_{jc} \bullet (\beta_j^2-2\bullet \frac{\mathbf{x}^T_j \mathbf{w}}{l_{jc}}\bullet\beta_j+  \frac{\mathbf{x}^T_j \mathbf{w}}{l_{jc}}\bullet  \frac{\mathbf{x}^T_j \mathbf{w}}{l_{jc}}  -   \frac{\mathbf{x}^T_j \mathbf{w}}{l_{jc}}\bullet \color{green}{ \underbrace{  \frac{\mathbf{x}^T_j \mathbf{w}}{l_{jc}}}_{ \hat{\beta}_j }   }) \bigg] \bigg \} \\\
+& \propto  exp \bigg \{-\frac{1}{2\sigma_e^2}\bigg [(\mathbf{w}^T\mathbf{w}+
+l_{jc} \bullet (\beta_j^2-\hat{\beta}_j)^2 -l_{jc}\bullet\hat{\beta}_j^2  \bigg] \bigg \} \\\
+&\propto exp \bigg[ -\frac{1}{2}\bullet \frac{(\beta_j -\hat{\beta}_j)^2}{\frac{\sigma_e^2}{l_{jc}}  }    \bigg ]
+\end{align}
+</div>
+</div>
+<div id="outline-container-orgb1196b9" class="outline-5">
+<h5 id="orgb1196b9"><span class="section-number-5">2.3.1.2.</span> Derive posterior update for \(\boldsymbol{\pi}\)</h5>
+<div class="outline-text-5" id="text-2-3-1-2">
+<p>
+In terms of \((2.1.1)\), based on formulas \((1.2.5)\) and \((1.2.6)\), the full conditional for \(\boldsymbol{\pi}\) can be expressed as
+\[f(\boldsymbol{\pi}|\boldsymbol{\delta},\boldsymbol{\alpha}) \propto f(\boldsymbol{\delta}|\boldsymbol{\pi})
+f(\boldsymbol{\pi}|\boldsymbol{\alpha})=f(\boldsymbol{\delta}|\boldsymbol{\pi})=\prod^p_{j=1}\prod^C_{c=1} \pi_c^{[\delta_j=c]}\prod^C_{c=1}\pi_c^{\alpha_c-1}=\prod^p_{j=1}\prod^C_{c=1} \pi_c^{[\delta_j=c]+\alpha_c-1}
+\tag{2.1.5}\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgc29b4f8" class="outline-5">
+<h5 id="orgc29b4f8"><span class="section-number-5">2.3.1.3.</span> Derive posterior update for \(\sigma_{\beta}^2\)</h5>
+<div class="outline-text-5" id="text-2-3-1-3">
+<p>
+In terms of \((2.1.1)\), based on formulas \((1.2.4)\) and \((2.1.3)\), the full conditional for \(\boldsymbol{\pi}\) can be expressed as
+</p>
+\begin{align}
+\tag{2.1.6}
+f(\sigma_{\beta}^2|\boldsymbol{\beta},\nu_{\beta},S^2_{\beta}) &\propto f(\boldsymbol{\beta}|\boldsymbol{\delta}=c,\gamma_c\sigma_{\beta}^2)f(\sigma_{\beta}^2;\nu_{\beta},S^2_{\beta}) \\\
+&\propto f(\sigma_{\beta}^2;\nu_{\beta},S^2_{\beta}) \bullet \prod^q_{j=1}(2\pi\gamma_{\delta_j}\sigma_{\beta}^2)^{-1/2}exp \bigg[ -\frac{\beta_j^2}{2\gamma_{\delta_j}\sigma^2_{\beta}}\bigg] \\\
+&\propto \frac{(S^2_{{\beta}}\frac{\nu_{\beta}}{2})^{\frac{\nu_{\beta}}{2}}}{\Gamma(\frac{\nu_{\beta}}{2})}\bullet \frac{exp(-\frac{S^2_{\beta}}{\sigma_{\beta}^2}\frac{\nu_{\beta}}{2})}{(\sigma_{\beta}^2)^{1+\frac{\nu_{\beta}}{2}}} \bullet \prod^q_{j=1}(2\pi\gamma_{\delta_j})^{-1/2}\bullet
+(\sigma_{\beta}^2)^{-q/2}exp \bigg[ -\frac{1}{2\sigma_{\beta}^2} \sum^q_{j=1} \frac{\beta_j^2}{\gamma_{\delta_j}}  \bigg]  \\\
+&\propto \frac{exp(-\frac{1}{2\sigma_{\beta}^2}\nu_{\beta}S^2_{\beta})}{(\sigma_{\beta}^2)^{1+\frac{\nu_{\beta}}{2}}} \bullet
+(\sigma_{\beta}^2)^{-q/2}exp \bigg[ -\frac{1}{2\sigma_{\beta}^2} \sum^q_{j=1} \frac{\beta_j^2}{\gamma_{\delta_j}}  \bigg] \\\
+&\propto \frac{exp \bigg [ -\frac{1}{2\sigma_{\beta}^2}\bullet \frac{ (\color{green}{ \nu_{\beta}+q}) (\color{red}{ \nu_{\beta}S^2_{\beta} +\sum^q_{j=1} \frac{\beta_j^2}{\gamma_{\delta_j}} }) }{\color{green}{  \nu_{\beta}+q}}  \bigg ] }{(\sigma_{\beta}^2)^{1 +\frac{ \color{green}{ \nu_{\beta}+q} }{2}}} \\\
+&\propto \frac{exp(-\frac{1}{2\sigma_{\beta}^2} \color{green}{   \tilde{\nu}_{\beta}} \color{red}{ \tilde{S}^2_{\beta}} )}{(\sigma_{\beta}^2)^{1+\frac{ \color{green}{ \tilde{\nu}_{\beta}} }{2}}}
+\end{align}
+</div>
+</div>
+<div id="outline-container-org4784d21" class="outline-5">
+<h5 id="org4784d21"><span class="section-number-5">2.3.1.4.</span> Derive posterior update for \(\sigma_e^2\)</h5>
+</div>
+<div id="outline-container-orgb2f3aa2" class="outline-5">
+<h5 id="orgb2f3aa2"><span class="section-number-5">2.3.1.5.</span> Joint sampling of \(\delta_j\) and \(\beta_j\)</h5>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc67b076" class="outline-2">
+<h2 id="orgc67b076"><span class="section-number-2">3.</span> LDPred</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgdd1a074" class="outline-3">
+<h3 id="orgdd1a074"><span class="section-number-3">3.1.</span> Posterior of \(\pi_i\) conditioned on marginal effect \(\tilde \beta\)</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org4afba31" class="outline-4">
+<h4 id="org4afba31"><span class="section-number-4">3.1.1.</span> Assumption:</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+The &ldquo;data&rdquo; consist of the univariate linear regression estimates, i.e,.
+\[\color{red}{\tilde{\beta_j}|\beta_j \sim \mathcal{N}(\beta_j,N^{-1})} \tag{3.1}\].
+</p>
+</div>
+</div>
+<div id="outline-container-org9fd43f1" class="outline-4">
+<h4 id="org9fd43f1"><span class="section-number-4">3.1.2.</span> Conclusion:</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+\[E(\beta_j | \tilde \beta_j)= \bigg ( \frac{1}{1+ \frac{Mp}{h^2N}}\bigg
+)\bar p_j \tilde \beta_j \tag{3.2}\]
+Where \(\bar p_j = P(\beta_j \sim \mathcal{N}(\bullet,\bullet)|\tilde \beta_j)\).
+</p>
+
+<p>
+Proof:
+</p>
+
+<p>
+Let \(\sigma^2_c= \gamma_c\sigma^2_{\beta}\)
+</p>
+
+\begin{align}
+\tag{3.3}
+f(\tilde \beta_j|p) &= \int_{-\infty}^{+\infty} f(\tilde \beta_j , \beta_j|p)\mathrm{d}\beta_j
+= \int_{-\infty}^{+\infty} f(\tilde \beta_j | \beta_j,p)
+f(\beta_j |p) \mathrm{d}\beta_j  \\\
+&= \int_{-\infty}^{+\infty} (2 \pi N^{-1})^{-\frac{1}{2}}. exp [-\frac{1}{2}\frac{(\tilde \beta_j - \beta_j)^2}{N^{-1}}]
+. \Bigg \{ \sum^C_{c=2} \bigg [ p_c \cdot (2 \pi \sigma_c^2)^{-\frac{1}{2}}. exp (-\frac{1}{2}\frac{\beta_j^2}{\sigma_c^2}) \bigg ]+
+ p_1 \cdot \delta_{\beta_j} \Bigg \} \mathrm{d}\beta_j    \\\
+&=\int_{-\infty}^{+\infty} \sum^C_{c=2} \bigg [ p_c (2 \pi N^{-1})^{-\frac{1}{2}}. exp [-\frac{1}{2}\frac{(\tilde \beta_j - \beta_j)^2}{N^{-1}}]
+. (2 \pi \sigma_c^2)^{-\frac{1}{2}}. exp (-\frac{1}{2}\frac{\beta_j^2}{\sigma_c^2}) \bigg ] \mathrm{d}\beta_j  +
+\color{red}{p_1 \cdot \int_{-\infty}^{+\infty} (2 \pi N^{-1})^{-\frac{1}{2}}. exp
+[-\frac{1}{2}\frac{(\tilde \beta_j - \beta_j)^2}{N^{-1}}]
+ \delta_{\beta_j} \mathrm{d}\beta_j}   \\\
+ &= \sum^C_{c=2} \bigg [ p_c \cdot (2 \pi \frac{N\sigma_c^2+1}{N})^{-\frac{1}{2}}.exp(-\frac{1}{2}.\frac{N}{N\sigma_c^2+1} \tilde \beta^2_j) \bigg ]+
+ \color{red}{p_1 \cdot  (2 \pi N^{-1})^{-\frac{1}{2}}. exp(-\frac{1}{2}\frac{\tilde \beta_j^2}{N^{-1}}) }  \\\
+  &= (2 \pi)^{-\frac{1}{2}} \Bigg \{
+\sum^C_{c=2} \bigg[ p_c ( \frac{N\sigma_c^2+1}{N})^{-\frac{1}{2}}.exp(-\frac{1}{2}.\frac{N}{N\sigma_c^2+1} \tilde \beta^2_j) \bigg ]+
+ \color{red}{p_1 \cdot  ( N^{-1})^{-\frac{1}{2}}. exp (-\frac{1}{2}\frac{\tilde
+ \beta_j^2}{N^{-1}}) }   \Bigg \}
+\end{align}
+
+\begin{align}
+\tag{3.4}
+\int_{-\infty}^{+\infty} \beta_j f(\tilde \beta_j | \beta_j) f(\beta_j)\mathrm{d}
+\beta_j
+&= \int_{-\infty}^{+\infty} \beta_j \cdot (2 \pi N^{-1})^{-\frac{1}{2}}. exp [-\frac{1}{2}\frac{(\tilde \beta_j - \beta_j)^2}{N^{-1}}]
+. \Bigg \{ \sum^C_{c=2} \bigg [ p_c \cdot (2 \pi \sigma_c^2)^{-\frac{1}{2}}. exp
+(-\frac{1}{2}\frac{\beta_j^2}{\sigma_c^2}) \bigg ] + p_1 \cdot \delta_{\beta_j} \Bigg \}
+\mathrm{d}\beta_j    \\\
+&= \sum^C_{c=2} \Bigg [ p_c \cdot (2 \pi \frac{N\sigma_c^2+1}{N})^{-\frac{1}{2}}.exp(-\frac{1}{2}.
+\frac{N}{N\sigma_c^2+1} \tilde \beta^2_j).
+\int_{-\infty}^{+\infty} \beta_j \cdot (2 \pi \frac{\sigma_c^2}{N\sigma_c^2+1})^{-\frac{1}{2}}. exp[ -\frac{1}{2}
+. \frac{N\sigma_c^2 +1}{\sigma_c^2}(\beta_j -
+\frac{N\sigma_c^2}{N\sigma_c^2 +1} \tilde \beta_j)^2  ]
+\mathrm{d}\beta_j  \Bigg ]  \\\
+&= \sum^C_{c=2} \Bigg [ p_c \cdot (2 \pi \frac{N\sigma_c^2+1}{N})^{-\frac{1}{2}}.exp(-\frac{1}{2}.
+\frac{N}{N\sigma_c^2+1} \tilde \beta^2_j).E[\beta_j; \beta_j| \tilde \beta_j \sim
+\mathcal{N}_{FIM_c}(\frac{N \sigma_c^2}{N \sigma_c^2 +1}\tilde \beta_j, \frac{\sigma_c^2}{N
+\sigma_c^2 +1})] \Bigg ] \\\
+&= \sum^C_{c=2} \Bigg [ p_c \cdot (2 \pi \frac{N\sigma_c^2+1}{N})^{-\frac{1}{2}}.exp(-\frac{1}{2}.\frac{N}{N\sigma_c^2+1} \tilde\beta^2_j)
+\cdot \frac{N \sigma_c^2}{N \sigma_c^2 +1} \tilde \beta_j \Bigg ] \\\
+&=  \sum^C_{c=2} \Bigg [ p_c \cdot (2 \pi)^{-\frac{1}{2} } (\frac{N\sigma_c^2+1}{N})^{-\frac{1}{2}}.exp(-\frac{1}{2}.\frac{N}{N\sigma_c^2+1} \tilde\beta^2_j)
+\cdot \frac{N \sigma_c^2}{N \sigma_c^2 +1} \tilde \beta_j \Bigg ]
+\end{align}
+
+
+\begin{align}
+\tag{3.5}
+E(\beta_j | \tilde \beta_j)
+&= \frac{\int_{-\infty}^{\infty} \beta_j f(\tilde\beta_j | \beta_j) f(\beta_j)\mathbf{d}\beta_j}
+{f(\tilde \beta_j)} \\\
+&= \frac{ \sum^C_{c=2} \bigg \{ p_c \cdot (\frac{N\sigma_c^2+1}{N})^{-\frac{1}{2}}.exp(-\frac{1}{2}.\frac{N}{N\sigma_c^2+1} \tilde\beta^2_j)
+\cdot \frac{N \sigma_c^2}{N \sigma_c^2 +1} \tilde \beta_j \bigg \} }
+{
+\sum^C_{c=2} \bigg[ p_c ( \frac{N\sigma_c^2+1}{N})^{-\frac{1}{2}}.exp(-\frac{1}{2}.\frac{N}{N\sigma_c^2+1} \tilde \beta^2_j) \bigg ]+
+ \color{red}{p_1 \cdot  ( N^{-1})^{-\frac{1}{2}}. exp (-\frac{1}{2}\frac{\tilde
+ \beta_j^2}{N^{-1}}) }  } \\\\\\
+\end{align}
+
+
+<p>
+Alternatively, we can rewrite \(E(\beta_j | \tilde \beta_j)\) as follows:
+</p>
+
+\begin{align}
+\tag{3.6}
+E(\beta_j | \tilde \beta_j) = \bigg (  \frac{1}{1 + \frac{1}{\sigma^2N}} \bigg) \bar
+p_j \tilde \beta_j
+\end{align}
+
+<p>
+Where
+</p>
+
+\begin{align}
+\tag{3.7}
+ \bar{p}_j
+&= \frac{\frac{p}{\sqrt{\sigma^2 + \frac{1}{N}} }  exp \Bigg [-\frac{1}{2}\bigg (\frac{\tilde \beta_j^2}{\sigma^2 + \frac{1}{N} }\bigg )
+\Bigg ]}
+{\frac{p}{\sqrt{\sigma^2 + \frac{1}{N}} } exp \Bigg [-\frac{1}{2}\bigg (\frac{\tilde \beta_j^2}{\sigma^2 + \frac{1}{N} }\bigg )
+\Bigg ]  + \frac{1-p}{\frac{1}{\sqrt{N}}} exp ( - \frac{1}{2}N \tilde \beta_j^2 ) } \bullet
+\frac{\sqrt{2\pi}}{\sqrt{2\pi}} \\\
+&=  \frac{f \bigg (\tilde \beta_j | \beta_j \sim
+\mathcal{N}(\bullet,\bullet)\bigg) f(\beta_j \sim
+\mathcal{N}(\bullet,\bullet))}{f(\tilde \beta_j)}
+= P \bigg (\beta_j \sim \mathcal{N}(\bullet, \bullet) | \tilde \beta_j \bigg)
+\end{align}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org54da547" class="outline-3">
+<h3 id="org54da547"><span class="section-number-3">3.2.</span> Gibbs sampling in new model</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+\[\beta_j|\mathbf{b},\boldsymbol{\beta},else \sim \mathcal{N}\bigg(\frac{r_j^{\star}}{C_j^{\star}},\frac{\sigma_{e_j}^{2\star}}{C_j^{\star} }  \bigg ) \sim
+\mathcal{N}\bigg(\frac{ r_j^{2\star} / \sigma_{e_j}^{2\star} }{ C_j^{\star}/ \sigma_{e_j}^{2\star} },
+\frac{1}{C_j^{\star} /\sigma_{e_j}^{2\star} }  \bigg ) \]
+</p>
+
+<p>
+Where \(\sigma_{e_j}^{2\star} = (\frac{n_j}{m}s_j^2 + \frac{m^0_j}{m}) \sigma_g^2 + \sigma_e^2\). \(n_j\) is per-SNP sample size,
+\(m\) is the number of total markers, \(m_j^0\) is the number of SNPs not in population LD with SNP \(j\), \(s_j^2 = \sum_{k=1}^{m_j}
+\frac{(1-\rho_{jk}^2)^2}{n_j}\), \(\rho_{jk} \approx \tilde \beta_{jk}\).
+</p>
+
+<p>
+\[\mathbb{P}(\delta_j=c|\boldsymbol{\theta},\mathbf{y}) = \alpha \times \mathbb{P}(\delta_j=c|\boldsymbol{\theta},\mathbf{y}) \]
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: ShouyeLiu</p>
+<p class="date">Created: 2023-06-30 Fri 23:06</p>
+</div>
+</body>
+</html>

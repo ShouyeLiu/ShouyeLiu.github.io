@@ -1,0 +1,11 @@
+Reference
+=========
+
+
+
+
+Resources
+---------
+
+- :ref:`genindex`
+- :ref:`search`

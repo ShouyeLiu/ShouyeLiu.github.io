@@ -1,0 +1,20 @@
+============================
+Posts
+============================
+
+.. .. contents:: Contents
+..    :local:
+
+Basic concepts
+============================
+
+.. toctree::
+   :maxdepth: 1
+
+   statistics/distribution_sl07012023
+
+
+Bayesian regression 
+=========================
+
+`Mathmatical Statistical Bayesian Liear Regression </_static/_posts/bayes-lm.html>`_ 
