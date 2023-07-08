@@ -1,0 +1,118 @@
+===================================
+Logistic regression
+===================================
+
+An outline
+-----------------
+
+A) **Random component**: :math:`Y_i` follows :math:`Bernoulli(\pi_i)` with mean :math:`\mathbb{E}[Y_i] = \pi_i` (:ref:`Summary <Bernoulli>` or `Wikipedia <https://en.wikipedia.org/wiki/Bernoulli_distribution>`_).
+
+   For :math:`i`-th individual,
+
+.. math::
+   :nowrap:
+
+   \[
+   Pr(Y_i) =
+   \left\{
+   \begin{array}{
+     @{}% no padding
+     l@{\quad}% some padding
+     r@{}% no padding
+     >{{}}r@{}% no padding
+     >{{}}l@{}% no padding
+   }
+     \pi_i , & Y_i = 1 \\
+     1- \pi_i , & Y_i = 0
+   \end{array}
+   \right.
+   \]
+
+\
+   Where, :math:`\boldsymbol{\pi}` is responsible probability vector.
+
+B) **Systematic component**: covariate :math:`\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_p` produce a linear predictor :math:`\boldsymbol{\eta}` given by
+
+.. math::
+
+   \boldsymbol{\eta} = \sum_{j=1}^p \mathbf{x}_j \beta_j = \mathbf{X}\boldsymbol{\beta}
+
+C) **Link function**: :math:`g(.)` :
+
+.. math::
+
+   g(\pi_i) = \eta_i = \sum_{j=1}^p \mathbf{x}_{ij} \beta_j
+
+Common used link function:
+
+1. `the logit or logistic function <https://en.wikipedia.org/wiki/Logistic_regression>`_ :math:`g(\pi) = log\{\pi/ (1-\pi)\} = log(odds)`
+
+
+Therefore,
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   &log(\frac{\pi_i}{1-\pi_i}) = \sum_{j=1}^p \mathbf{x}_{ij} \beta_j \\
+   & \equiv \pi_i = \frac{e^{\sum_{j=1}^p \mathbf{x}_{ij}\beta_j}}{1+e^{\sum_{j=1}^p \mathbf{x}_{ij}\beta_j} }
+   \end{align}
+   \]
+
+
+Simulate logistic regression
+-----------------
+
+`Simulating a Logistic Regression Model using R <https://data.library.virginia.edu/simulating-a-logistic-regression-model/>`_
+
+
+
+Derivative
+-----------------
+
+Based on :math:`Pr(Y_i|\mathbf{X}\boldsymbol{\beta}) = \pi^{y_i}_i(1-\pi_i)^{(1-y_i)}`, we have
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   L(\theta)  = \prod_{i=1}^n Pr(Y_i|\mathbf{X}\boldsymbol{\beta})
+    = \prod_{i=1}^n \pi^{y_i}_i(1-\pi_i)^{(1-y_i)}
+   \end{align}
+   \]
+
+its log-likelihood is
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   \ell(\theta) & = log \bigg \{
+   \prod_{i=1}^n \pi^{y_i}_i(1-\pi_i)^{(1-y_i)} \bigg \} \\
+   & = \sum^{n}_{i=1} \bigg \{ y_i log(\pi_i) + (1-y_i)log(1-\pi_i)  \bigg\} \\
+   & =  \sum^{n}_{i=1} \bigg \{log(1-\pi_i) + y_i log(\frac{\pi_i}{1-\pi_i})  \bigg\}
+   \end{align}
+   \]
+
+The derivative is
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   \frac{\partial\ell(\theta)}{\partial\beta_j}
+   & = \frac{\partial\ell(\theta)}{\partial\pi_j} \frac{\partial\pi_j}{\partial\beta_j} \\
+   & =  \sum^{n}_{i=1} \bigg \{
+   - \frac{e^{\sum_{j=1}^p \mathbf{x}_{ij}\beta_j}}{(1+e^{\sum_{j=1}^p \mathbf{x}_{ij}\beta_j})}
+    \mathbf{x}_{ij} + y_i\mathbf{x}_{ij}
+   \bigg\}
+   \end{align}
+   \]
+
+Reference
+----------
+`[1] McCullagh, P. (2019). Generalized linear models. Routledge. <https://books.google.com.au/books?hl=en&lr=&id=UzmDDwAAQBAJ&oi=fnd&pg=PT14&dq=Generalized+Linear+Models&ots=3XbWY8I_79&sig=XWA73WqagTC_G4yTY8t09_EYLIU&redir_esc=y#v=onepage&q=Generalized%20Linear%20Models&f=false>`_

@@ -290,3 +290,9 @@ html[data-theme="dark"] {
   text-decoration: none;  /* No underline */
   color: var(--pst-color-primary);
 }
+
+.red { color: red; }
+.bolditalic {
+  font-weight: bold;
+  font-style: italic;
+}

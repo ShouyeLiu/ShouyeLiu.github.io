@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 
 
@@ -7,7 +6,8 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Summary of Statistical Distribution &#8212; personal  documentation</title>
   
   
@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -40,15 +40,14 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'posts/statistics/distribution_sl07012023';</script>
-    <link rel="shortcut icon" href="../../_static/omics.icon.png"/>
+    <link rel="icon" href="../../_static/omics.icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Reference" href="../../reference/content-reference.html" />
+    <link rel="next" title="Power and error" href="powerError.html" />
     <link rel="prev" title="Posts" href="../content-posts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -374,6 +373,9 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Summary of Statistical Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powerError.html">Power and error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logitsticRegression08072023_SL.html">Logistic regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coxRegression_sl.html">Cox regression</a></li>
 </ul>
 </div>
 </nav></div>
@@ -431,96 +433,39 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="section" id="summary-of-statistical-distribution">
-<h1><a class="toc-backref" href="#id5">Summary of Statistical Distribution</a><a class="headerlink" href="#summary-of-statistical-distribution" title="Permalink to this headline">#</a></h1>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">Author</dt>
-<dd class="field-odd"><p>ShouyeLiu</p>
-</dd>
-</dl>
-</div></blockquote>
-<div class="contents topic" id="contents">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#summary-of-statistical-distribution" id="id5">Summary of Statistical Distribution</a></p>
-<ul>
-<li><p><a class="reference internal" href="#useful-function" id="id6">1 Useful function</a></p>
-<ul>
-<li><p><a class="reference internal" href="#power-function" id="id7">1.1 Power function</a></p></li>
-<li><p><a class="reference internal" href="#exponential-function" id="id8">1.2 Exponential function</a></p></li>
-<li><p><a class="reference internal" href="#logrithm-function" id="id9">1.3 Logrithm function</a></p></li>
-<li><p><a class="reference internal" href="#gamma-function" id="id10">1.4 Gamma function</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#univariate-distribution-relationship" id="id11">2 Univariate Distribution relationship</a></p></li>
-<li><p><a class="reference internal" href="#relationship-between-discrete-and-continuous-distribution" id="id12">3 Relationship between discrete and continuous distribution</a></p>
-<ul>
-<li><p><a class="reference internal" href="#table-1-relationship-abbreviation" id="id13">3.1 Table 1. Relationship abbreviation</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#continuous-distribution" id="id14">4 Continuous distribution</a></p>
-<ul>
-<li><p><a class="reference internal" href="#exponential-distribution" id="id15">4.1 Exponential distribution</a></p></li>
-<li><p><a class="reference internal" href="#gamma-distribution" id="id16">4.2 Gamma distribution</a></p></li>
-<li><p><a class="reference internal" href="#normal-distribution" id="id17">4.3 Normal distribution</a></p>
-<ul>
-<li><p><a class="reference internal" href="#the-derivative-of-normal-distribution-ref-tim" id="id18">4.3.1 The derivative of normal distribution (Ref: Tim )</a></p></li>
-<li><p><a class="reference internal" href="#other-useful-materials" id="id19">4.3.2 Other useful materials</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#chi-2-distribution" id="id20">4.4 <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a></p></li>
-<li><p><a class="reference internal" href="#the-relationship-between-normal-and-chi-2-distribution" id="id21">4.5 The relationship between normal and <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a></p></li>
-<li><p><a class="reference internal" href="#noncentral-chi-2-distribution" id="id22">4.6 Noncentral <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a></p></li>
-<li><p><a class="reference internal" href="#wishart-distribution" id="id23">4.7 Wishart distribution</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#discrete-distribution" id="id24">5 Discrete distribution</a></p>
-<ul>
-<li><p><a class="reference internal" href="#bernoulli-distribution-x-sim-bernoulli-p" id="id25">5.1 Bernoulli distribution <span class="math notranslate nohighlight">\(X \sim Bernoulli(p)\)</span></a></p></li>
-<li><p><a class="reference internal" href="#binomial-distribution-x-sim-binomial-n-p" id="id26">5.2 Binomial distribution <span class="math notranslate nohighlight">\(X \sim Binomial(n,p)\)</span></a></p></li>
-<li><p><a class="reference internal" href="#possion-distribution" id="id27">5.3 Possion distribution</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#p-value-distribution" id="id28">6 P value distribution</a></p></li>
-</ul>
-</li>
-</ul>
-</div>
-<p><a class="reference external" href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html">Distribution Chart</a></p>
-<div class="section" id="useful-function">
-<h2><a class="toc-backref" href="#id6">1 Useful function</a><a class="headerlink" href="#useful-function" title="Permalink to this headline">#</a></h2>
-<div class="section" id="power-function">
-<h3><a class="toc-backref" href="#id7">1.1 Power function</a><a class="headerlink" href="#power-function" title="Permalink to this headline">#</a></h3>
+  <section id="summary-of-statistical-distribution">
+<h1>Summary of Statistical Distribution<a class="headerlink" href="#summary-of-statistical-distribution" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2><a class="reference external" href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html">Distribution Chart</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="useful-function">
+<h2>Useful function<a class="headerlink" href="#useful-function" title="Permalink to this heading">#</a></h2>
+<section id="power-function">
+<h3>Power function<a class="headerlink" href="#power-function" title="Permalink to this heading">#</a></h3>
 <p>Real functions of the form <span class="math notranslate nohighlight">\(f(x)=x^{a}\)</span></p>
-</div>
-<div class="section" id="exponential-function">
-<h3><a class="toc-backref" href="#id8">1.2 Exponential function</a><a class="headerlink" href="#exponential-function" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="exponential-function">
+<h3>Exponential function<a class="headerlink" href="#exponential-function" title="Permalink to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(f(x) = a^{x}\)</span>, for example, <span class="math notranslate nohighlight">\(f(x) = e^x\)</span>.</p>
-</div>
-<div class="section" id="logrithm-function">
-<h3><a class="toc-backref" href="#id9">1.3 Logrithm function</a><a class="headerlink" href="#logrithm-function" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="logrithm-function">
+<h3>Logrithm function<a class="headerlink" href="#logrithm-function" title="Permalink to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(log_b^y = x\)</span></p>
-</div>
-<div class="section" id="gamma-function">
-<h3><a class="toc-backref" href="#id10">1.4 Gamma function</a><a class="headerlink" href="#gamma-function" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="gamma-function">
+<h3>Gamma function<a class="headerlink" href="#gamma-function" title="Permalink to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(\Gamma(\alpha) = \int^{\infty}_0 t^{\alpha - 1} e^{-t} dt\)</span></p>
-</div>
-</div>
-<div class="section" id="univariate-distribution-relationship">
-<h2><a class="toc-backref" href="#id11">2 Univariate Distribution relationship</a><a class="headerlink" href="#univariate-distribution-relationship" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="univariate-distribution-relationship">
+<h2>Univariate Distribution relationship<a class="headerlink" href="#univariate-distribution-relationship" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="http://www.math.wm.edu/~leemis/chart/UDR/UDR.html">Chart for univariate distribution relationship</a></p>
-</div>
-<div class="section" id="relationship-between-discrete-and-continuous-distribution">
-<h2><a class="toc-backref" href="#id12">3 Relationship between discrete and continuous distribution</a><a class="headerlink" href="#relationship-between-discrete-and-continuous-distribution" title="Permalink to this headline">#</a></h2>
-<div class="section" id="table-1-relationship-abbreviation">
-<h3><a class="toc-backref" href="#id13">3.1 Table 1. Relationship abbreviation</a><a class="headerlink" href="#table-1-relationship-abbreviation" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="relationship-between-discrete-and-continuous-distribution">
+<h2>Relationship between discrete and continuous distribution<a class="headerlink" href="#relationship-between-discrete-and-continuous-distribution" title="Permalink to this heading">#</a></h2>
+<section id="table-1-relationship-abbreviation">
+<h3>Table 1. Relationship abbreviation<a class="headerlink" href="#table-1-relationship-abbreviation" title="Permalink to this heading">#</a></h3>
 <table class="table">
-<colgroup>
-<col style="width: 44%" />
-<col style="width: 30%" />
-<col style="width: 26%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Discrete</p></th>
 <th class="head"><p>Continuous</p></th>
@@ -542,125 +487,129 @@ document.write(`
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="continuous-distribution">
-<h2><a class="toc-backref" href="#id14">4 Continuous distribution</a><a class="headerlink" href="#continuous-distribution" title="Permalink to this headline">#</a></h2>
-<div class="section" id="exponential-distribution">
-<h3><a class="toc-backref" href="#id15">4.1 Exponential distribution</a><a class="headerlink" href="#exponential-distribution" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="continuous-distribution">
+<h2>Continuous distribution<a class="headerlink" href="#continuous-distribution" title="Permalink to this heading">#</a></h2>
+<section id="exponential-distribution">
+<h3>Exponential distribution<a class="headerlink" href="#exponential-distribution" title="Permalink to this heading">#</a></h3>
 <p>The probability density function (pdf) of an exponential distribution is</p>
 <div class="math notranslate nohighlight">
-   ..
-      \begin{align}
-   f(x;\lambda)=\left \{ \begin{array}{ll}
-   \lambda e^{ -\lambda x } &amp; x \geq 0 \\
-   0  &amp; x &lt; 0
-   \end{array}
-   \right
-   ..
-      \end{align}</div><p>Or,</p>
+\[
+f(x;\lambda) =
+\left\{
+\begin{array}{
+  &#64;{}% no padding
+  l&#64;{\quad}% some padding
+  r&#64;{}% no padding
+  &gt;{{}}r&#64;{}% no padding
+  &gt;{{}}l&#64;{}% no padding
+}
+  \lambda e^{ -\lambda x } &amp; x \geq 0 \\ 0  &amp; x &lt; 0
+\end{array}
+\right.
+\]</div><p>Or,</p>
 <div class="math notranslate nohighlight">
-   ..
-      \begin{align}
-   f(x;\lambda)=\left \{ \begin{array}{ll}
+\[
+f(x;\lambda) =
+\left\{
+\begin{array}{
+  &#64;{}% no padding
+  l&#64;{\quad}% some padding
+  r&#64;{}% no padding
+  &gt;{{}}r&#64;{}% no padding
+  &gt;{{}}l&#64;{}% no padding
+}
    \frac{1}{\beta} e^{ - x/\beta} &amp; x \geq 0 \\
    0  &amp; x &lt; 0
-   \end{array}
-   \right
-   ..
-      \end{align}</div><p>where <span class="math notranslate nohighlight">\(\lambda\)</span> is rate parameter, <span class="math notranslate nohighlight">\(\beta\)</span> is scale parameter.</p>
-</div>
-<div class="section" id="gamma-distribution">
-<h3><a class="toc-backref" href="#id16">4.2 Gamma distribution</a><a class="headerlink" href="#gamma-distribution" title="Permalink to this headline">#</a></h3>
+\end{array}
+\right.
+\]</div><p>where <span class="math notranslate nohighlight">\(\lambda\)</span> is rate parameter, <span class="math notranslate nohighlight">\(\beta\)</span> is scale parameter.</p>
+</section>
+<section id="gamma-distribution">
+<h3>Gamma distribution<a class="headerlink" href="#gamma-distribution" title="Permalink to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(t = \beta x\)</span>,</p>
 <p>the probability density function is</p>
-<p>begin{align}
-f(x;alpha,beta) = left{ begin{array}{rcl}</p>
-<blockquote>
-<div><blockquote>
-<div><dl class="simple">
-<dt>frac{beta^{alpha}}{Gamma{(alpha)}} x^{alpha -1} e^{-beta x} &amp; x geq 0 \</dt><dd><p>0  &amp; x &lt; 0</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>end{array}right</p>
-</div></blockquote>
-<p>end{align}</p>
-<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is shape parameter and <span class="math notranslate nohighlight">\(\beta\)</span> is rate parameter.</p>
-</div>
-<div class="section" id="normal-distribution">
-<h3><a class="toc-backref" href="#id17">4.3 Normal distribution</a><a class="headerlink" href="#normal-distribution" title="Permalink to this headline">#</a></h3>
-<div class="section" id="the-derivative-of-normal-distribution-ref-tim">
-<h4>4.3.1 The derivative of normal distribution (Ref: <a class="reference external" href="https://math.stackexchange.com/questions/384893/how-was-the-normal-distribution-derived/385427#385427?newreg=3bf27de39aeb420ba221d562d38c5ccd">Tim</a> )<a class="headerlink" href="#the-derivative-of-normal-distribution-ref-tim" title="Permalink to this headline">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+f(x;\lambda) =
+\left\{
+\begin{array}{
+  &#64;{}% no padding
+  l&#64;{\quad}% some padding
+  r&#64;{}% no padding
+  &gt;{{}}r&#64;{}% no padding
+  &gt;{{}}l&#64;{}% no padding
+}
+ \frac{\beta^{\alpha}}{\Gamma{(\alpha)}} x^{\alpha -1} e^{-\beta x} &amp; x \geq 0 \\ 0  &amp; x &lt; 0
+\end{array}
+\right.
+\]</div><p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is shape parameter and <span class="math notranslate nohighlight">\(\beta\)</span> is rate parameter.</p>
+</section>
+<section id="normal-distribution">
+<h3>Normal distribution<a class="headerlink" href="#normal-distribution" title="Permalink to this heading">#</a></h3>
+<section id="the-derivative-of-normal-distribution-ref-tim">
+<h4>The derivative of normal distribution (Ref: <a class="reference external" href="https://math.stackexchange.com/questions/384893/how-was-the-normal-distribution-derived/385427#385427?newreg=3bf27de39aeb420ba221d562d38c5ccd">Tim</a> )<a class="headerlink" href="#the-derivative-of-normal-distribution-ref-tim" title="Permalink to this heading">#</a></h4>
 <p>Suppose I throw a dart into a dartboard. I aim at the centre of the board (0,0) but I’m not all that good with darts so the dart lands in a random position (X,Y) which has a joint density function <span class="math notranslate nohighlight">\(f:\mathbb R^2\to\mathbb R^+\)</span>.
 Let’s make two assumptions about the way I play darts.</p>
-<ul>
+<ul class="simple">
 <li><p>The density is rotationally invariant so the distribution of where my dart lands only depends on the distance of the dart to the centre.</p></li>
-<li><p>The random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent, how much I miss left and right makes no difference to the distribution of how much I miss up and down.</p>
+<li><p>The random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent, how much I miss left and right makes no difference to the distribution of how much I miss up and down.</p></li>
+</ul>
 <p>So by assumption one and Pythagoras I must be able to express the density</p>
-<dl class="simple">
-<dt>begin{align}</dt><dd><p>f(x,y) = g(x^2 + y^2).</p>
-</dd>
-</dl>
-<p>end{align}</p>
+<div class="math notranslate nohighlight">
+\[f(x,y) = g(x^2 + y^2)\]</div>
 <p>Now as the random variable <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent and identically distributed I must be able to express</p>
-<p>begin{align}
-f(x,y) propto f(x,0) f(0,y)
-end{align}</p>
+<div class="math notranslate nohighlight">
+\[f(x,y) \propto f(x,0) f(0,y)\]</div>
 <p>Combining these assumptions we get that for every pair (x,y), we have</p>
-<dl class="simple">
-<dt>begin{align}</dt><dd><p>g(x^2 + y^2) propto g(x^2) g(y^2).</p>
-</dd>
-</dl>
-<p>end{align}</p>
+<div class="math notranslate nohighlight">
+\[g(x^2 + y^2) \propto g(x^2) g(y^2)\]</div>
 <p>This means that <span class="math notranslate nohighlight">\(g\)</span> must be an exponential function</p>
-<dl class="simple">
-<dt>begin{align}</dt><dd><p>g(t) = Ae^{-Bt}</p>
-</dd>
-</dl>
-<p>end{align}</p>
+<div class="math notranslate nohighlight">
+\[g(t) = Ae^{-Bt}\]</div>
 <p>So <span class="math notranslate nohighlight">\(A\)</span> will be some normalising constant. <span class="math notranslate nohighlight">\(B\)</span> somehow reflects the units I’m measuring in. ( So if I measure the distance in cm <span class="math notranslate nohighlight">\(B\)</span> will be 10 times as big as if I measured in mm). <span class="math notranslate nohighlight">\(B\)</span> must be negative because the density should be a decreasing function of distance(I’m not that bad at darts).</p>
 <p>So to work out <span class="math notranslate nohighlight">\(A\)</span>, I need to integrate <span class="math notranslate nohighlight">\(f(.,.)\)</span> over <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> a quick change of coordinates and</p>
-<p>begin{align}
-iint_{mathbb{R}} f(x,y)dxdy = 2pi int^{infty}_{0} tg(t)dt = frac{2pi}{B^2}
-end{align}</p>
-<p>So we should set <span class="math notranslate nohighlight">\(A = \frac{B^2}{2\pi}\)</span> it’s convenient to choose <span class="math notranslate nohighlight">\(B\)</span> in terms of the standart deviation, so we set <span class="math notranslate nohighlight">\(B = \frac{1}{2\sigma}\)</span> and <span class="math notranslate nohighlight">\(A = \frac{1}{2\pi\sigma^2}\)</span>.
-So if I set <span class="math notranslate nohighlight">\(\tilde{f}(x) = \frac{1}{\sqrt(2\pi)\sigma}e^{-\frac{x^2}{2\sigma}}\)</span> then <span class="math notranslate nohighlight">\(f(x,y) = \tilde{f}(x) \tilde{f}(y)\)</span>.</p>
-<p>So the <span class="math notranslate nohighlight">\(e\)</span> comes from the fact I wanted my <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> coordinates to be independent and the <span class="math notranslate nohighlight">\(\pi\)</span> comes from the fact that I wanted rotational invariance so I’m integrating over a circle.</p>
-</li>
-</ul>
-<p>The interesting thing happens if I throw two darts. Suppose I throw my first dart aiming at (0,0) which lands at (<span class="math notranslate nohighlight">\(X_1\)</span>,:math:<cite>Y_1</cite>), I aim my next dart at the first dart, so this one lands at (<span class="math notranslate nohighlight">\(X_2\)</span>,:math:<cite>Y_2</cite>) with <span class="math notranslate nohighlight">\(X_2=X_1 + X\)</span> and <span class="math notranslate nohighlight">\(X_2=Y_1+Y\)</span>.</p>
-<p>So the position of the second dart is the sum of the two errors. But my sum is still rotationally invariant and the variables <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(Y_2\)</span> are still independent, so (<span class="math notranslate nohighlight">\(X_2\)</span>,:math:<cite>Y_2</cite>) satisfies my two assumptions.</p>
+<div class="math notranslate nohighlight">
+\[\iint_{\mathbb{R}} f(x,y)dxdy = 2\pi \int^{\infty}_{0} tg(t)dt=\frac{2\pi}{B^2}\]</div>
+<p>So we should set <span class="math notranslate nohighlight">\(A = \frac{B^2}{2\pi}\)</span> it’s convenient to choose <span class="math notranslate nohighlight">\(B\)</span> in terms of the standart deviation, so we set <span class="math notranslate nohighlight">\(B = \frac{1}{2\sigma}\)</span> and <span class="math notranslate nohighlight">\(A = \frac{1}{2\pi\sigma^2}\)</span>.</p>
+<p>So if I set <span class="math notranslate nohighlight">\(\tilde{f}(x) = \frac{1}{\sqrt(2\pi)\sigma}e^{-\frac{x^2}{2\sigma}}\)</span> then <span class="math notranslate nohighlight">\(f(x,y) = \tilde{f}(x) \tilde{f}(y)\)</span>.</p>
+<p>The <span class="math notranslate nohighlight">\(e\)</span> comes from the fact I wanted my <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> coordinates to be independent and the <span class="math notranslate nohighlight">\(\pi\)</span> comes from the fact that I wanted rotational invariance so I’m integrating over a circle.</p>
+<p>The interesting thing happens if I throw two darts. Suppose I throw my first dart aiming at (0,0) which lands at (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(Y_1\)</span>), I aim my next dart at the first dart, so this one lands at (<span class="math notranslate nohighlight">\(X_2\)</span>,:math:<cite>Y_2</cite>) with <span class="math notranslate nohighlight">\(X_2=X_1 + X\)</span> and <span class="math notranslate nohighlight">\(X_2=Y_1+Y\)</span>.</p>
+<p>So the position of the second dart is the sum of the two errors. But my sum is still rotationally invariant and the variables <span class="math notranslate nohighlight">\(X_2\)</span> and <span class="math notranslate nohighlight">\(Y_2\)</span> are still independent, so (<span class="math notranslate nohighlight">\(X_2\)</span>, <span class="math notranslate nohighlight">\(Y_2\)</span>) satisfies my two assumptions.</p>
 <p>That means that when I add independent normal distributions together I get another normal distribution.</p>
 <p>It’s this property that makes it so useful, because if I take the average of a very long sequence of random variables I should get something that’s the same shape no matter how long my sequence is and taking a sequence twice as long is like adding the two sequences together. It’s this property of the normal distribution that makes it so useful.</p>
-</div>
-<div class="section" id="other-useful-materials">
-<h4><a class="toc-backref" href="#id19">4.3.2 Other useful materials</a><a class="headerlink" href="#other-useful-materials" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="other-useful-materials">
+<h4>Other useful materials<a class="headerlink" href="#other-useful-materials" title="Permalink to this heading">#</a></h4>
 <p><a class="reference external" href="https://www.maa.org/sites/default/files/pdf/upload_library/22/Allendoerfer/stahl96.pdf">The evolution of the normal distribution</a></p>
-</div>
-</div>
-<div class="section" id="chi-2-distribution">
-<h3><a class="toc-backref" href="#id20">4.4 <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a><a class="headerlink" href="#chi-2-distribution" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="chi-2-distribution">
+<h3><span class="math notranslate nohighlight">\(\chi^2\)</span> distribution<a class="headerlink" href="#chi-2-distribution" title="Permalink to this heading">#</a></h3>
 <p>The <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution is a special case of the gamma distribution, as a <span class="math notranslate nohighlight">\(\chi^2\)</span> random variable with <span class="math notranslate nohighlight">\(n\)</span> degrees of freedom follows a gamma distribution with shape parameter <span class="math notranslate nohighlight">\(\alpha = n/2\)</span> and <span class="math notranslate nohighlight">\(\beta = 1/2\)</span>, namely, <span class="math notranslate nohighlight">\(\chi^2 \sim Gamma(n/2,1/2)\)</span>, giving the density function as</p>
-<p>begin{align}
-f(x;alpha,beta) = left{ begin{array}{rcl}</p>
-<blockquote>
-<div><blockquote>
-<div><dl class="simple">
-<dt>frac{2^{-n/2}}{Gamma{(n/2)}} x^{n/2 -1} e^{-1/2 x} &amp; x geq 0 \</dt><dd><p>0  &amp; x &lt; 0</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>end{array}right</p>
-</div></blockquote>
-<p>end{align}</p>
-</div>
-<div class="section" id="the-relationship-between-normal-and-chi-2-distribution">
-<h3><a class="toc-backref" href="#id21">4.5 The relationship between normal and <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a><a class="headerlink" href="#the-relationship-between-normal-and-chi-2-distribution" title="Permalink to this headline">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+f(x;\alpha,\beta) =
+\left\{
+\begin{array}{
+  &#64;{}% no padding
+  l&#64;{\quad}% some padding
+  r&#64;{}% no padding
+  &gt;{{}}r&#64;{}% no padding
+  &gt;{{}}l&#64;{}% no padding
+}
+  \frac{2^{-n/2}}{\Gamma{(n/2)}} x^{n/2 -1} e^{-1/2 x}  &amp;  x\geq 0 \\
+  0  &amp; x &lt; 0
+\end{array}
+\right.
+\]</div></section>
+<section id="the-relationship-between-normal-and-chi-2-distribution">
+<h3>The relationship between normal and <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution<a class="headerlink" href="#the-relationship-between-normal-and-chi-2-distribution" title="Permalink to this heading">#</a></h3>
 <p>Firstly, we need prove <span class="math notranslate nohighlight">\(\Gamma(1/2) = \sqrt{\pi}\)</span> (Ref: <a class="reference external" href="https://onlinehw.math.ksu.edu/math340book/chap3/gamma.php#:~:text=So%20the%20Gamma%20function%20is,%2F2">The Gamma Function</a>)</p>
 <div class="math notranslate nohighlight">
-   ..
-      \begin{align}
+\[
+\begin{align}
    \Gamma(1/2)^2 &amp;= \left(\int_0^{\infty}t^{-1/2}e^{-t}\,dt\right)^2 \\
    &amp;= \left(2\int_0^{\infty}e^{-x^2}\,dx\right)^2 &amp;&amp; \text{let $t = x^2$} \\
    &amp;= \left(\int_{-\infty}^{\infty}e^{-x^2}\,dx\right)^2 &amp;&amp; \text{from (0,$\infty$) to (-$\infty$,+$\infty$)} \\
@@ -670,54 +619,82 @@ f(x;alpha,beta) = left{ begin{array}{rcl}</p>
    &amp;= \int_{0}^{2\pi}\int_{0}^{\infty}e^{-r^2}\,rdrd\theta  &amp;&amp; \text{let $x= r \cdot \cos(\theta)$ and $y= r \cdot
    \sin(\theta)
    $}   \\
-   &amp;= \frac12\int_{0}^{2\pi}\int_{0}^{\infty}e^{-u}\,dud\theta \tag{f} \\
+   &amp;= \frac12\int_{0}^{2\pi}\int_{0}^{\infty}e^{-u}\,dud\theta \\
    &amp;= \frac12\int_{0}^{2\pi}\left.-e^{-u}\right|_0^{\infty}\,d\theta \\
    &amp;= \frac12\int_{0}^{2\pi}\,d\theta \\
    &amp;= \pi
-   ..
-      \end{align}</div><p>Secondly, we need to find the pdf of <span class="math notranslate nohighlight">\(X^2\)</span> (Ref: <a class="reference external" href="https://math.stackexchange.com/questions/71537/derivation-of-chi-squared-pdf-with-one-degree-of-freedom-from-normal-distributio">Normal to Chi</a>)</p>
+\end{align}
+\]</div><p>Secondly, we need to find the pdf of <span class="math notranslate nohighlight">\(X^2\)</span> (Ref: <a class="reference external" href="https://math.stackexchange.com/questions/71537/derivation-of-chi-squared-pdf-with-one-degree-of-freedom-from-normal-distributio">Normal to Chi</a>)</p>
 <p>If <span class="math notranslate nohighlight">\(X \sim \mathcal{N}(0,1)\)</span>, then the pdf of <span class="math notranslate nohighlight">\(X\)</span> is</p>
-<p>begin{align}
-varphi(x) = frac{1}{sqrt{2pi}} e^{-x^2/2}
-end{align}</p>
-<p>Let <span class="math notranslate nohighlight">\(f\)</span> be the pdf of <span class="math notranslate nohighlight">\(X^2\)</span>. Then,</p>
-<p>begin{align}
-f(x) &amp; = frac{d}{dx} Pr(X^2 le x)= frac{d}{dx} Pr(-sqrt{x}le Xlesqrt{x}) \
-&amp; = frac{d}{dx} frac{1}{sqrt{2pi}} int_{-sqrt{x}}^{sqrt{x}} e^{-u^2/2} ;du  \
-&amp; = frac{2}{sqrt{2pi}}frac{d}{dx} int_0^{sqrt{x}}  e^{-u^2/2} ;du \
-&amp; = frac{2}{sqrt{2pi}} e^{-sqrt{x}^2/2} frac{d}{dx} sqrt{x} = frac{2}{sqrt{2pi}} e^{-x/2} frac{1}{2sqrt{x}}  = frac{e^{-x/2}}{sqrt{2pi x}} \
-&amp; = frac{2^{-1/2}}{Gamma{(1/2)}} x^{frac12 - 1}e^{-x/2} sim Gamma(1/2,1/2)
-end{align}</p>
-</div>
-<div class="section" id="noncentral-chi-2-distribution">
-<h3><a class="toc-backref" href="#id22">4.6 Noncentral <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a><a class="headerlink" href="#noncentral-chi-2-distribution" title="Permalink to this headline">#</a></h3>
-</div>
-<div class="section" id="wishart-distribution">
-<h3><a class="toc-backref" href="#id23">4.7 Wishart distribution</a><a class="headerlink" href="#wishart-distribution" title="Permalink to this headline">#</a></h3>
-</div>
-</div>
-<div class="section" id="discrete-distribution">
-<h2><a class="toc-backref" href="#id24">5 Discrete distribution</a><a class="headerlink" href="#discrete-distribution" title="Permalink to this headline">#</a></h2>
-<div class="section" id="bernoulli-distribution-x-sim-bernoulli-p">
-<h3><a class="toc-backref" href="#id25">5.1 Bernoulli distribution <span class="math notranslate nohighlight">\(X \sim Bernoulli(p)\)</span></a><a class="headerlink" href="#bernoulli-distribution-x-sim-bernoulli-p" title="Permalink to this headline">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\begin{array}{
+  &#64;{}% no padding
+  l&#64;{\quad}% some padding
+  r&#64;{}% no padding
+  &gt;{{}}r&#64;{}% no padding
+  &gt;{{}}l&#64;{}% no padding
+}
+\varphi(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}
+\end{array}
+\]</div><p>Let <span class="math notranslate nohighlight">\(f\)</span> be the pdf of <span class="math notranslate nohighlight">\(X^2\)</span>. Then,</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+   f(x) &amp; = \frac{d}{dx} \Pr(X^2 \le x) \\
+   &amp;= \frac{d}{dx} \Pr(-\sqrt{x}\le X\le\sqrt{x}) \\
+   &amp; = \frac{d}{dx} \frac{1}{\sqrt{2\pi}} \int_{-\sqrt{x}}^{\sqrt{x}} e^{-u^2/2} \;du  \\
+   &amp; = \frac{2}{\sqrt{2\pi}}\frac{d}{dx} \int_0^{\sqrt{x}}  e^{-u^2/2} \;du \\
+   &amp; = \frac{2}{\sqrt{2\pi}} e^{-\sqrt{x}^2/2} \frac{d}{dx} \sqrt{x} = \frac{2}{\sqrt{2\pi}} e^{-x/2} \frac{1}{2\sqrt{x}}  = \frac{e^{-x/2}}{\sqrt{2\pi x}} \\
+   &amp; = \frac{2^{-1/2}}{\Gamma{(1/2)}} x^{\frac12 - 1}e^{-x/2} \sim Gamma(1/2,1/2)
+\end{align}
+\]</div></section>
+<section id="noncentral-chi-2-distribution">
+<h3>Noncentral <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution<a class="headerlink" href="#noncentral-chi-2-distribution" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="wishart-distribution">
+<h3>Wishart distribution<a class="headerlink" href="#wishart-distribution" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="discrete-distribution">
+<h2>Discrete distribution<a class="headerlink" href="#discrete-distribution" title="Permalink to this heading">#</a></h2>
+<section id="bernoulli-distribution-x-sim-bernoulli-p">
+<span id="bernoulli"></span><h3>Bernoulli distribution <span class="math notranslate nohighlight">\(X \sim Bernoulli(p)\)</span><a class="headerlink" href="#bernoulli-distribution-x-sim-bernoulli-p" title="Permalink to this heading">#</a></h3>
 <p>Bernoulli distribution is used to indicate that the random variable <span class="math notranslate nohighlight">\(X\)</span> has the Bernoulli distribution with parameter <span class="math notranslate nohighlight">\(p\)</span>, where <span class="math notranslate nohighlight">\(0 &lt; p &lt; 1\)</span>. A Bernoulli random variable <span class="math notranslate nohighlight">\(X\)</span> with success probability <span class="math notranslate nohighlight">\(p\)</span> has probability mass function</p>
-<p>where <span class="math notranslate nohighlight">\(0 &lt; p &lt; 1\)</span>. The Bernoulli distribution is associated with the notion of a <span class="math notranslate nohighlight">\(Bernoulli trial\)</span>, which is an experiment with two outcomes, generically referred to as :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>success`(x = 1) and :math:<a href="#id3"><span class="problematic" id="id4">`</span></a>failure`(x = 0).</p>
-</div>
-<div class="section" id="binomial-distribution-x-sim-binomial-n-p">
-<h3><a class="toc-backref" href="#id26">5.2 Binomial distribution <span class="math notranslate nohighlight">\(X \sim Binomial(n,p)\)</span></a><a class="headerlink" href="#binomial-distribution-x-sim-binomial-n-p" title="Permalink to this headline">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+f(x) =
+\left\{
+\begin{array}{
+  &#64;{}% no padding
+  l&#64;{\quad}% some padding
+  r&#64;{}% no padding
+  &gt;{{}}r&#64;{}% no padding
+  &gt;{{}}l&#64;{}% no padding
+}
+  p , &amp; x = 1 \\
+  1- p , &amp; x = 0
+\end{array}
+\right.
+\]</div><p></p>
+<p>where <span class="math notranslate nohighlight">\(0 &lt; p &lt; 1\)</span>. The Bernoulli distribution is associated with the notion of a <span class="math notranslate nohighlight">\(Bernoulli \quad trial\)</span>, which is an experiment with two outcomes, generically referred to as <span class="math notranslate nohighlight">\(success\)</span> (x = 1) and <span class="math notranslate nohighlight">\(failure\)</span>
+(x = 0).</p>
+</section>
+<section id="binomial-distribution-x-sim-binomial-n-p">
+<h3>Binomial distribution <span class="math notranslate nohighlight">\(X \sim Binomial(n,p)\)</span><a class="headerlink" href="#binomial-distribution-x-sim-binomial-n-p" title="Permalink to this heading">#</a></h3>
 <p>The binomial distribution models the number of successes in <span class="math notranslate nohighlight">\(n\)</span> mutually independent Bernoulli trials, each with probability of success <span class="math notranslate nohighlight">\(p\)</span>. The random variable <span class="math notranslate nohighlight">\(X \sim binomial(n,p)\)</span> has probability mass function</p>
-</div>
-<div class="section" id="possion-distribution">
-<h3><a class="toc-backref" href="#id27">5.3 Possion distribution</a><a class="headerlink" href="#possion-distribution" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="possion-distribution">
+<h3>Possion distribution<a class="headerlink" href="#possion-distribution" title="Permalink to this heading">#</a></h3>
 <p>A Poisson random variable <span class="math notranslate nohighlight">\(X\)</span> with scale parameter <span class="math notranslate nohighlight">\(\mu\)</span> has probability mass function</p>
 <p>The Poisson distribution can be used to approximate the binomial distribution when <span class="math notranslate nohighlight">\(n\)</span> is large and <span class="math notranslate nohighlight">\(p\)</span> is small. Besides, it can be also used to model the number of events in an interval associated with a process that evolves randomly over space or time. Applications include the number of typographical errors in a book, the number of customers arriving in an hour.</p>
-</div>
-</div>
-<div class="section" id="p-value-distribution">
-<h2><a class="toc-backref" href="#id28">6 P value distribution</a><a class="headerlink" href="#p-value-distribution" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="p-value-distribution">
+<h2>P value distribution<a class="headerlink" href="#p-value-distribution" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Order_statistic#:~:text=Order%20statistics%20sampled%20from%20an%20uniform%20distribution,-In%20this%20section&amp;text=that%20is%2C%20the%20kth%20order,a%20beta%2Ddistributed%20random%20variable.&amp;text=and%20the%20result%20follows.,%2F%20(n%20%2B%201)">ordered statistics</a>, <a class="reference external" href="https://genome.sph.umich.edu/wiki/Code_Sample:_Generating_QQ_Plots_in_R">QQ plot</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
                 </article>
@@ -736,39 +713,40 @@ end{align}</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-function">1 Useful function</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-function">1.1 Power function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-function">1.2 Exponential function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logrithm-function">1.3 Logrithm function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma-function">1.4 Gamma function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Distribution Chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-function">Useful function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-function">Power function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-function">Exponential function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logrithm-function">Logrithm function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma-function">Gamma function</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#univariate-distribution-relationship">2 Univariate Distribution relationship</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-discrete-and-continuous-distribution">3 Relationship between discrete and continuous distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-1-relationship-abbreviation">3.1 Table 1. Relationship abbreviation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#univariate-distribution-relationship">Univariate Distribution relationship</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-discrete-and-continuous-distribution">Relationship between discrete and continuous distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-1-relationship-abbreviation">Table 1. Relationship abbreviation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-distribution">4 Continuous distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-distribution">4.1 Exponential distribution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma-distribution">4.2 Gamma distribution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution">4.3 Normal distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-derivative-of-normal-distribution-ref-tim">4.3.1 The derivative of normal distribution (Ref: Tim )</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-materials">4.3.2 Other useful materials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-distribution">Continuous distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-distribution">Exponential distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma-distribution">Gamma distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-distribution">Normal distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-derivative-of-normal-distribution-ref-tim">The derivative of normal distribution (Ref: Tim )</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-materials">Other useful materials</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-2-distribution">4.4 <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-relationship-between-normal-and-chi-2-distribution">4.5 The relationship between normal and <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noncentral-chi-2-distribution">4.6 Noncentral <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wishart-distribution">4.7 Wishart distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-2-distribution"><span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-relationship-between-normal-and-chi-2-distribution">The relationship between normal and <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noncentral-chi-2-distribution">Noncentral <span class="math notranslate nohighlight">\(\chi^2\)</span> distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wishart-distribution">Wishart distribution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-distribution">5 Discrete distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-distribution-x-sim-bernoulli-p">5.1 Bernoulli distribution <span class="math notranslate nohighlight">\(X \sim Bernoulli(p)\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binomial-distribution-x-sim-binomial-n-p">5.2 Binomial distribution <span class="math notranslate nohighlight">\(X \sim Binomial(n,p)\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#possion-distribution">5.3 Possion distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-distribution">Discrete distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-distribution-x-sim-bernoulli-p">Bernoulli distribution <span class="math notranslate nohighlight">\(X \sim Bernoulli(p)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binomial-distribution-x-sim-binomial-n-p">Binomial distribution <span class="math notranslate nohighlight">\(X \sim Binomial(n,p)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#possion-distribution">Possion distribution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-value-distribution">6 P value distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p-value-distribution">P value distribution</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Power and error &#8212; personal  documentation</title>
+    <title>Logistic regression &#8212; personal  documentation</title>
   
   
   
@@ -42,12 +42,13 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/statistics/powerError';</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/statistics/logitsticRegression08072023_SL';</script>
     <link rel="icon" href="../../_static/omics.icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Logistic regression" href="logitsticRegression08072023_SL.html" />
-    <link rel="prev" title="Summary of Statistical Distribution" href="distribution_sl07012023.html" />
+    <link rel="next" title="Cox regression" href="coxRegression_sl.html" />
+    <link rel="prev" title="Power and error" href="powerError.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -372,8 +373,8 @@ document.write(`
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="distribution_sl07012023.html">Summary of Statistical Distribution</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Power and error</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logitsticRegression08072023_SL.html">Logistic regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powerError.html">Power and error</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Logistic regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coxRegression_sl.html">Cox regression</a></li>
 </ul>
 </div>
@@ -415,7 +416,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../content-posts.html" class="nav-link">Posts</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Power and error</li>
+    <li class="breadcrumb-item active" aria-current="page">Logistic regression</li>
   </ul>
 </nav>
 </div>
@@ -432,13 +433,93 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="power-and-error">
-<h1>Power and error<a class="headerlink" href="#power-and-error" title="Permalink to this heading">#</a></h1>
-<section id="relation-between-power-and-type-i-ii-error">
-<h2>Relation between power and type I II error<a class="headerlink" href="#relation-between-power-and-type-i-ii-error" title="Permalink to this heading">#</a></h2>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../_images/powerAndTypeError07082023_SL.png"><img alt="Logo" src="../../_images/powerAndTypeError07082023_SL.png" style="width: 50%;" /></a>
-</figure>
+  <section id="logistic-regression">
+<h1>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h1>
+<section id="an-outline">
+<h2>An outline<a class="headerlink" href="#an-outline" title="Permalink to this heading">#</a></h2>
+<ol class="upperalpha">
+<li><p><strong>Random component</strong>: <span class="math notranslate nohighlight">\(Y_i\)</span> follows <span class="math notranslate nohighlight">\(Bernoulli(\pi_i)\)</span> with mean <span class="math notranslate nohighlight">\(\mathbb{E}[Y_i] = \pi_i\)</span> (<a class="reference internal" href="distribution_sl07012023.html#bernoulli"><span class="std std-ref">Summary</span></a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Bernoulli_distribution">Wikipedia</a>).</p>
+<p>For <span class="math notranslate nohighlight">\(i\)</span>-th individual,</p>
+</li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+Pr(Y_i) =
+\left\{
+\begin{array}{
+  &#64;{}% no padding
+  l&#64;{\quad}% some padding
+  r&#64;{}% no padding
+  &gt;{{}}r&#64;{}% no padding
+  &gt;{{}}l&#64;{}% no padding
+}
+  \pi_i , &amp; Y_i = 1 \\
+  1- \pi_i , &amp; Y_i = 0
+\end{array}
+\right.
+\]</div><dl class="simple">
+<dt></dt><dd><p>Where, <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> is responsible probability vector.</p>
+</dd>
+</dl>
+<ol class="upperalpha simple" start="2">
+<li><p><strong>Systematic component</strong>: covariate <span class="math notranslate nohighlight">\(\mathbf{x}_1,\mathbf{x}_2,\cdots,\mathbf{x}_p\)</span> produce a linear predictor <span class="math notranslate nohighlight">\(\boldsymbol{\eta}\)</span> given by</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\eta} = \sum_{j=1}^p \mathbf{x}_j \beta_j = \mathbf{X}\boldsymbol{\beta}\]</div>
+<ol class="upperalpha simple" start="3">
+<li><p><strong>Link function</strong>: <span class="math notranslate nohighlight">\(g(.)\)</span> :</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[g(\pi_i) = \eta_i = \sum_{j=1}^p \mathbf{x}_{ij} \beta_j\]</div>
+<p>Common used link function:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Logistic_regression">the logit or logistic function</a> <span class="math notranslate nohighlight">\(g(\pi) = log\{\pi/ (1-\pi)\} = log(odds)\)</span></p></li>
+</ol>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+&amp;log(\frac{\pi_i}{1-\pi_i}) = \sum_{j=1}^p \mathbf{x}_{ij} \beta_j \\
+&amp; \equiv \pi_i = \frac{e^{\sum_{j=1}^p \mathbf{x}_{ij}\beta_j}}{1+e^{\sum_{j=1}^p \mathbf{x}_{ij}\beta_j} }
+\end{align}
+\]</div></section>
+<section id="simulate-logistic-regression">
+<h2>Simulate logistic regression<a class="headerlink" href="#simulate-logistic-regression" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://data.library.virginia.edu/simulating-a-logistic-regression-model/">Simulating a Logistic Regression Model using R</a></p>
+</section>
+<section id="derivative">
+<h2>Derivative<a class="headerlink" href="#derivative" title="Permalink to this heading">#</a></h2>
+<p>Based on <span class="math notranslate nohighlight">\(Pr(Y_i|\mathbf{X}\boldsymbol{\beta}) = \pi^{y_i}_i(1-\pi_i)^{(1-y_i)}\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+L(\theta)  = \prod_{i=1}^n Pr(Y_i|\mathbf{X}\boldsymbol{\beta})
+ = \prod_{i=1}^n \pi^{y_i}_i(1-\pi_i)^{(1-y_i)}
+\end{align}
+\]</div><p>its log-likelihood is</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\ell(\theta) &amp; = log \bigg \{
+\prod_{i=1}^n \pi^{y_i}_i(1-\pi_i)^{(1-y_i)} \bigg \} \\
+&amp; = \sum^{n}_{i=1} \bigg \{ y_i log(\pi_i) + (1-y_i)log(1-\pi_i)  \bigg\} \\
+&amp; =  \sum^{n}_{i=1} \bigg \{log(1-\pi_i) + y_i log(\frac{\pi_i}{1-\pi_i})  \bigg\}
+\end{align}
+\]</div><p>The derivative is</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\frac{\partial\ell(\theta)}{\partial\beta_j}
+&amp; = \frac{\partial\ell(\theta)}{\partial\pi_j} \frac{\partial\pi_j}{\partial\beta_j} \\
+&amp; =  \sum^{n}_{i=1} \bigg \{
+- \frac{e^{\sum_{j=1}^p \mathbf{x}_{ij}\beta_j}}{(1+e^{\sum_{j=1}^p \mathbf{x}_{ij}\beta_j})}
+ \mathbf{x}_{ij} + y_i\mathbf{x}_{ij}
+\bigg\}
+\end{align}
+\]</div></section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://books.google.com.au/books?hl=en&amp;lr=&amp;id=UzmDDwAAQBAJ&amp;oi=fnd&amp;pg=PT14&amp;dq=Generalized+Linear+Models&amp;ots=3XbWY8I_79&amp;sig=XWA73WqagTC_G4yTY8t09_EYLIU&amp;redir_esc=y#v=onepage&amp;q=Generalized%20Linear%20Models&amp;f=false">[1] McCullagh, P. (2019). Generalized linear models. Routledge.</a></p>
 </section>
 </section>
 
@@ -459,7 +540,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relation-between-power-and-type-i-ii-error">Relation between power and type I II error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-outline">An outline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulate-logistic-regression">Simulate logistic regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivative">Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
   </nav></div>
 

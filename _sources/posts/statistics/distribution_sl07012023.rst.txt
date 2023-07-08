@@ -2,46 +2,48 @@
 Summary of Statistical Distribution
 ===================================
 
-    :Author: ShouyeLiu
+..
+   Author: ShouyeLiu
 
-.. contents::
 
 `Distribution Chart <http://www.math.wm.edu/~leemis/chart/UDR/UDR.html>`_
+------------------
 
-1 Useful function
+
+Useful function
 -----------------
 
-1.1 Power function
+Power function
 ~~~~~~~~~~~~~~~~~~
 
 Real functions of the form :math:`f(x)=x^{a}`
 
-1.2 Exponential function
+Exponential function
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 :math:`f(x) = a^{x}`, for example, :math:`f(x) = e^x`.
 
-1.3 Logrithm function
+Logrithm function
 ~~~~~~~~~~~~~~~~~~~~~
 
 :math:`log_b^y = x`
 
-1.4 Gamma function
+Gamma function
 ~~~~~~~~~~~~~~~~~~
 
 :math:`\Gamma(\alpha) = \int^{\infty}_0 t^{\alpha - 1} e^{-t} dt`
 
-2 Univariate Distribution relationship
+Univariate Distribution relationship
 --------------------------------------
 
 `Chart for univariate distribution relationship <http://www.math.wm.edu/~leemis/chart/UDR/UDR.html>`_
 
-3 Relationship between discrete and continuous distribution
+Relationship between discrete and continuous distribution
 -----------------------------------------------------------
 
 
 
-3.1 Table 1. Relationship abbreviation
+Table 1. Relationship abbreviation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. table::
@@ -56,10 +58,10 @@ Real functions of the form :math:`f(x)=x^{a}`
     | Geometric         | Exponential | GE        |
     +-------------------+-------------+-----------+
 
-4 Continuous distribution
+Continuous distribution
 -------------------------
 
-4.1 Exponential distribution
+Exponential distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The probability density function (pdf) of an exponential distribution is
@@ -67,53 +69,76 @@ The probability density function (pdf) of an exponential distribution is
 .. math::
    :nowrap:
 
-      ..
-         \begin{align}
-      f(x;\lambda)=\left \{ \begin{array}{ll}
-      \lambda e^{ -\lambda x } & x \geq 0 \\
-      0  & x < 0
-      \end{array}
-      \right
-      ..
-         \end{align}
+   \[
+   f(x;\lambda) =
+   \left\{
+   \begin{array}{
+     @{}% no padding
+     l@{\quad}% some padding
+     r@{}% no padding
+     >{{}}r@{}% no padding
+     >{{}}l@{}% no padding
+   }
+     \lambda e^{ -\lambda x } & x \geq 0 \\ 0  & x < 0
+   \end{array}
+   \right.
+   \]
+
 Or,
 
 .. math::
    :nowrap:
 
-      ..
-         \begin{align}
-      f(x;\lambda)=\left \{ \begin{array}{ll}
+   \[
+   f(x;\lambda) =
+   \left\{
+   \begin{array}{
+     @{}% no padding
+     l@{\quad}% some padding
+     r@{}% no padding
+     >{{}}r@{}% no padding
+     >{{}}l@{}% no padding
+   }
       \frac{1}{\beta} e^{ - x/\beta} & x \geq 0 \\
       0  & x < 0
-      \end{array}
-      \right
-      ..
-         \end{align}
-
+   \end{array}
+   \right.
+   \]
 
 where :math:`\lambda` is rate parameter, :math:`\beta` is scale parameter.
 
-4.2 Gamma distribution
+Gamma distribution
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Let :math:`t = \beta x`,
 
 the probability density function is
 
-\begin{align}
-f(x;\alpha,\beta) = \left\{ \begin{array}{rcl}
-         \frac{\beta^{\alpha}}{\Gamma{(\alpha)}} x^{\alpha -1} e^{-\beta x} & x \geq 0 \\
-           0  & x < 0
-    \end{array}\right
-\end{align}
+.. math::
+   :nowrap:
+
+   \[
+   f(x;\lambda) =
+   \left\{
+   \begin{array}{
+     @{}% no padding
+     l@{\quad}% some padding
+     r@{}% no padding
+     >{{}}r@{}% no padding
+     >{{}}l@{}% no padding
+   }
+    \frac{\beta^{\alpha}}{\Gamma{(\alpha)}} x^{\alpha -1} e^{-\beta x} & x \geq 0 \\ 0  & x < 0
+   \end{array}
+   \right.
+   \]
+
 
 where :math:`\alpha` is shape parameter and :math:`\beta` is rate parameter.
 
-4.3 Normal distribution
+Normal distribution
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-4.3.1 The derivative of normal distribution (Ref: `Tim <https://math.stackexchange.com/questions/384893/how-was-the-normal-distribution-derived/385427#385427?newreg=3bf27de39aeb420ba221d562d38c5ccd>`_ )
+The derivative of normal distribution (Ref: `Tim <https://math.stackexchange.com/questions/384893/how-was-the-normal-distribution-derived/385427#385427?newreg=3bf27de39aeb420ba221d562d38c5ccd>`_ )
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Suppose I throw a dart into a dartboard. I aim at the centre of the board (0,0) but I’m not all that good with darts so the dart lands in a random position (X,Y) which has a joint density function :math:`f:\mathbb R^2\to\mathbb R^+`.
@@ -123,69 +148,87 @@ Let’s make two assumptions about the way I play darts.
 
 - The random variables :math:`X` and :math:`Y` are independent, how much I miss left and right makes no difference to the distribution of how much I miss up and down.
 
-  So by assumption one and Pythagoras I must be able to express the density
+So by assumption one and Pythagoras I must be able to express the density
 
-  \begin{align}
-   f(x,y) = g(x^2 + y^2).
-  \end{align}
+.. math::
 
-  Now as the random variable :math:`X` and :math:`Y` are independent and identically distributed I must be able to express
+   f(x,y) = g(x^2 + y^2)
 
-  \begin{align}
-  f(x,y) \propto f(x,0) f(0,y)
-  \end{align}
+Now as the random variable :math:`X` and :math:`Y` are independent and identically distributed I must be able to express
 
-  Combining these assumptions we get that for every pair (x,y), we have
 
-  \begin{align}
-   g(x^2 + y^2) \propto g(x^2) g(y^2).
-  \end{align}
+.. math::
 
-  This means that :math:`g` must be an exponential function
+      f(x,y) \propto f(x,0) f(0,y)
 
-  \begin{align}
+
+Combining these assumptions we get that for every pair (x,y), we have
+
+
+.. math::
+
+   g(x^2 + y^2) \propto g(x^2) g(y^2)
+
+This means that :math:`g` must be an exponential function
+
+.. math::
+
    g(t) = Ae^{-Bt}
-  \end{align}
 
-  So :math:`A` will be some normalising constant. :math:`B` somehow reflects the units I’m measuring in. ( So if I measure the distance in cm :math:`B` will be 10 times as big as if I measured in mm). :math:`B` must be negative because the density should be a decreasing function of distance(I’m not that bad at darts).
 
-  So to work out :math:`A`, I need to integrate :math:`f(.,.)` over :math:`\mathbb{R}^2` a quick change of coordinates and
+So :math:`A` will be some normalising constant. :math:`B` somehow reflects the units I’m measuring in. ( So if I measure the distance in cm :math:`B` will be 10 times as big as if I measured in mm). :math:`B` must be negative because the density should be a decreasing function of distance(I’m not that bad at darts).
 
-  \begin{align}
-  \iint_{\mathbb{R}} f(x,y)dxdy = 2\pi \int^{\infty}_{0} tg(t)dt = \frac{2\pi}{B^2}
-  \end{align}
+So to work out :math:`A`, I need to integrate :math:`f(.,.)` over :math:`\mathbb{R}^2` a quick change of coordinates and
 
-  So we should set :math:`A = \frac{B^2}{2\pi}` it’s convenient to choose :math:`B` in terms of the standart deviation, so we set :math:`B = \frac{1}{2\sigma}` and :math:`A = \frac{1}{2\pi\sigma^2}`.
-  So if I set :math:`\tilde{f}(x) = \frac{1}{\sqrt(2\pi)\sigma}e^{-\frac{x^2}{2\sigma}}` then :math:`f(x,y) = \tilde{f}(x) \tilde{f}(y)`.
+.. math::
+   \iint_{\mathbb{R}} f(x,y)dxdy = 2\pi \int^{\infty}_{0} tg(t)dt=\frac{2\pi}{B^2}
 
-  So the :math:`e` comes from the fact I wanted my :math:`X` and :math:`Y` coordinates to be independent and the :math:`\pi` comes from the fact that I wanted rotational invariance so I’m integrating over a circle.
+So we should set :math:`A = \frac{B^2}{2\pi}` it’s convenient to choose :math:`B` in terms of the standart deviation, so we set :math:`B = \frac{1}{2\sigma}` and :math:`A = \frac{1}{2\pi\sigma^2}`.
 
-The interesting thing happens if I throw two darts. Suppose I throw my first dart aiming at (0,0) which lands at (:math:`X_1`,:math:`Y_1`), I aim my next dart at the first dart, so this one lands at (:math:`X_2`,:math:`Y_2`) with :math:`X_2=X_1 + X` and :math:`X_2=Y_1+Y`.
+So if I set :math:`\tilde{f}(x) = \frac{1}{\sqrt(2\pi)\sigma}e^{-\frac{x^2}{2\sigma}}` then :math:`f(x,y) = \tilde{f}(x) \tilde{f}(y)`.
 
-So the position of the second dart is the sum of the two errors. But my sum is still rotationally invariant and the variables :math:`X_2` and :math:`Y_2` are still independent, so (:math:`X_2`,:math:`Y_2`) satisfies my two assumptions.
+The :math:`e` comes from the fact I wanted my :math:`X` and :math:`Y` coordinates to be independent and the :math:`\pi` comes from the fact that I wanted rotational invariance so I’m integrating over a circle.
+
+The interesting thing happens if I throw two darts. Suppose I throw my first dart aiming at (0,0) which lands at (:math:`X_1`, :math:`Y_1`), I aim my next dart at the first dart, so this one lands at (:math:`X_2`,:math:`Y_2`) with :math:`X_2=X_1 + X` and :math:`X_2=Y_1+Y`.
+
+So the position of the second dart is the sum of the two errors. But my sum is still rotationally invariant and the variables :math:`X_2` and :math:`Y_2` are still independent, so (:math:`X_2`, :math:`Y_2`) satisfies my two assumptions.
 
 That means that when I add independent normal distributions together I get another normal distribution.
 
 It’s this property that makes it so useful, because if I take the average of a very long sequence of random variables I should get something that’s the same shape no matter how long my sequence is and taking a sequence twice as long is like adding the two sequences together. It’s this property of the normal distribution that makes it so useful.
 
-4.3.2 Other useful materials
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Other useful materials
+^^^^^^^^^^^^^^^^^^^^^^^
 
 `The evolution of the normal distribution <https://www.maa.org/sites/default/files/pdf/upload_library/22/Allendoerfer/stahl96.pdf>`_
 
-4.4 :math:`\chi^2` distribution
+:math:`\chi^2` distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The :math:`\chi^2` distribution is a special case of the gamma distribution, as a :math:`\chi^2` random variable with :math:`n` degrees of freedom follows a gamma distribution with shape parameter :math:`\alpha = n/2` and :math:`\beta = 1/2`, namely, :math:`\chi^2 \sim Gamma(n/2,1/2)`, giving the density function as
 
-\begin{align}
-f(x;\alpha,\beta) = \left\{ \begin{array}{rcl}
-         \frac{2^{-n/2}}{\Gamma{(n/2)}} x^{n/2 -1} e^{-1/2 x} & x \geq 0 \\
-           0  & x < 0
-    \end{array}\right
-\end{align}
 
-4.5 The relationship between normal and :math:`\chi^2` distribution
+.. math::
+   :nowrap:
+
+   \[
+   f(x;\alpha,\beta) =
+   \left\{
+   \begin{array}{
+     @{}% no padding
+     l@{\quad}% some padding
+     r@{}% no padding
+     >{{}}r@{}% no padding
+     >{{}}l@{}% no padding
+   }
+     \frac{2^{-n/2}}{\Gamma{(n/2)}} x^{n/2 -1} e^{-1/2 x}  &  x\geq 0 \\
+     0  & x < 0
+   \end{array}
+   \right.
+   \]
+
+
+The relationship between normal and :math:`\chi^2` distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Firstly, we need prove :math:`\Gamma(1/2) = \sqrt{\pi}` (Ref: `The Gamma Function <https://onlinehw.math.ksu.edu/math340book/chap3/gamma.php#:~:text=So%20the%20Gamma%20function%20is,%2F2>`_)
@@ -193,8 +236,8 @@ Firstly, we need prove :math:`\Gamma(1/2) = \sqrt{\pi}` (Ref: `The Gamma Functio
 .. math::
    :nowrap:
 
-      ..
-         \begin{align}
+   \[
+   \begin{align}
       \Gamma(1/2)^2 &= \left(\int_0^{\infty}t^{-1/2}e^{-t}\,dt\right)^2 \\
       &= \left(2\int_0^{\infty}e^{-x^2}\,dx\right)^2 && \text{let $t = x^2$} \\
       &= \left(\int_{-\infty}^{\infty}e^{-x^2}\,dx\right)^2 && \text{from (0,$\infty$) to (-$\infty$,+$\infty$)} \\
@@ -204,60 +247,106 @@ Firstly, we need prove :math:`\Gamma(1/2) = \sqrt{\pi}` (Ref: `The Gamma Functio
       &= \int_{0}^{2\pi}\int_{0}^{\infty}e^{-r^2}\,rdrd\theta  && \text{let $x= r \cdot \cos(\theta)$ and $y= r \cdot
       \sin(\theta)
       $}   \\
-      &= \frac12\int_{0}^{2\pi}\int_{0}^{\infty}e^{-u}\,dud\theta \tag{f} \\
+      &= \frac12\int_{0}^{2\pi}\int_{0}^{\infty}e^{-u}\,dud\theta \\
       &= \frac12\int_{0}^{2\pi}\left.-e^{-u}\right|_0^{\infty}\,d\theta \\
       &= \frac12\int_{0}^{2\pi}\,d\theta \\
       &= \pi
-      ..
-         \end{align}
+   \end{align}
+   \]
 
 Secondly, we need to find the pdf of :math:`X^2` (Ref: `Normal to Chi <https://math.stackexchange.com/questions/71537/derivation-of-chi-squared-pdf-with-one-degree-of-freedom-from-normal-distributio>`_)
 
 If :math:`X \sim \mathcal{N}(0,1)`, then the pdf of :math:`X` is
 
-\begin{align}
-\varphi(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}
-\end{align}
+.. math::
+   :nowrap:
+
+   \[
+   \begin{array}{
+     @{}% no padding
+     l@{\quad}% some padding
+     r@{}% no padding
+     >{{}}r@{}% no padding
+     >{{}}l@{}% no padding
+   }
+   \varphi(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}
+   \end{array}
+   \]
+
 
 Let :math:`f` be the pdf of :math:`X^2`. Then,
 
-\begin{align}
-f(x) & = \frac{d}{dx} \Pr(X^2 \le x)= \frac{d}{dx} \Pr(-\sqrt{x}\le X\le\sqrt{x}) \\
-& = \frac{d}{dx} \frac{1}{\sqrt{2\pi}} \int_{-\sqrt{x}}^{\sqrt{x}} e^{-u^2/2} \;du  \\
-& = \frac{2}{\sqrt{2\pi}}\frac{d}{dx} \int_0^{\sqrt{x}}  e^{-u^2/2} \;du \\
-& = \frac{2}{\sqrt{2\pi}} e^{-\sqrt{x}^2/2} \frac{d}{dx} \sqrt{x} = \frac{2}{\sqrt{2\pi}} e^{-x/2} \frac{1}{2\sqrt{x}}  = \frac{e^{-x/2}}{\sqrt{2\pi x}} \\
-& = \frac{2^{-1/2}}{\Gamma{(1/2)}} x^{\frac12 - 1}e^{-x/2} \sim Gamma(1/2,1/2)
-\end{align}
+.. math::
+   :nowrap:
 
-4.6 Noncentral :math:`\chi^2` distribution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   \[
+   \begin{align}
+      f(x) & = \frac{d}{dx} \Pr(X^2 \le x) \\
+      &= \frac{d}{dx} \Pr(-\sqrt{x}\le X\le\sqrt{x}) \\
+      & = \frac{d}{dx} \frac{1}{\sqrt{2\pi}} \int_{-\sqrt{x}}^{\sqrt{x}} e^{-u^2/2} \;du  \\
+      & = \frac{2}{\sqrt{2\pi}}\frac{d}{dx} \int_0^{\sqrt{x}}  e^{-u^2/2} \;du \\
+      & = \frac{2}{\sqrt{2\pi}} e^{-\sqrt{x}^2/2} \frac{d}{dx} \sqrt{x} = \frac{2}{\sqrt{2\pi}} e^{-x/2} \frac{1}{2\sqrt{x}}  = \frac{e^{-x/2}}{\sqrt{2\pi x}} \\
+      & = \frac{2^{-1/2}}{\Gamma{(1/2)}} x^{\frac12 - 1}e^{-x/2} \sim Gamma(1/2,1/2)
+   \end{align}
+   \]
 
-4.7 Wishart distribution
-~~~~~~~~~~~~~~~~~~~~~~~~
 
-5 Discrete distribution
------------------------
 
-5.1 Bernoulli distribution :math:`X \sim Bernoulli(p)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Noncentral :math:`\chi^2` distribution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Wishart distribution
+~~~~~~~~~~~~~~~~~~~~
+
+Discrete distribution
+---------------------
+
+.. _Bernoulli:
+
+Bernoulli distribution :math:`X \sim Bernoulli(p)`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Bernoulli distribution is used to indicate that the random variable :math:`X` has the Bernoulli distribution with parameter :math:`p`, where :math:`0 < p < 1`. A Bernoulli random variable :math:`X` with success probability :math:`p` has probability mass function
 
-where :math:`0 < p < 1`. The Bernoulli distribution is associated with the notion of a :math:`Bernoulli trial`, which is an experiment with two outcomes, generically referred to as :math:`success`(x = 1) and :math:`failure`(x = 0).
 
-5.2 Binomial distribution :math:`X \sim Binomial(n,p)`
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. math::
+   :nowrap:
+
+   \[
+   f(x) =
+   \left\{
+   \begin{array}{
+     @{}% no padding
+     l@{\quad}% some padding
+     r@{}% no padding
+     >{{}}r@{}% no padding
+     >{{}}l@{}% no padding
+   }
+     p , & x = 1 \\
+     1- p , & x = 0
+   \end{array}
+   \right.
+   \]
+
+\
+
+
+where :math:`0 < p < 1`. The Bernoulli distribution is associated with the notion of a :math:`Bernoulli \quad trial`, which is an experiment with two outcomes, generically referred to as :math:`success` (x = 1) and :math:`failure`
+(x = 0).
+
+Binomial distribution :math:`X \sim Binomial(n,p)`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The binomial distribution models the number of successes in :math:`n` mutually independent Bernoulli trials, each with probability of success :math:`p`. The random variable :math:`X \sim binomial(n,p)` has probability mass function
 
-5.3 Possion distribution
-~~~~~~~~~~~~~~~~~~~~~~~~
+Possion distribution
+~~~~~~~~~~~~~~~~~~~~
 
 A Poisson random variable :math:`X` with scale parameter :math:`\mu` has probability mass function
 
 The Poisson distribution can be used to approximate the binomial distribution when :math:`n` is large and :math:`p` is small. Besides, it can be also used to model the number of events in an interval associated with a process that evolves randomly over space or time. Applications include the number of typographical errors in a book, the number of customers arriving in an hour.
 
-6 P value distribution
-----------------------
+P value distribution
+--------------------
 
 `ordered statistics <https://en.wikipedia.org/wiki/Order_statistic#:~:text=Order%20statistics%20sampled%20from%20an%20uniform%20distribution,-In%20this%20section&text=that%20is%2C%20the%20kth%20order,a%20beta%2Ddistributed%20random%20variable.&text=and%20the%20result%20follows.,%2F%20(n%20%2B%201)>`_, `QQ plot <https://genome.sph.umich.edu/wiki/Code_Sample:_Generating_QQ_Plots_in_R>`_
