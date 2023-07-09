@@ -13,7 +13,7 @@ A) **Random component**: :math:`Y_i` follows :math:`Bernoulli(\pi_i)` with mean 
    :nowrap:
 
    \[
-   Pr(Y_i) =
+   Pr(Y_i = y_i|\mathbf{X}\boldsymbol{\beta}) =
    \left\{
    \begin{array}{
      @{}% no padding
@@ -22,10 +22,20 @@ A) **Random component**: :math:`Y_i` follows :math:`Bernoulli(\pi_i)` with mean 
      >{{}}r@{}% no padding
      >{{}}l@{}% no padding
    }
-     \pi_i , & Y_i = 1 \\
-     1- \pi_i , & Y_i = 0
+     \pi_i , & y_i = 1 \\
+     1- \pi_i , & y_i = 0
    \end{array}
    \right.
+   \]
+
+\
+   or
+
+.. math::
+   :nowrap:
+
+   \[
+   Pr(Y_i = y_i|\mathbf{X}\boldsymbol{\beta}) = \pi^{y_i}_i(1-\pi_i)^{(1-y_i)}
    \]
 
 \

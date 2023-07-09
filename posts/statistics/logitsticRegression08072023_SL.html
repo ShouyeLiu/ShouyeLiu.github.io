@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 
@@ -6,8 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Logistic regression &#8212; personal  documentation</title>
   
   
@@ -31,8 +31,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-dropdown.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -40,11 +40,12 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'posts/statistics/logitsticRegression08072023_SL';</script>
-    <link rel="icon" href="../../_static/omics.icon.png"/>
+    <link rel="shortcut icon" href="../../_static/omics.icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Cox regression" href="coxRegression_sl.html" />
@@ -433,10 +434,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="logistic-regression">
-<h1>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h1>
-<section id="an-outline">
-<h2>An outline<a class="headerlink" href="#an-outline" title="Permalink to this heading">#</a></h2>
+  <div class="section" id="logistic-regression">
+<h1>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h1>
+<div class="section" id="an-outline">
+<h2>An outline<a class="headerlink" href="#an-outline" title="Permalink to this headline">#</a></h2>
 <ol class="upperalpha">
 <li><p><strong>Random component</strong>: <span class="math notranslate nohighlight">\(Y_i\)</span> follows <span class="math notranslate nohighlight">\(Bernoulli(\pi_i)\)</span> with mean <span class="math notranslate nohighlight">\(\mathbb{E}[Y_i] = \pi_i\)</span> (<a class="reference internal" href="distribution_sl07012023.html#bernoulli"><span class="std std-ref">Summary</span></a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Bernoulli_distribution">Wikipedia</a>).</p>
 <p>For <span class="math notranslate nohighlight">\(i\)</span>-th individual,</p>
@@ -444,7 +445,7 @@ document.write(`
 </ol>
 <div class="math notranslate nohighlight">
 \[
-Pr(Y_i) =
+Pr(Y_i = y_i|\mathbf{X}\boldsymbol{\beta}) =
 \left\{
 \begin{array}{
   &#64;{}% no padding
@@ -453,10 +454,17 @@ Pr(Y_i) =
   &gt;{{}}r&#64;{}% no padding
   &gt;{{}}l&#64;{}% no padding
 }
-  \pi_i , &amp; Y_i = 1 \\
-  1- \pi_i , &amp; Y_i = 0
+  \pi_i , &amp; y_i = 1 \\
+  1- \pi_i , &amp; y_i = 0
 \end{array}
 \right.
+\]</div><dl class="simple">
+<dt></dt><dd><p>or</p>
+</dd>
+</dl>
+<div class="math notranslate nohighlight">
+\[
+Pr(Y_i = y_i|\mathbf{X}\boldsymbol{\beta}) = \pi^{y_i}_i(1-\pi_i)^{(1-y_i)}
 \]</div><dl class="simple">
 <dt></dt><dd><p>Where, <span class="math notranslate nohighlight">\(\boldsymbol{\pi}\)</span> is responsible probability vector.</p>
 </dd>
@@ -482,13 +490,13 @@ Pr(Y_i) =
 &amp;log(\frac{\pi_i}{1-\pi_i}) = \sum_{j=1}^p \mathbf{x}_{ij} \beta_j \\
 &amp; \equiv \pi_i = \frac{e^{\sum_{j=1}^p \mathbf{x}_{ij}\beta_j}}{1+e^{\sum_{j=1}^p \mathbf{x}_{ij}\beta_j} }
 \end{align}
-\]</div></section>
-<section id="simulate-logistic-regression">
-<h2>Simulate logistic regression<a class="headerlink" href="#simulate-logistic-regression" title="Permalink to this heading">#</a></h2>
+\]</div></div>
+<div class="section" id="simulate-logistic-regression">
+<h2>Simulate logistic regression<a class="headerlink" href="#simulate-logistic-regression" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://data.library.virginia.edu/simulating-a-logistic-regression-model/">Simulating a Logistic Regression Model using R</a></p>
-</section>
-<section id="derivative">
-<h2>Derivative<a class="headerlink" href="#derivative" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="derivative">
+<h2>Derivative<a class="headerlink" href="#derivative" title="Permalink to this headline">#</a></h2>
 <p>Based on <span class="math notranslate nohighlight">\(Pr(Y_i|\mathbf{X}\boldsymbol{\beta}) = \pi^{y_i}_i(1-\pi_i)^{(1-y_i)}\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[
@@ -516,12 +524,12 @@ L(\theta)  = \prod_{i=1}^n Pr(Y_i|\mathbf{X}\boldsymbol{\beta})
  \mathbf{x}_{ij} + y_i\mathbf{x}_{ij}
 \bigg\}
 \end{align}
-\]</div></section>
-<section id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
+\]</div></div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://books.google.com.au/books?hl=en&amp;lr=&amp;id=UzmDDwAAQBAJ&amp;oi=fnd&amp;pg=PT14&amp;dq=Generalized+Linear+Models&amp;ots=3XbWY8I_79&amp;sig=XWA73WqagTC_G4yTY8t09_EYLIU&amp;redir_esc=y#v=onepage&amp;q=Generalized%20Linear%20Models&amp;f=false">[1] McCullagh, P. (2019). Generalized linear models. Routledge.</a></p>
-</section>
-</section>
+</div>
+</div>
 
 
                 </article>
