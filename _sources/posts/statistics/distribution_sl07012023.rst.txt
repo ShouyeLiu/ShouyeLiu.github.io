@@ -7,7 +7,7 @@ Summary of Statistical Distribution
 
 
 `Distribution Chart <http://www.math.wm.edu/~leemis/chart/UDR/UDR.html>`_
-------------------
+--------------------------------------------------------------------------------
 
 
 Useful function

@@ -1,8 +1,8 @@
 .. _community-guide:
 
-=========
-Publication
-=========
+==================
+Publications
+==================
 
 `Google Scholar  <https://scholar.google.com/citations?hl=en&user=ETCPafMAAAAJ&view_op=list_works&sortby=pubdate>`_
 

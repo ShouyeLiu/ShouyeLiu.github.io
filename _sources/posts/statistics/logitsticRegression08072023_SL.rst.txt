@@ -72,7 +72,7 @@ Therefore,
 
 
 Simulate logistic regression
------------------
+----------------------------------
 
 `Simulating a Logistic Regression Model using R <https://data.library.virginia.edu/simulating-a-logistic-regression-model/>`_
 
