@@ -43,11 +43,12 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'posts/statistics/coxRegression_sl';</script>
     <link rel="shortcut icon" href="../../_static/omics.icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Reference" href="../../reference/content-reference.html" />
+    <link rel="next" title="Polygenic risk score" href="../biostatistics/polygenicRiskScore_sl.html" />
     <link rel="prev" title="Logistic regression" href="logitsticRegression08072023_SL.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -249,6 +250,10 @@ document.write(`
   
 
   
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
 </div>
 
     </nav>
@@ -367,11 +372,17 @@ document.write(`
         <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
-  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="distribution_sl07012023.html">Summary of Statistical Distribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="powerError.html">Power and error</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="regressionFramework.html">Regression framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logitsticRegression08072023_SL.html">Logistic regression</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Cox regression</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biostatistics/polygenicRiskScore_sl.html">Polygenic risk score</a></li>
 </ul>
 </div>
 </nav></div>
@@ -431,6 +442,48 @@ document.write(`
                   
   <div class="section" id="cox-regression">
 <h1>Cox regression<a class="headerlink" href="#cox-regression" title="Permalink to this headline">#</a></h1>
+<div class="section" id="basic-concepts">
+<h2>Basic concepts<a class="headerlink" href="#basic-concepts" title="Permalink to this headline">#</a></h2>
+<p>In survival data analysis, we assumed that <span class="math notranslate nohighlight">\(T\)</span> is a continuous variable related to time <span class="math notranslate nohighlight">\(t\)</span>, and its probability density function is <span class="math notranslate nohighlight">\(f(t)\)</span>. The cumulative distribution function of event occurrences at a given time <span class="math notranslate nohighlight">\(t\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+ \begin{align}
+ F(t) = Pr(T \leq t) = \int^t_{- \infty} f(u)du
+ \end{align}
+ \]</div><p>Usually, we use Survival function and Hazard function to analyze survival data.</p>
+<p>Survival function:</p>
+<div class="math notranslate nohighlight">
+\[
+ \begin{align}  \label{survivalFun}
+ S(t) = Pr(T &gt; t) = 1 - F(t)
+ \end{align}
+ \]</div><p>Hazard function:</p>
+<div class="math notranslate nohighlight">
+\[
+ \begin{align} \label{hazardFun}
+ h(t) = \lim_{\Delta t \to 0}\frac{Pr(t + \Delta t &gt; T \geq t | T \geq t)}{\Delta t}
+ \end{align}
+ \]</div><p>Combine survival and hazard function, we can get</p>
+<div class="math notranslate nohighlight">
+\[
+ \begin{align}
+ h(t) &amp;=  \lim_{\Delta t \to 0}\frac{Pr(t + \Delta t &gt; T \geq t)}{\Delta t} \times \frac{1}{Pr(T \geq t)} \\
+ &amp;=  \lim_{\Delta t \to 0}\frac{Pr(T &lt; t + \Delta t) - Pr(T &lt; t)}{\Delta t } \times \frac{1}{Pr(T \geq t)}  \\
+ &amp;= \frac{f(t)}{S(t)} = \frac{d[1- S(t)]}{dt} \times \frac{1}{S(t)} = - \frac{d[log(S(t))]}{dt}
+ \end{align}
+ \]</div><p>Based on link function of Cox proportional hazards model <span class="math notranslate nohighlight">\(ln [h(t,\beta)] = ln [h_0(t)] + x^t\beta\)</span>, we can get relationship among survival function <span class="math notranslate nohighlight">\(S(t)\)</span>, hazard function <span class="math notranslate nohighlight">\(H(t)\)</span> and survival effect <span class="math notranslate nohighlight">\(\beta\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+ \begin{align}
+ S(t) &amp;= exp[-H(t)] \\
+ &amp;= exp[exp(x^T \beta)\int^t_0 -h_0(u)du ] \\
+ &amp;= exp[-exp(x^T\beta) \times H_0(t)]
+ \end{align}
+ \]</div><p>where, <span class="math notranslate nohighlight">\(h_0(t)\)</span> is the baseline hazard function, <span class="math notranslate nohighlight">\(H_0(t)\)</span> is the baseline cumulative hazard function, and <span class="math notranslate nohighlight">\(x\)</span> is the corresponding coefficient of the influencing factor <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+</div>
+<div class="section" id="maximum-likelihood-estimation-for-cox-proportional-hazards-model">
+<h2>Maximum Likelihood Estimation for Cox Proportional Hazards Model<a class="headerlink" href="#maximum-likelihood-estimation-for-cox-proportional-hazards-model" title="Permalink to this headline">#</a></h2>
+</div>
 </div>
 
 
@@ -441,6 +494,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts">Basic concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimation-for-cox-proportional-hazards-model">Maximum Likelihood Estimation for Cox Proportional Hazards Model</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

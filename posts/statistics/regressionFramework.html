@@ -1,0 +1,876 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regression framework &#8212; personal  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'posts/statistics/regressionFramework';</script>
+    <link rel="shortcut icon" href="../../_static/omics.icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Logistic regression" href="logitsticRegression08072023_SL.html" />
+    <link rel="prev" title="Power and error" href="powerError.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/omics.icon.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/omics.icon.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../start/start.html">
+                        What’s your big picture
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../softwares/content-softwares.html">
+                        Softwares
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../research/content-research.html">
+                        Research
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../people/content-people.html">
+                        CV
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../content-posts.html">
+                        Posts
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../reference/content-reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ShouyeLiu" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../start/start.html">
+                        What’s your big picture
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../softwares/content-softwares.html">
+                        Softwares
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../research/content-research.html">
+                        Research
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../people/content-people.html">
+                        CV
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="../content-posts.html">
+                        Posts
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../reference/content-reference.html">
+                        Reference
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ShouyeLiu" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="distribution_sl07012023.html">Summary of Statistical Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powerError.html">Power and error</a></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Regression framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logitsticRegression08072023_SL.html">Logistic regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coxRegression_sl.html">Cox regression</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biostatistics/polygenicRiskScore_sl.html">Polygenic risk score</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../content-posts.html" class="nav-link">Posts</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Regression framework</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="section" id="regression-framework">
+<h1>Regression framework<a class="headerlink" href="#regression-framework" title="Permalink to this headline">#</a></h1>
+<div class="section" id="expection-and-variance">
+<h2>Expection and Variance<a class="headerlink" href="#expection-and-variance" title="Permalink to this headline">#</a></h2>
+<div class="section" id="discrete-random-variable">
+<h3>Discrete random variable<a class="headerlink" href="#discrete-random-variable" title="Permalink to this headline">#</a></h3>
+<p><span class="math notranslate nohighlight">\(x_1,x_2,\dots, x_n\)</span> are <span class="math notranslate nohighlight">\(n\)</span> independent observations with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.
+we define expection <span class="math notranslate nohighlight">\(\mu\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\mu = E[x] = \frac{x_1 + x_2 + \dots + x_n}{n} = \frac{\sum^n_{i = 1}x_i}{n} ,
+\sigma^2 = \frac{\sum^n_{i = 1} (x_i -\mu)^2}{n}
+\end{align}
+\]</div><p>we define variance as the expection of the squared deviation of a random variable from its population mean or sample mean.
+The exprssion of the variance can be expanded as follows:</p>
+<p>When we have finite sample <span class="math notranslate nohighlight">\(x_1,x_2,...,x_N\)</span>, then sample mean <span class="math notranslate nohighlight">\(\bar{x}\)</span> and sample variance <span class="math notranslate nohighlight">\(s^2\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\bar{x} = \frac{\sum^N_{i = 1}x_i}{N} ,
+s^2 = \frac{\sum^n_{i = 1} (x_i -\bar{x})^2}{N - 1}
+\end{align}
+\]</div><p>Now we want proof, sample mean and sample variance are unbiased estimation.</p>
+<p>Firstly,</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+E[\bar{x}] = \frac{\sum^N_{i=1}E[x_i]}{N} =  \frac{N\mu}{N} =\mu  \\
+Var[\bar{x}] = \frac{\sum^N_{i=1}Var(x_i)}{N^2} =   \frac{\sum^N_{i=1}\sigma^2}{N^2}\frac{\sigma^2}{N}
+\end{align}
+\]</div><p>Secondly,</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+E[s^2] &amp;= \frac{E[\sum^N_{i = 1} (x_i -\bar{x})^2]}{N - 1} = \frac{\sum^N_{i = 1} E[(x_i -\bar{x})^2]}{N - 1} \\
+&amp;= \frac{\sum^N_{i = 1}\big ( E[x_i^2] - E[\bar{x}^2]  \big )}{N - 1} \\
+&amp;= \frac{\sum^N_{i = 1}\big ( E[x_i^2] - E[\bar{x}^2]  \big )}{N - 1} \\
+&amp;= \frac{\sum^N_{i = 1}\big [ (Var(x^2_i) - E[x_i]^2) - (Var(\bar{x}) - E[\bar{x}]^2 )  \big ]}{N - 1} \\
+&amp;= \frac{\sum^N_{i = 1}\big [ (\sigma^2 - \mu^2) - (\frac{\sigma^2}{N} - \mu^2 )  \big ]}{N - 1} \\
+&amp;= \frac{\sum^N_{i = 1}\frac{(N-1)\sigma^2}{N}}{N - 1} \\
+&amp;= \sigma^2
+\end{align}
+\]</div></div>
+<div class="section" id="distribution-of-the-sample-variance">
+<h3>Distribution of the sample variance<a class="headerlink" href="#distribution-of-the-sample-variance" title="Permalink to this headline">#</a></h3>
+<p>In the case that <span class="math notranslate nohighlight">\(Y_i\)</span> are independent observations from a normal distribution, Cochran’s theorem shows that <span class="math notranslate nohighlight">\(S^2\)</span> follows a scaled chi-squared distribution.</p>
+<p>Proof:</p>
+</div>
+</div>
+<div class="section" id="centering-and-standardlizing">
+<h2>Centering and standardlizing<a class="headerlink" href="#centering-and-standardlizing" title="Permalink to this headline">#</a></h2>
+<div class="section" id="math-background">
+<h3>Math background:<a class="headerlink" href="#math-background" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="r-demo">
+<h3>R demo<a class="headerlink" href="#r-demo" title="Permalink to this headline">#</a></h3>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="c1">#R code demo for centering and standardlizing:</span>
+<span class="n">N</span><span class="o">=</span><span class="m">10</span>
+<span class="n">P</span><span class="o">=</span><span class="m">3</span>
+<span class="n">X</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="nf">runif</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">20</span><span class="p">,</span> <span class="m">60</span><span class="p">)),</span> <span class="n">nrow</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">P</span><span class="p">)</span>
+<span class="n">onesN</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="n">N</span><span class="p">),</span><span class="n">N</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="n">unitN</span> <span class="o">&lt;-</span> <span class="nf">diag</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="n">N</span><span class="p">))</span>
+<span class="n">matMean</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">/</span><span class="n">N</span>  <span class="o">*</span> <span class="nf">t</span><span class="p">(</span><span class="n">onesN</span><span class="p">)</span> <span class="o">%*%</span><span class="n">X</span>
+<span class="n">matCenter</span> <span class="o">&lt;-</span> <span class="n">X</span> <span class="o">-</span> <span class="n">onesN</span> <span class="o">%*%</span> <span class="n">matMean</span>
+<span class="c1"># or matCenter &lt;- (unitN - 1/N * onesN %*% t(onesN) )%*%X</span>
+<span class="n">matSd</span><span class="o">&lt;-</span> <span class="nf">diag</span><span class="p">(</span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">t</span><span class="p">(</span><span class="n">matCenter</span><span class="p">)</span> <span class="o">%*%</span> <span class="n">matCenter</span> <span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="m">-1</span><span class="p">)))</span>
+<span class="n">matScale</span> <span class="o">&lt;-</span> <span class="n">matCenter</span> <span class="o">%*%</span> <span class="nf">diag</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="n">matSd</span><span class="p">)</span>
+<span class="n">matScale</span><span class="p">;</span><span class="n">matMean</span><span class="p">;</span><span class="n">matSd</span>
+<span class="c1">#matScale is equivalent to scale(X)</span>
+<span class="nf">scale</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mean-variance-and-covariance">
+<h2>Mean, variance and covariance<a class="headerlink" href="#mean-variance-and-covariance" title="Permalink to this headline">#</a></h2>
+<div class="section" id="mean">
+<h3>Mean<a class="headerlink" href="#mean" title="Permalink to this headline">#</a></h3>
+<div class="section" id="definition">
+<h4>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h4>
+<div class="section" id="univariate-variable">
+<h5>Univariate variable<a class="headerlink" href="#univariate-variable" title="Permalink to this headline">#</a></h5>
+<p>Continuous varialbe <span class="math notranslate nohighlight">\(E(x) = \int_{-\infty}^{\infty} x f(x)dx\)</span>
+Discrete variable: <span class="math notranslate nohighlight">\(E(x) = \frac{1}{n}\sum^n_i x_i\)</span>;</p>
+</div>
+<div class="section" id="population-mean-mu-x-and-sample-mean-bar-x">
+<h5>Population mean <span class="math notranslate nohighlight">\(\mu_x\)</span> and sample mean <span class="math notranslate nohighlight">\(\bar{X}\)</span><a class="headerlink" href="#population-mean-mu-x-and-sample-mean-bar-x" title="Permalink to this headline">#</a></h5>
+</div>
+</div>
+</div>
+<div class="section" id="variance">
+<h3>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">#</a></h3>
+<div class="section" id="population-variance-and-sample-variance">
+<h4>Population variance and sample variance<a class="headerlink" href="#population-variance-and-sample-variance" title="Permalink to this headline">#</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="simple-linear-regression">
+<h2>Simple Linear Regression<a class="headerlink" href="#simple-linear-regression" title="Permalink to this headline">#</a></h2>
+<div class="section" id="relationship-between-dependent-and-independent-variables-considering-variable-type">
+<h3>Relationship between dependent and independent variables considering variable type<a class="headerlink" href="#relationship-between-dependent-and-independent-variables-considering-variable-type" title="Permalink to this headline">#</a></h3>
+<table class="table">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 23%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Indep var \ Dep var</strong></p></th>
+<th class="head"><p><strong>Continuous</strong></p></th>
+<th class="head"><p><strong>Discrete</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Continuous</strong></p></td>
+<td><p>OLS Regression</p></td>
+<td><p>Logistic Regression</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Discrete</strong></p></td>
+<td><p>T-Test, ANOVA</p></td>
+<td><p>Categorical Data Analysis</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="model">
+<h3>Model:<a class="headerlink" href="#model" title="Permalink to this headline">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathbf{y}=\beta_0 +\mathbf{x}_j \beta_j+ \mathbf{e}, \mathbf{e}  \sim \mathcal{N}(0,I\sigma^2_e)  \tag{1.2.1}\]</div>
+</div>
+<div class="section" id="ols-estimation">
+<h3>OLS estimation:<a class="headerlink" href="#ols-estimation" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="coefficient-of-determination-r-2">
+<h3>Coefficient of Determination (<span class="math notranslate nohighlight">\(R^2\)</span>)<a class="headerlink" href="#coefficient-of-determination-r-2" title="Permalink to this headline">#</a></h3>
+<p>The coefficient of determination (<span class="math notranslate nohighlight">\(R^2\)</span>) measures how well a statistical model predicts an outcome, which is represented by the model’s dependent variables.
+More technically, <span class="math notranslate nohighlight">\(R^2\)</span> is a measure of good of fit. It is the proportion of variance in the dependent variable that is explained by the model.</p>
+<p>In simple linear regression, <span class="math notranslate nohighlight">\(R^2\)</span> is also denoted as the Squared Pearson Correlation coefficient between the observed value and the fitted values.</p>
+</div>
+</div>
+<div class="section" id="logistic-linear-regression">
+<h2>Logistic linear regression<a class="headerlink" href="#logistic-linear-regression" title="Permalink to this headline">#</a></h2>
+<div class="section" id="some-questions-about-linear-regression">
+<h3>Some questions about linear regression<a class="headerlink" href="#some-questions-about-linear-regression" title="Permalink to this headline">#</a></h3>
+<p>why use link function?
+Because the dependent variables are binary (0/1), we need to model it.
+<a class="reference external" href="https://win-vector.com/2011/09/14/the-simpler-derivation-of-logistic-regression/">Derivative of logistic regression</a></p>
+</div>
+</div>
+<div class="section" id="multiple-linear-regression">
+<h2>Multiple linear regression<a class="headerlink" href="#multiple-linear-regression" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id1">
+<h3>Model:<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>OLS estimation:<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="relationship-between-beta-and-sigma-x-y-and-sigma-2-x">
+<h3>Relationship between <span class="math notranslate nohighlight">\(\beta\)</span> and <span class="math notranslate nohighlight">\(\sigma_{x,y}\)</span> and <span class="math notranslate nohighlight">\(\sigma^2_{x}\)</span><a class="headerlink" href="#relationship-between-beta-and-sigma-x-y-and-sigma-2-x" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="bayesian-linear-regression">
+<h2>Bayesian linear regression<a class="headerlink" href="#bayesian-linear-regression" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id3">
+<h3>Simple linear regression<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<div class="section" id="id4">
+<h4>Model<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="generalized-linear-regression">
+<h2>Generalized linear regression<a class="headerlink" href="#generalized-linear-regression" title="Permalink to this headline">#</a></h2>
+<div class="section" id="derivation">
+<h3>Derivation<a class="headerlink" href="#derivation" title="Permalink to this headline">#</a></h3>
+<p>The general procedures:</p>
+<p>General exponential family format</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+f(y|\theta) = exp \left ( \frac{y\theta + b(\theta)}{a(\phi)} + c(y,\phi) \right)
+\end{equation}
+\]</div><div class="math notranslate nohighlight">
+\[\ell(\theta|y) =log[f(y|\theta)]= \frac{y\theta + b(\theta)}{a(\phi)} + c(y,\phi)\]</div>
+<p>Some important attributes of log-likelihood</p>
+<div class="math notranslate nohighlight">
+\[E(Y) = \mu = \frac{\partial b(\theta)} {\partial \theta}\]</div>
+<div class="math notranslate nohighlight">
+\[E[S(\theta)]= 0\]</div>
+<div class="math notranslate nohighlight">
+\[E[\frac{\partial S}{\partial \theta}] = -E[S(\theta)]^2\]</div>
+<div class="math notranslate nohighlight">
+\[I(\theta)= Var(S(\theta))= E[S(\theta)]^2 - {E[S(\theta)]}^2\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}   Var(Y) = a(\phi)[\frac{\partial^2 b(\theta)}{\partial \theta ^ 2}]\\
+Newton-Raphson and Fisher-scoring\end{aligned}\end{align} \]</div>
+<p>The scalar form of Taylor series</p>
+<div class="math notranslate nohighlight">
+\[\ell(\theta) \equiv \ell(\tilde{\theta}) + (\theta - \tilde{\theta})
+\left. \frac{\partial \ell (\theta)}{\partial \theta} \right |_{\theta = \tilde{\theta}} +
+\frac{1}{2} (\theta - \tilde{\theta})^2 \left. \frac{\partial \ell^2 (\theta)}{\partial \theta^2}
+\right |_{\theta = \tilde{\theta}}\]</div>
+<p>Set <span class="math notranslate nohighlight">\(\partial \ell (\theta) / \partial \theta = 0\)</span> and rearranging terms yields:</p>
+<div class="math notranslate nohighlight">
+\[\theta \equiv \tilde{\theta} -
+\left [ \left . \frac{\partial ^2 \ell (\theta)}{\partial \theta ^2} \right |_{\theta=\tilde{\theta}}\right ]^{-1}
+\left [ \left . \frac{\partial \ell (\theta)}{\partial \theta} \right |_{\theta=\tilde{\theta}} \right ]\]</div>
+<p>The basic matrix form of Newton-Raphson algorithm:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\theta \equiv \tilde{\theta} - [H(\tilde{\theta})]^{-1} S(\tilde{\theta})
+\end{equation}
+\]</div><p>Replace hession matrix with the information matrix (i.e. <span class="math notranslate nohighlight">\(E(H(\theta))= -Var[S(\theta)]= -I(\theta)\)</span>),
+we get Fisher scoring algorithm:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\theta \equiv \tilde{\theta} - [I(\tilde{\theta})]^{-1} S(\tilde{\theta})
+\end{equation}
+\]</div><p>Estimate the coefficient <span class="math notranslate nohighlight">\(\beta\)</span>.
+Scalar form</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\frac{\partial \ell (\beta)}{\partial \beta} =
+\frac{\partial \ell (\theta) }{ \partial \theta} \frac{\partial \theta }{ \partial \mu }\frac{\partial \mu }{ \partial \eta } \frac{\partial \eta }{ \partial \beta }
+\end{equation}
+\]</div><p>Some results:</p>
+<p>Matrix form</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\frac{\partial\ell(\theta)}{\partial \beta} = X^{'} D^{-1} V^{-1}(y-\mu)
+\end{equation}
+\]</div><p>where <span class="math notranslate nohighlight">\(y\)</span> is the <span class="math notranslate nohighlight">\(n\times1\)</span> vector of observations, <span class="math notranslate nohighlight">\(\ell(\theta)\)</span> is the <span class="math notranslate nohighlight">\(n\times 1\)</span> vector of log-likelihood
+values associated with observations, <span class="math notranslate nohighlight">\(V = diag[Var(y_{i})]\)</span> is the <span class="math notranslate nohighlight">\(n \times n\)</span> variance matrix of the
+observations, <span class="math notranslate nohighlight">\(D=diag[\partial \eta_{i} / \partial \mu_{i}]\)</span> is the <span class="math notranslate nohighlight">\(n \times n\)</span> matrix of derivatives, and <span class="math notranslate nohighlight">\(\mu\)</span>
+is the <span class="math notranslate nohighlight">\(n \times 1\)</span> mean vector.
+Let <span class="math notranslate nohighlight">\(W=(DVD)^{-1}\)</span>, we can get:</p>
+<div class="math notranslate nohighlight">
+\[S(\beta) = \frac{\partial \ell (\theta)}{\partial \beta}
+= X^{'} D^{-1}V^{-1}(D^{-1}D)(y-\mu) = X^{'}WD(y-\mu)\]</div>
+<div class="math notranslate nohighlight">
+\[Var[S(\beta)] =X^{'}WD[Var(y-\mu)]DWX =X^{'}WDVDWX=X^{'}WX\]</div>
+<p>Pseudo-Likelihood for GLM
+Using Fisher scoring equation yields
+<span class="math notranslate nohighlight">\(\beta = \tilde{\beta} +(X^{'}\tilde{W}X)^{-1}X^{'}\tilde{W}\tilde{D}(y-\tilde{\mu})\)</span>,
+where <span class="math notranslate nohighlight">\(\tilde{W},\tilde{D}\)</span>, and <span class="math notranslate nohighlight">\(\mu\)</span> evaluated at <span class="math notranslate nohighlight">\(\tilde{\beta}\)</span>. So GLM estimating equations:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+X^{'}\tilde{W}X\beta = X^{'}\tilde{W}y^{*}
+\end{equation}
+\]</div><p>where <span class="math notranslate nohighlight">\(y^{*} = X\tilde{\beta} + \tilde{D}(y-\tilde{\mu}) = \tilde{eta} + \tilde{D}(y-\tilde{\mu})\)</span>, and
+<span class="math notranslate nohighlight">\(y^{*}\)</span> is called the pseudo-variable.</p>
+<div class="math notranslate nohighlight">
+\[E(y^{*}) =E[X\tilde{\beta} + \tilde{D}(y - \tilde{\mu})] = X\beta\]</div>
+<div class="math notranslate nohighlight">
+\[Var(y^{*}) = E[X\tilde{\beta} + \tilde{D}(y - \tilde{\mu})] = \tilde{D}\tilde{V}\tilde{D}=\tilde{W}^{-1}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+X^{'}[Var(y^{*})]^{-1}X\beta = X^{'}[Var(y^{*})]^{-1} \Rightarrow X^{'}WX\beta = X^{'}Wy^{*}
+\end{equation}
+\]</div></div>
+</div>
+<div class="section" id="mixed-linear-model">
+<h2>Mixed Linear Model<a class="headerlink" href="#mixed-linear-model" title="Permalink to this headline">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}\mathbf{y} = \mathbf{X}\boldsymbol{\beta} + \mathbf{Z}\boldsymbol{u} + \mathbf{e}
+\end{align}
+\]</div><p>where <span class="math notranslate nohighlight">\(\mathbf{e} \sim MVN(0,\mathbf{R})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{u} \sim MVN(0,\mathbf{G})\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{e}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> are independent.</p>
+<p>Firstly, we have probability function</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\mathbf{e} \propto |\mathbf{R}|^{-\frac{1}{2}} exp \bigg \{-\frac{1}{2}\mathbf{e}^{T}\mathbf{R}^{-1}\mathbf{e}  \bigg \},
+\mathbf{u} \propto |\mathbf{G}|^{-\frac{1}{2}} exp \bigg \{-\frac{1}{2}\mathbf{u}^{T}\mathbf{G}^{-1}\mathbf{u}  \bigg \}
+\end{align}
+\]</div><p>Next we need to consider <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> based on <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{e}\)</span> (it’s great to use conditional distribution)</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\mathbf{y} - \mathbf{X}\boldsymbol{\beta} - \mathbf{Z}\boldsymbol{u} | \boldsymbol{u}  = \mathbf{e} \sim MVN(0,\mathbf{R})
+\end{align}
+\]</div><p>So the joint distribution is</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+p(\mathbf{y},\boldsymbol{u}) &amp;= p(\mathbf{y}|\mathbf{u})p(\boldsymbol{u}) \\ &amp;\propto |\mathbf{R}|^{-\frac{1}{2}} exp \bigg \{-\frac{1}{2}(\mathbf{y} - \mathbf{X}\boldsymbol{\beta} - \mathbf{Z}\boldsymbol{u})^{T}\mathbf{R}^{-1}(\mathbf{y} - \mathbf{X}\boldsymbol{\beta} - \mathbf{Z}\boldsymbol{u})  \bigg \} \mathbf{G}|^{-\frac{1}{2}} exp \bigg \{ -\frac{1}{2}\mathbf{u}^{T}\mathbf{G}^{-1}\mathbf{u}  \bigg \} \\
+\end{align}
+\]</div><p>Now consider the log of the density,</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\ell &amp;= log[p(\mathbf{y},\boldsymbol{u})] \\
+&amp;\propto
+-\frac{1}{2}\bigg [ log(\mathbf{R}) + log(\mathbf{G}) + (\mathbf{y} - \mathbf{X}\boldsymbol{\beta} -
+\mathbf{Z}\boldsymbol{u})^{T}\mathbf{R}^{-1}(\mathbf{y} - \mathbf{X}\boldsymbol{\beta} -
+\mathbf{Z}\boldsymbol{u}) + \mathbf{u}^{T}\mathbf{G}^{-1}\mathbf{u} \bigg  ] \\
+&amp;\propto   -2\mathbf{y}^{T}\mathbf{R}^{-1}\mathbf{X}\boldsymbol{\beta} -
+2\mathbf{y}^{T}\mathbf{R}^{-1}\mathbf{Z}\boldsymbol{u} +
+2\boldsymbol{u}^{T}\mathbf{Z}^{T}\mathbf{R}^{-1}\mathbf{X}\boldsymbol{\beta} +
+\boldsymbol{\beta}^{T}\mathbf{X}^{T}\mathbf{R}^{-1}\mathbf{X}\boldsymbol{\beta} +
+\boldsymbol{u}^{T}\mathbf{Z}^{T}\mathbf{R}^{-1}\mathbf{Z}\boldsymbol{u} +
+\mathbf{u}^{T}\mathbf{G}^{-1}\mathbf{u}
+\end{align}
+\]</div><p>Take the derivatives of <span class="math notranslate nohighlight">\(\ell\)</span> with respect to <span class="math notranslate nohighlight">\(\boldsymbol{\beta}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> yields</p>
+<p>Henderson’s mixed-model’s equation</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\begin{bmatrix}
+\mathbf{X}^T \mathbf{R}^{-1}\mathbf{X} &amp; \mathbf{X}^T \mathbf{R}^{-1} \mathbf{Z} \\
+\mathbf{Z}^T\mathbf{R}^{-1}\mathbf{X} &amp; \mathbf{Z}^T\mathbf{R}^{-1}\mathbf{Z} + \mathbf{G}^{-1}
+\end{bmatrix}
+\begin{bmatrix}
+\boldsymbol{\beta} \\
+\boldsymbol{u}
+\end{bmatrix} =
+\begin{bmatrix}
+\mathbf{X}^{T}\mathbf{R}^{-1}\mathbf{y} \\
+\mathbf{Z}^{T}\mathbf{R}^{-1}\mathbf{y}
+\end{bmatrix}
+\end{align}
+\]</div></div>
+</div>
+
+
+                </article>
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expection-and-variance">Expection and Variance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-random-variable">Discrete random variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-the-sample-variance">Distribution of the sample variance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#centering-and-standardlizing">Centering and standardlizing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#math-background">Math background:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#r-demo">R demo</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-variance-and-covariance">Mean, variance and covariance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">Mean</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#univariate-variable">Univariate variable</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#population-mean-mu-x-and-sample-mean-bar-x">Population mean <span class="math notranslate nohighlight">\(\mu_x\)</span> and sample mean <span class="math notranslate nohighlight">\(\bar{X}\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#population-variance-and-sample-variance">Population variance and sample variance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-linear-regression">Simple Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-dependent-and-independent-variables-considering-variable-type">Relationship between dependent and independent variables considering variable type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ols-estimation">OLS estimation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-of-determination-r-2">Coefficient of Determination (<span class="math notranslate nohighlight">\(R^2\)</span>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-linear-regression">Logistic linear regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-questions-about-linear-regression">Some questions about linear regression</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-linear-regression">Multiple linear regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Model:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">OLS estimation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-beta-and-sigma-x-y-and-sigma-2-x">Relationship between <span class="math notranslate nohighlight">\(\beta\)</span> and <span class="math notranslate nohighlight">\(\sigma_{x,y}\)</span> and <span class="math notranslate nohighlight">\(\sigma^2_{x}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-linear-regression">Bayesian linear regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Simple linear regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-linear-regression">Generalized linear regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation">Derivation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-linear-model">Mixed Linear Model</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+<!-- your html code here -->
+  <!-- <style> -->
+  <!--   /* Sidebar header (and topbar for mobile) */ -->
+  <!--   .wy-side-nav-search, .wy-nav-top { -->
+  <!--     background: #00ff00; -->
+  <!--   } -->
+  <!--   /* Sidebar */ -->
+  <!--   .wy-nav-side { -->
+  <!--     background: #ff0000; -->
+  <!--   } -->
+  <!-- </style> -->
+
+  </body>
+</html>

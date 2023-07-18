@@ -1,3 +1,76 @@
 ===================================
 Cox regression
 ===================================
+
+
+Basic concepts
+----------------
+
+In survival data analysis, we assumed that :math:`T` is a continuous variable related to time :math:`t`, and its probability density function is :math:`f(t)`. The cumulative distribution function of event occurrences at a given time :math:`t` is
+
+.. math::
+   :nowrap:
+
+   \[
+    \begin{align}
+    F(t) = Pr(T \leq t) = \int^t_{- \infty} f(u)du
+    \end{align}
+    \]
+
+
+
+Usually, we use Survival function and Hazard function to analyze survival data.
+
+Survival function:
+
+.. math::
+   :nowrap:
+
+   \[
+    \begin{align}  \label{survivalFun}
+    S(t) = Pr(T > t) = 1 - F(t)
+    \end{align}
+    \]
+
+Hazard function:
+
+.. math::
+   :nowrap:
+
+   \[
+    \begin{align} \label{hazardFun}
+    h(t) = \lim_{\Delta t \to 0}\frac{Pr(t + \Delta t > T \geq t | T \geq t)}{\Delta t}
+    \end{align}
+    \]
+
+Combine survival and hazard function, we can get
+
+.. math::
+   :nowrap:
+
+   \[
+    \begin{align}
+    h(t) &=  \lim_{\Delta t \to 0}\frac{Pr(t + \Delta t > T \geq t)}{\Delta t} \times \frac{1}{Pr(T \geq t)} \\
+    &=  \lim_{\Delta t \to 0}\frac{Pr(T < t + \Delta t) - Pr(T < t)}{\Delta t } \times \frac{1}{Pr(T \geq t)}  \\
+    &= \frac{f(t)}{S(t)} = \frac{d[1- S(t)]}{dt} \times \frac{1}{S(t)} = - \frac{d[log(S(t))]}{dt}
+    \end{align}
+    \]
+
+Based on link function of Cox proportional hazards model :math:`ln [h(t,\beta)] = ln [h_0(t)] + x^t\beta`, we can get relationship among survival function :math:`S(t)`, hazard function :math:`H(t)` and survival effect :math:`\beta`:
+
+.. math::
+   :nowrap:
+
+   \[
+    \begin{align}
+    S(t) &= exp[-H(t)] \\
+    &= exp[exp(x^T \beta)\int^t_0 -h_0(u)du ] \\
+    &= exp[-exp(x^T\beta) \times H_0(t)]
+    \end{align}
+    \]
+
+where, :math:`h_0(t)` is the baseline hazard function, :math:`H_0(t)` is the baseline cumulative hazard function, and :math:`x` is the corresponding coefficient of the influencing factor :math:`\beta`.
+
+Maximum Likelihood Estimation for Cox Proportional Hazards Model
+------------------------------------------------------------------
+

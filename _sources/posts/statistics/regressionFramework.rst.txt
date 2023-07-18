@@ -1,0 +1,487 @@
+===================================
+Regression framework
+===================================
+
+Expection and Variance
+------------------------
+
+Discrete random variable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:math:`x_1,x_2,\dots, x_n` are :math:`n` independent observations with mean :math:`\mu` and variance :math:`\sigma^2`.
+we define expection :math:`\mu` as
+
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   \mu = E[x] = \frac{x_1 + x_2 + \dots + x_n}{n} = \frac{\sum^n_{i = 1}x_i}{n} ,
+   \sigma^2 = \frac{\sum^n_{i = 1} (x_i -\mu)^2}{n}
+   \end{align}
+   \]
+
+
+we define variance as the expection of the squared deviation of a random variable from its population mean or sample mean.
+The exprssion of the variance can be expanded as follows:
+
+When we have finite sample :math:`x_1,x_2,...,x_N`, then sample mean :math:`\bar{x}` and sample variance :math:`s^2` is
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   \bar{x} = \frac{\sum^N_{i = 1}x_i}{N} ,
+   s^2 = \frac{\sum^n_{i = 1} (x_i -\bar{x})^2}{N - 1}
+   \end{align}
+   \]
+
+Now we want proof, sample mean and sample variance are unbiased estimation.
+
+Firstly,
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   E[\bar{x}] = \frac{\sum^N_{i=1}E[x_i]}{N} =  \frac{N\mu}{N} =\mu  \\
+   Var[\bar{x}] = \frac{\sum^N_{i=1}Var(x_i)}{N^2} =   \frac{\sum^N_{i=1}\sigma^2}{N^2}\frac{\sigma^2}{N}
+   \end{align}
+   \]
+
+Secondly,
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   E[s^2] &= \frac{E[\sum^N_{i = 1} (x_i -\bar{x})^2]}{N - 1} = \frac{\sum^N_{i = 1} E[(x_i -\bar{x})^2]}{N - 1} \\
+   &= \frac{\sum^N_{i = 1}\big ( E[x_i^2] - E[\bar{x}^2]  \big )}{N - 1} \\
+   &= \frac{\sum^N_{i = 1}\big ( E[x_i^2] - E[\bar{x}^2]  \big )}{N - 1} \\
+   &= \frac{\sum^N_{i = 1}\big [ (Var(x^2_i) - E[x_i]^2) - (Var(\bar{x}) - E[\bar{x}]^2 )  \big ]}{N - 1} \\
+   &= \frac{\sum^N_{i = 1}\big [ (\sigma^2 - \mu^2) - (\frac{\sigma^2}{N} - \mu^2 )  \big ]}{N - 1} \\
+   &= \frac{\sum^N_{i = 1}\frac{(N-1)\sigma^2}{N}}{N - 1} \\
+   &= \sigma^2
+   \end{align}
+   \]
+
+Distribution of the sample variance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the case that :math:`Y_i` are independent observations from a normal distribution, Cochran’s theorem shows that :math:`S^2` follows a scaled chi-squared distribution.
+
+Proof:
+
+Centering and standardlizing
+------------------------------
+
+Math background:
+~~~~~~~~~~~~~~~~~~~~
+
+R demo
+~~~~~~~~~~
+
+.. code:: R
+
+    #R code demo for centering and standardlizing:
+    N=10
+    P=3
+    X <- matrix(round(runif(30, 20, 60)), nrow=N, ncol=P)
+    onesN <- matrix(rep(1,N),N,1)
+    unitN <- diag(rep(1,N))
+    matMean <- 1/N  * t(onesN) %*%X
+    matCenter <- X - onesN %*% matMean
+    # or matCenter <- (unitN - 1/N * onesN %*% t(onesN) )%*%X
+    matSd<- diag(sqrt(t(matCenter) %*% matCenter /(N-1)))
+    matScale <- matCenter %*% diag(1/matSd)
+    matScale;matMean;matSd
+    #matScale is equivalent to scale(X)
+    scale(X)
+
+Mean, variance and covariance
+-------------------------------
+
+Mean
+~~~~~~~~
+
+Definition
+^^^^^^^^^^^^^^^^
+
+Univariate variable
+:::::::::::::::::::::::::::
+
+Continuous varialbe :math:`E(x) = \int_{-\infty}^{\infty} x f(x)dx`
+Discrete variable: :math:`E(x) = \frac{1}{n}\sum^n_i x_i`;
+
+Population mean :math:`\mu_x` and sample mean :math:`\bar{X}`
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Variance
+~~~~~~~~~~~~
+
+Population variance and sample variance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Simple Linear Regression
+--------------------------
+
+Relationship between dependent and independent variables considering variable type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. table::
+
+    +--------------------------+----------------+---------------------------+
+    | **Indep var \\ Dep var** | **Continuous** | **Discrete**              |
+    +==========================+================+===========================+
+    | **Continuous**           | OLS Regression | Logistic Regression       |
+    +--------------------------+----------------+---------------------------+
+    | **Discrete**             | T-Test, ANOVA  | Categorical Data Analysis |
+    +--------------------------+----------------+---------------------------+
+
+Model:
+~~~~~~~~~~
+
+
+
+.. math::
+
+    \mathbf{y}=\beta_0 +\mathbf{x}_j \beta_j+ \mathbf{e}, \mathbf{e}  \sim \mathcal{N}(0,I\sigma^2_e)  \tag{1.2.1}
+
+OLS estimation:
+~~~~~~~~~~~~~~~~~~~
+
+Coefficient of Determination (:math:`R^2`)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The coefficient of determination (:math:`R^2`) measures how well a statistical model predicts an outcome, which is represented by the model’s dependent variables.
+More technically, :math:`R^2` is a measure of good of fit. It is the proportion of variance in the dependent variable that is explained by the model.
+
+In simple linear regression, :math:`R^2` is also denoted as the Squared Pearson Correlation coefficient between the observed value and the fitted values.
+
+Logistic linear regression
+----------------------------
+
+Some questions about linear regression
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+why use link function?
+Because the dependent variables are binary (0/1), we need to model it.
+`Derivative of logistic regression <https://win-vector.com/2011/09/14/the-simpler-derivation-of-logistic-regression/>`_
+
+Multiple linear regression
+----------------------------
+
+Model:
+~~~~~~~~~~
+
+OLS estimation:
+~~~~~~~~~~~~~~~~~~~
+
+Relationship between :math:`\beta` and :math:`\sigma_{x,y}` and :math:`\sigma^2_{x}`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Bayesian linear regression
+----------------------------
+
+Simple linear regression
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Model
+^^^^^^^^^^^
+
+Generalized linear regression
+-------------------------------
+
+Derivation
+~~~~~~~~~~~~~~
+
+The general procedures:
+
+General exponential family format
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{equation}
+   f(y|\theta) = exp \left ( \frac{y\theta + b(\theta)}{a(\phi)} + c(y,\phi) \right)
+   \end{equation}
+   \]
+
+
+
+.. math::
+
+    \ell(\theta|y) =log[f(y|\theta)]= \frac{y\theta + b(\theta)}{a(\phi)} + c(y,\phi)
+
+
+Some important attributes of log-likelihood
+
+
+.. math::
+
+    E(Y) = \mu = \frac{\partial b(\theta)} {\partial \theta}
+
+
+
+
+.. math::
+
+    E[S(\theta)]= 0
+
+
+
+
+.. math::
+
+    E[\frac{\partial S}{\partial \theta}] = -E[S(\theta)]^2
+
+
+
+
+.. math::
+
+    I(\theta)= Var(S(\theta))= E[S(\theta)]^2 - {E[S(\theta)]}^2
+
+
+
+
+.. math::
+
+    Var(Y) = a(\phi)[\frac{\partial^2 b(\theta)}{\partial \theta ^ 2}]
+
+
+ Newton-Raphson and Fisher-scoring
+The scalar form of Taylor series
+
+
+.. math::
+
+    \ell(\theta) \equiv \ell(\tilde{\theta}) + (\theta - \tilde{\theta})
+    \left. \frac{\partial \ell (\theta)}{\partial \theta} \right |_{\theta = \tilde{\theta}} +
+    \frac{1}{2} (\theta - \tilde{\theta})^2 \left. \frac{\partial \ell^2 (\theta)}{\partial \theta^2}
+    \right |_{\theta = \tilde{\theta}}
+
+
+Set :math:`\partial \ell (\theta) / \partial \theta = 0` and rearranging terms yields:
+
+
+.. math::
+
+    \theta \equiv \tilde{\theta} -
+    \left [ \left . \frac{\partial ^2 \ell (\theta)}{\partial \theta ^2} \right |_{\theta=\tilde{\theta}}\right ]^{-1}
+    \left [ \left . \frac{\partial \ell (\theta)}{\partial \theta} \right |_{\theta=\tilde{\theta}} \right ]
+
+
+The basic matrix form of Newton-Raphson algorithm:
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{equation}
+   \theta \equiv \tilde{\theta} - [H(\tilde{\theta})]^{-1} S(\tilde{\theta})
+   \end{equation}
+   \]
+
+Replace hession matrix with the information matrix (i.e. :math:`E(H(\theta))= -Var[S(\theta)]= -I(\theta)`),
+we get Fisher scoring algorithm:
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{equation}
+   \theta \equiv \tilde{\theta} - [I(\tilde{\theta})]^{-1} S(\tilde{\theta})
+   \end{equation}
+   \]
+
+Estimate the coefficient :math:`\beta`.
+Scalar form
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{equation}
+   \frac{\partial \ell (\beta)}{\partial \beta} =
+   \frac{\partial \ell (\theta) }{ \partial \theta} \frac{\partial \theta }{ \partial \mu }\frac{\partial \mu }{ \partial \eta } \frac{\partial \eta }{ \partial \beta }
+   \end{equation}
+   \]
+
+Some results:
+
+
+Matrix form
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{equation}
+   \frac{\partial\ell(\theta)}{\partial \beta} = X^{'} D^{-1} V^{-1}(y-\mu)
+   \end{equation}
+   \]
+
+where :math:`y` is the :math:`n\times1` vector of observations, :math:`\ell(\theta)` is the :math:`n\times 1` vector of log-likelihood
+values associated with observations, :math:`V = diag[Var(y_{i})]` is the :math:`n \times n` variance matrix of the
+observations, :math:`D=diag[\partial \eta_{i} / \partial \mu_{i}]` is the :math:`n \times n` matrix of derivatives, and :math:`\mu`
+is the :math:`n \times 1` mean vector.
+Let :math:`W=(DVD)^{-1}`, we can get:
+
+
+.. math::
+
+    S(\beta) = \frac{\partial \ell (\theta)}{\partial \beta}
+    = X^{'} D^{-1}V^{-1}(D^{-1}D)(y-\mu) = X^{'}WD(y-\mu)
+
+
+
+
+.. math::
+
+    Var[S(\beta)] =X^{'}WD[Var(y-\mu)]DWX =X^{'}WDVDWX=X^{'}WX
+
+
+Pseudo-Likelihood for GLM
+Using Fisher scoring equation yields
+:math:`\beta = \tilde{\beta} +(X^{'}\tilde{W}X)^{-1}X^{'}\tilde{W}\tilde{D}(y-\tilde{\mu})`,
+where :math:`\tilde{W},\tilde{D}`, and :math:`\mu` evaluated at :math:`\tilde{\beta}`. So GLM estimating equations:
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{equation}
+   X^{'}\tilde{W}X\beta = X^{'}\tilde{W}y^{*}
+   \end{equation}
+   \]
+
+where :math:`y^{*} = X\tilde{\beta} + \tilde{D}(y-\tilde{\mu}) = \tilde{eta} + \tilde{D}(y-\tilde{\mu})`, and
+:math:`y^{*}` is called the pseudo-variable.
+
+
+.. math::
+
+    E(y^{*}) =E[X\tilde{\beta} + \tilde{D}(y - \tilde{\mu})] = X\beta
+
+
+
+
+.. math::
+
+    Var(y^{*}) = E[X\tilde{\beta} + \tilde{D}(y - \tilde{\mu})] = \tilde{D}\tilde{V}\tilde{D}=\tilde{W}^{-1}
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{equation}
+   X^{'}[Var(y^{*})]^{-1}X\beta = X^{'}[Var(y^{*})]^{-1} \Rightarrow X^{'}WX\beta = X^{'}Wy^{*}
+   \end{equation}
+   \]
+
+Mixed Linear Model
+-------------------------------
+
+Model
+^^^^^^^^^^^
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}\mathbf{y} = \mathbf{X}\boldsymbol{\beta} + \mathbf{Z}\boldsymbol{u} + \mathbf{e}
+   \end{align}
+   \]
+
+
+where :math:`\mathbf{e} \sim MVN(0,\mathbf{R})` and :math:`\mathbf{u} \sim MVN(0,\mathbf{G})`, and :math:`\mathbf{e}` and :math:`\mathbf{u}` are independent.
+
+Proof.
+^^^^^^^^^^^^
+
+Firstly, we have probability function
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   \mathbf{e} \propto |\mathbf{R}|^{-\frac{1}{2}} exp \bigg \{-\frac{1}{2}\mathbf{e}^{T}\mathbf{R}^{-1}\mathbf{e}  \bigg \},
+   \mathbf{u} \propto |\mathbf{G}|^{-\frac{1}{2}} exp \bigg \{-\frac{1}{2}\mathbf{u}^{T}\mathbf{G}^{-1}\mathbf{u}  \bigg \}
+   \end{align}
+   \]
+
+Next we need to consider :math:`\mathbf{y}` based on :math:`\mathbf{u}` and :math:`\mathbf{e}` (it’s great to use conditional distribution)
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   \mathbf{y} - \mathbf{X}\boldsymbol{\beta} - \mathbf{Z}\boldsymbol{u} | \boldsymbol{u}  = \mathbf{e} \sim MVN(0,\mathbf{R})
+   \end{align}
+   \]
+
+So the joint distribution is
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   p(\mathbf{y},\boldsymbol{u}) &= p(\mathbf{y}|\mathbf{u})p(\boldsymbol{u}) \\ &\propto |\mathbf{R}|^{-\frac{1}{2}} exp \bigg \{-\frac{1}{2}(\mathbf{y} - \mathbf{X}\boldsymbol{\beta} - \mathbf{Z}\boldsymbol{u})^{T}\mathbf{R}^{-1}(\mathbf{y} - \mathbf{X}\boldsymbol{\beta} - \mathbf{Z}\boldsymbol{u})  \bigg \} \mathbf{G}|^{-\frac{1}{2}} exp \bigg \{ -\frac{1}{2}\mathbf{u}^{T}\mathbf{G}^{-1}\mathbf{u}  \bigg \} \\
+   \end{align}
+   \]
+
+Now consider the log of the density,
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   \ell &= log[p(\mathbf{y},\boldsymbol{u})] \\
+   &\propto
+   -\frac{1}{2}\bigg [ log(\mathbf{R}) + log(\mathbf{G}) + (\mathbf{y} - \mathbf{X}\boldsymbol{\beta} -
+   \mathbf{Z}\boldsymbol{u})^{T}\mathbf{R}^{-1}(\mathbf{y} - \mathbf{X}\boldsymbol{\beta} -
+   \mathbf{Z}\boldsymbol{u}) + \mathbf{u}^{T}\mathbf{G}^{-1}\mathbf{u} \bigg  ] \\
+   &\propto   -2\mathbf{y}^{T}\mathbf{R}^{-1}\mathbf{X}\boldsymbol{\beta} -
+   2\mathbf{y}^{T}\mathbf{R}^{-1}\mathbf{Z}\boldsymbol{u} +
+   2\boldsymbol{u}^{T}\mathbf{Z}^{T}\mathbf{R}^{-1}\mathbf{X}\boldsymbol{\beta} +
+   \boldsymbol{\beta}^{T}\mathbf{X}^{T}\mathbf{R}^{-1}\mathbf{X}\boldsymbol{\beta} +
+   \boldsymbol{u}^{T}\mathbf{Z}^{T}\mathbf{R}^{-1}\mathbf{Z}\boldsymbol{u} +
+   \mathbf{u}^{T}\mathbf{G}^{-1}\mathbf{u}
+   \end{align}
+   \]
+
+Take the derivatives of :math:`\ell` with respect to :math:`\boldsymbol{\beta}` and :math:`\boldsymbol{u}` yields
+
+
+
+Henderson’s mixed-model’s equation
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   \begin{bmatrix}
+   \mathbf{X}^T \mathbf{R}^{-1}\mathbf{X} & \mathbf{X}^T \mathbf{R}^{-1} \mathbf{Z} \\
+   \mathbf{Z}^T\mathbf{R}^{-1}\mathbf{X} & \mathbf{Z}^T\mathbf{R}^{-1}\mathbf{Z} + \mathbf{G}^{-1}
+   \end{bmatrix}
+   \begin{bmatrix}
+   \boldsymbol{\beta} \\
+   \boldsymbol{u}
+   \end{bmatrix} =
+   \begin{bmatrix}
+   \mathbf{X}^{T}\mathbf{R}^{-1}\mathbf{y} \\
+   \mathbf{Z}^{T}\mathbf{R}^{-1}\mathbf{y}
+   \end{bmatrix}
+   \end{align}
+   \]

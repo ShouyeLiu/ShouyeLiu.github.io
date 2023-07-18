@@ -1,0 +1,32 @@
+===================================
+Polygenic risk score
+===================================
+
+
+.. list-table:: Summary of polygenic risk score estimation method
+   :header-rows: 1
+
+   * - Method
+     - :math:`\boldsymbol{\beta}` assumption
+     - :math:`\boldsymbol{\beta}` estimation
+     - PRS estimation
+   * - P + T
+     -
+     -
+     -
+   * - SBLUP
+     - :math:`\beta \sim \mathcal{N}(0,\frac{h^2_g}{m})`
+     -
+     -
+   * - `LDpred <https://www.cell.com/ajhg/fulltext/S0002-9297(15)00365-1#>`_,  `LDpred2 <https://academic.oup.com/bioinformatics/article/36/22-23/5424/6039173>`_
+     - :math:`\beta_j \sim \left\{\begin{array}{@{}% no padding l@{\quad}% some padding r@{}% no padding >{{}}r@{}% no padding >{{}}l@{}% no padding } \mathcal{N}(0,\frac{h^2_g}{Mp}) , & p \\ 0 , & 1 - p \end{array} \right.`
+     - :math:`\mathbb{E}(\beta|\tilde{\beta},D)\approx \bigg (\frac{1}{1-h^2_l} D + \frac{M}{Nh^2}I \bigg )^{-1}\tilde{\beta}`
+     -
+   * - `LDpred-funct <https://www.nature.com/articles/s41467-021-25171-9>`_
+     - :math:`\beta_j \sim \mathcal{N}(0,c* \sigma^2_j)`
+     - :math:`\mathbb{E}(\beta|\tilde{\beta},D,\sigma^2_1,\dots,\sigma^2_M) = \Bigg [ N * D +  \frac{1}{c}\bigg (\begin{bmatrix} \frac{1}{\sigma^2_1} & \dots  & 0 \\\vdots & \ddots & \vdots \\ 0 & \dots  & \frac{1}{\sigma^2_{M_{+}}} \end{bmatrix}  \bigg ) + D \Bigg ]^{-1}N \times \tilde{\beta}`
+     -
+   * -
+     -
+     -
+     -

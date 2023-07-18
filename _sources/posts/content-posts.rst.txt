@@ -13,6 +13,14 @@ Basic concepts
 
    statistics/distribution_sl07012023
    statistics/powerError
+
+Regression
+=================================
+
+.. toctree::
+   :maxdepth: 1
+
+   statistics/regressionFramework
    statistics/logitsticRegression08072023_SL
    statistics/coxRegression_sl
 
@@ -21,3 +29,12 @@ Bayesian regression
 =========================
 
 `Mathmatical Statistical Bayesian Liear Regression </_static/_posts/bayes-lm.html>`_
+
+
+Biostatics
+===================================
+
+.. toctree::
+   :maxdepth: 1
+
+   biostatistics/polygenicRiskScore_sl
