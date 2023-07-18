@@ -7,15 +7,15 @@ Publication
 `Google Scholar  <https://scholar.google.com/citations?hl=en&user=ETCPafMAAAAJ&view_op=list_works&sortby=pubdate>`_
 
 
-[6] Zheng, Zhili, **Shouye Liu**, Julia Sidorenko, Loic Yengo, Patrick Turley, Alireza Ani, Rujia Wang et al. `Leveraging functional genomic annotations and genome coverage to improve polygenic prediction of complex traits within and between ancestries. <https://www.biorxiv.org/content/10.1101/2022.10.12.510418v1>`_ bioRxiv (2022): 2022-10.
+[6] Zheng, Zhili, **Shouye Liu**, Julia Sidorenko, Loic Yengo, Patrick Turley, Alireza Ani, Rujia Wang et al. `Leveraging functional genomic annotations and genome coverage to improve polygenic prediction of complex traits within and between ancestries. <https://www.biorxiv.org/content/10.1101/2022.10.12.510418v1>`_ **bioRxiv** (2022): 2022-10.
 
-[5] Li, Ang, **Shouye Liu**, Andrew Bakshi, Longda Jiang, Wenhan Chen, Zhili Zheng, Patrick F. Sullivan et al. `mBAT-combo: a more powerful test to detect gene-trait associations from GWAS data. <https://www.sciencedirect.com/science/article/pii/S0002929722005407>`_ The American Journal of Human Genetics 110, no. 1 (2023): 30-43.
+[5] Li, Ang, **Shouye Liu**, Andrew Bakshi, Longda Jiang, Wenhan Chen, Zhili Zheng, Patrick F. Sullivan et al. `mBAT-combo: a more powerful test to detect gene-trait associations from GWAS data. <https://www.sciencedirect.com/science/article/pii/S0002929722005407>`_ **The American Journal of Human Genetics** 110, no. 1 (2023): 30-43.
 
 
-[4] Qi, Ting, Yang Wu, Hailing Fang, Futao Zhang, **Shouye Liu**, Jian Zeng, and Jian Yang. `Genetic control of RNA splicing and its distinct role in complex trait variation. <https://www.nature.com/articles/s41588-022-01154-4>`_ Nature Genetics 54, no. 9 (2022): 1355-1363.
+[4] Qi, Ting, Yang Wu, Hailing Fang, Futao Zhang, **Shouye Liu**, Jian Zeng, and Jian Yang. `Genetic control of RNA splicing and its distinct role in complex trait variation. <https://www.nature.com/articles/s41588-022-01154-4>`_ **Nature Genetics** 54, no. 9 (2022): 1355-1363.
 
-[3] Lou, Xiang‐Yang, Ting‐Ting Hou, **Shou‐Ye Liu**, Hai‐Ming Xu, Feng Lin, Xinyu Tang, Stewart L. MacLeod, Mario A. Cleves, and Charlotte A. Hobbs. `Innovative approach to identify multigenomic and environmental interactions associated with birth defects in family‐based hybrid designs. <https://onlinelibrary.wiley.com/doi/full/10.1002/gepi.22363>`_ Genetic epidemiology 45, no. 2 (2021): 171-189.
+[3] Lou, Xiang‐Yang, Ting‐Ting Hou, **Shou‐Ye Liu**, Hai‐Ming Xu, Feng Lin, Xinyu Tang, Stewart L. MacLeod, Mario A. Cleves, and Charlotte A. Hobbs. `Innovative approach to identify multigenomic and environmental interactions associated with birth defects in family‐based hybrid designs. <https://onlinelibrary.wiley.com/doi/full/10.1002/gepi.22363>`_ **Genetic epidemiology** 45, no. 2 (2021): 171-189.
 
-[2] Du, Xiongming, **Shouye Liu**, Junling Sun, Gengyun Zhang, Yinhua Jia, Zhaoe Pan, Haitao Xiang et al. `Dissection of complicate genetic architecture and breeding perspective of cottonseed traits by genome-wide association study. <https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-018-4837-0>`_ BMC genomics 19, no. 1 (2018): 1-17.
+[2] Du, Xiongming, **Shouye Liu**, Junling Sun, Gengyun Zhang, Yinhua Jia, Zhaoe Pan, Haitao Xiang et al. `Dissection of complicate genetic architecture and breeding perspective of cottonseed traits by genome-wide association study. <https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-018-4837-0>`_ **BMC genomics** 19, no. 1 (2018): 1-17.
 
-[1] Zhou, Liyuan, **Shouye Liu**, Weixun Wu, Daibo Chen, Xiaodeng Zhan, Aike Zhu, Yingxin Zhang et al. `Dissection of genetic architecture of rice plant height and heading date by multiple-strategy-based association studies. <https://www.nature.com/articles/srep29718>`_ Scientific reports 6, no. 1 (2016): 29718.
+[1] Zhou, Liyuan, **Shouye Liu**, Weixun Wu, Daibo Chen, Xiaodeng Zhan, Aike Zhu, Yingxin Zhang et al. `Dissection of genetic architecture of rice plant height and heading date by multiple-strategy-based association studies. <https://www.nature.com/articles/srep29718>`_ **Scientific reports** 6, no. 1 (2016): 29718.

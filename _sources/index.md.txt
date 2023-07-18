@@ -1,59 +1,63 @@
 
-# About
 
 I am a third-year PhD student from [IMB](https://www.google.com/search?client=firefox-b-d&q=uq+imb), [University of Queensland](https://www.uq.edu.au/), My supervisors are [Dr. JianZeng](https://researchers.uq.edu.au/researcher/14033) and [Prof. Jian Yang](https://en.westlake.edu.cn/faculty/jian-yang.html)
 
 
-## Projects
+**Email:** [Shouye Liu](mailto:shouye.liu@uq.edu.au)   
+**Github:** [https://github.com/ShouyeLiu](https://github.com/ShouyeLiu)
 
 
-```{panels}
-I
-^^^^^^
+
+<!-- ## Projects -->
 
 
----
-II
-^^^^^^
+<!-- ```{panels} -->
+<!-- I -->
+<!-- ^^^^^^ -->
 
 
-```
-## Projects that I'm involved in
-```{panels}
-mBAT-combo
-^^^^^^
-* [Article](https://www.sciencedirect.com/science/article/pii/S0002929722005407)
-<!-- * [Theory]() -->
-* [How to use](https://yanglab.westlake.edu.cn/software/gcta/#mBAT-combo)
+<!-- --- -->
+<!-- II -->
+<!-- ^^^^^^ -->
 
----
-SBayesRC
-^^^^^^
-* [Article](https://www.biorxiv.org/content/10.1101/2022.10.12.510418v1)
-<!-- * [Theory]() -->
-* [How to use](https://github.com/zhilizheng/SBayesRC)
 
-```
+<!-- ``` -->
+<!-- ## Projects that I'm involved in -->
+<!-- ```{panels} -->
+<!-- mBAT-combo -->
+<!-- ^^^^^^ -->
+<!-- * [Article](https://www.sciencedirect.com/science/article/pii/S0002929722005407) -->
+<!-- <\!-- * [Theory]() -\-> -->
+<!-- * [How to use](https://yanglab.westlake.edu.cn/software/gcta/#mBAT-combo) -->
+
+<!-- --- -->
+<!-- SBayesRC -->
+<!-- ^^^^^^ -->
+<!-- * [Article](https://www.biorxiv.org/content/10.1101/2022.10.12.510418v1) -->
+<!-- <\!-- * [Theory]() -\-> -->
+<!-- * [How to use](https://github.com/zhilizheng/SBayesRC) -->
+
+<!-- ``` -->
 
 
 
 <!-- ## Table of Contents -->
 
 
-```{toctree}
-:maxdepth: 2
-:hidden:
+<!-- ```{toctree} -->
+<!-- :maxdepth: 2 -->
+<!-- :hidden: -->
 
-start/start
-```
+<!-- start/start -->
+<!-- ``` -->
 
 
-```{toctree}
-:maxdepth: 2
-:hidden:
+<!-- ```{toctree} -->
+<!-- :maxdepth: 2 -->
+<!-- :hidden: -->
 
-softwares/content-softwares
-```
+<!-- softwares/content-softwares -->
+<!-- ``` -->
 
 ```{toctree}
 :maxdepth: 2
@@ -85,15 +89,15 @@ posts/content-posts
 reference/content-reference
 ```
 
-## Resources
+<!-- ## Resources -->
 
-```{csv-table}
-:header: Site, Description
-:widths: 18, 35
+<!-- ```{csv-table} -->
+<!-- :header: Site, Description -->
+<!-- :widths: 18, 35 -->
 
-[GCTA](https://yanglab.westlake.edu.cn/software/gcta/#Overview), a tool for Genome-wide Complex Trait Analysis
-[GCTB](https://cnsgenomics.com/software/gctb/#Overview), A tool for Genome-wide Complex Trait Bayesian analysis
-```
+<!-- [GCTA](https://yanglab.westlake.edu.cn/software/gcta/#Overview), a tool for Genome-wide Complex Trait Analysis -->
+<!-- [GCTB](https://cnsgenomics.com/software/gctb/#Overview), A tool for Genome-wide Complex Trait Bayesian analysis -->
+<!-- ``` -->
 
 <!-- 
 ## Indices and tables
