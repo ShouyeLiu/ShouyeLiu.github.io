@@ -4,7 +4,7 @@ Power and error
 
 
 Relation between power and type I II error
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 
 .. figure:: /_static/_images/powerAndTypeError07082023_SL.png
     :width: 50%

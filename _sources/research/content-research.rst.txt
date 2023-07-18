@@ -5,5 +5,50 @@ Research
 ========
 
 
-More information
+Interests
 ================
+
+
+
+.. panels::
+   I
+   ^^^^^^
+
+   ---
+
+   II
+   ^^^^^^
+
+
+
+Projects that I'm involved in
+================================
+
+
+
+.. panels::
+   mBAT-combo
+   ^^^^^^^^^^
+   * `Article <https://www.sciencedirect.com/science/article/pii/S0002929722005407>`_
+
+   * `How to use <https://yanglab.westlake.edu.cn/software/gcta/#mBAT-combo>`_
+
+   ---
+
+   SBayesRC
+   ^^^^^^^^
+
+   * `Article <https://www.biorxiv.org/content/10.1101/2022.10.12.510418v1>`_
+   * `How to use <https://github.com/zhilizheng/SBayesRC>`_
+
+
+
+
+
+
+.. csv-table::
+    :header: Site, Description
+    :widths: 18, 35
+
+    `GCTA <https://yanglab.westlake.edu.cn/software/gcta/#Overview>`_, a tool for Genome-wide Complex Trait Analysis
+     `GCTB <https://cnsgenomics.com/software/gctb/#Overview>`_, A tool for Genome-wide Complex Trait Bayesian analysis

@@ -1,0 +1,96 @@
+
+
+I am a third-year PhD student from `IMB <https://www.google.com/search?client=firefox-b-d&q=uq+imb>`_, `University of Queensland <https://www.uq.edu.au/>`_, My supervisors are `Dr. JianZeng <https://researchers.uq.edu.au/researcher/14033>`_ and `Prof. Jian Yang <https://en.westlake.edu.cn/faculty/jian-yang.html>`_
+
+
+
+:octicon:`mail;1em;sd-text-info`: shouye.liu\@uq.edu.au
+:octicon:`github;1em;sd-text-info`: https://github.com/ShouyeLiu
+
+
+
+
+
+.. panels::
+   I
+   ^^^^^^
+
+   ---
+
+   II
+   ^^^^^^
+
+
+
+Projects that I'm involved in
+
+
+
+.. panels::
+   mBAT-combo
+   ^^^^^^^^^^
+   * `Article <https://www.sciencedirect.com/science/article/pii/S0002929722005407>`_
+
+   * `How to use <https://yanglab.westlake.edu.cn/software/gcta/#mBAT-combo>`_
+
+   ---
+
+   SBayesRC
+   ^^^^^^^^
+
+   * `Article <https://www.biorxiv.org/content/10.1101/2022.10.12.510418v1>`_
+   * `How to use <https://github.com/zhilizheng/SBayesRC>`_
+
+
+
+..
+   .. toctree::
+      :maxdepth: 2
+      :hidden:
+
+      start/start
+
+
+   .. toctree::
+      :maxdepth: 2
+      :hidden:
+
+      softwares/content-softwares
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   research/content-research
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   people/content-people
+
+
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   posts/content-posts
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   reference/content-reference
+
+
+.. csv-table:: Resources
+    :header: Site, Description
+    :widths: 18, 35
+
+    `GCTA <https://yanglab.westlake.edu.cn/software/gcta/#Overview>`_, a tool for Genome-wide Complex Trait Analysis
+     `GCTB <https://cnsgenomics.com/software/gctb/#Overview>`_, A tool for Genome-wide Complex Trait Bayesian analysis

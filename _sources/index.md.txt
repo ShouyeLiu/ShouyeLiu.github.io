@@ -1,9 +1,12 @@
 
+# About
+
+
 
 I am a third-year PhD student from [IMB](https://www.google.com/search?client=firefox-b-d&q=uq+imb), [University of Queensland](https://www.uq.edu.au/), My supervisors are [Dr. JianZeng](https://researchers.uq.edu.au/researcher/14033) and [Prof. Jian Yang](https://en.westlake.edu.cn/faculty/jian-yang.html)
 
 
-**Email:** [Shouye Liu](mailto:shouye.liu@uq.edu.au)   
+**Email:** [shouye.liu@uq.edu.au](mailto:shouye.liu@uq.edu.au)   
 **Github:** [https://github.com/ShouyeLiu](https://github.com/ShouyeLiu)
 
 
@@ -72,8 +75,6 @@ research/content-research
 
 people/content-people
 ```
-
-
 
 ```{toctree}
 :maxdepth: 2
