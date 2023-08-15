@@ -45,6 +45,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'posts/statistics/powerError';</script>
     <link rel="shortcut icon" href="../../_static/omics.icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -339,6 +340,10 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="coxRegression_sl.html">Cox regression</a></li>
 </ul>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bayesianRegress08082023_sl.html">Concepts</a></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biostatistics/basicConceptBioS_sl.html">Basic Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../biostatistics/polygenicRiskScore_sl.html">Polygenic risk score</a></li>
 </ul>
 </div>
@@ -401,9 +406,21 @@ document.write(`
 <h1>Power and error<a class="headerlink" href="#power-and-error" title="Permalink to this headline">#</a></h1>
 <div class="section" id="relation-between-power-and-type-i-ii-error">
 <h2>Relation between power and type I II error<a class="headerlink" href="#relation-between-power-and-type-i-ii-error" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://shiny.rit.albany.edu/stat/betaprob/">Visualize Type I/II errors</a></p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../_images/powerTypeDistribution07212023_sl.png"><img alt="Logo" src="../../_images/powerTypeDistribution07212023_sl.png" style="width: 50%;" /></a>
+</div>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../../_images/powerAndTypeError07082023_SL.png"><img alt="Logo" src="../../_images/powerAndTypeError07082023_SL.png" style="width: 50%;" /></a>
 </div>
+<p>When we developed a new method or algorithm, we want to evaluate its performance and power. Firstly, we need to evaluate biasness and estimation and expected our model is unbiased in type I error (i.e., <span class="math notranslate nohighlight">\(P(H_{1}|H_{0}) = \alpha\)</span>)</p>
+</div>
+<div class="section" id="understanding-type-i-error">
+<h2>Understanding Type I error<a class="headerlink" href="#understanding-type-i-error" title="Permalink to this headline">#</a></h2>
+<p>Ref: <a class="reference external" href="https://www.r-bloggers.com/2020/12/linear-regression-and-type-i-error/#:~:text=Type%20I%20Error%3A%20It%20is,the%20null%20hypothesis%20is%20false.">R type I error</a></p>
+<p>Calculate number of significant variables</p>
+<p>Here we use all p-values to get Q-Q plot</p>
+<p>Apply <span class="math notranslate nohighlight">\(log_{10}\)</span> function to p-values</p>
 </div>
 </div>
 
@@ -425,6 +442,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relation-between-power-and-type-i-ii-error">Relation between power and type I II error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-type-i-error">Understanding Type I error</a></li>
 </ul>
   </nav></div>
 

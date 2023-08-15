@@ -1,0 +1,90 @@
+=================================================
+Concepts
+=================================================
+
+
+.. contents::
+
+
+
+Some key concepts
+-------------------
+
+Bayes's theorem
+~~~~~~~~~~~~~~~~~
+
+
+Gibbs sampling
+~~~~~~~~~~~~~~
+
+
+PIP (Posterior Inclusion Probability)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The PIP for a variable :math:`X_i` is the proportion of MCMC samples in which :math:`X_i` was included in the model. Mathmatically, the PIP for :math:`X_i` can be calculated as
+
+
+
+.. math::
+
+    PIP(X_i) = \frac{N_i}{N}
+
+Where :math:`N` is the number of MCMC iterations and :math:`N_i` is the number of iterations where :math:`X_i` ​was included.
+
+FDR
+~~~~~~~
+
+Centered and scaled genotype matrix W
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ref: `W <http://psoerensen.github.io/qgg/articles/prepare_genotype_data.html>`_
+The additive genomic relationship matrix :math:`\mathbf{G}` (VanRaden PM. 2008. J Dairy Sci. 91:4414-4423) is constructed using all genetic markers as follows: :math:`\mathbf{G}=\mathbf{W}\mathbf{W}^{\intercal}/m`, where :math:`W` is the centered and scaled genotype matrix, and :math:`m` is the total number of markers. Each column vector of :math:`\mathbf{W}` was calculated as follows: :math:`\mathbf{w}_i = (m_i -2p_i)/\sqrt{2p_i(1-p_i)}` , where :math:`p_i` is the minor allele frequency of the :math:`i` -th genetic marker and :math:`\mathbf{m}_i` is the ith column vector of the allele count matrix, :math:`\mathbf{M}`, which contains the genotypes coded as 0, 1 or 2 counting the number of minor allele.
+
+How to scale and center genotype:
+
+we assume the allele frequency of allele :math:`a` is :math:`1 - p_i`,the allele frequence of other allele :math:`A` is :math:`p_i`. According to `Hardy-Weinberg principle <https://en.wikipedia.org/wiki/Hardy%E2%80%93Weinberg_principle>`_, the genotypes :math:`aa`,:math:`Aa` and :math:`AA` (coded as 0, 1 or 2) follow the following distribution:
+
+.. table::
+
+    +-----------+-------------------+---------------------+---------------+
+    | Marker    |                 0 |                   1 |             2 |
+    +===========+===================+=====================+===============+
+    | Frequency | :math:`(1-p_i)^2` | :math:`2p_i(1-p_i)` | :math:`p_i^2` |
+    +-----------+-------------------+---------------------+---------------+
+
+The mean of the genotype is
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{aligned}
+   E(\mathbf{m}_i) = 0 * (1-p_i)^2 + 1 * 2p_i(1-p_i) + 2 * p_i^2 = 2p_i
+   \end{aligned}
+   \]
+
+The variace of the genotype is
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   Var(\mathbf{m}_i) &= E(\mathbf{m}_i^2) - E(\mathbf{m}_i)^2 \\\
+   &=\big [ 0 * (1-p_i)^2 + 1 * 2p_i(1-p_i) + 4 * p_i^2  \big ] - \\\
+   &\quad \big [ 0 * (1-p_i)^2 + 1 * 2p_i(1-p_i) + 2 * p_i^2 \big ]^2 \\\
+   &=  2p_i(1-p_i) + 4 * p_i^2 - (2p_i)^2 \\\
+   &=  2p_i(1-p_i)
+   \end{align}
+   \]
+
+So after centering and scaling genotype,we get
+
+.. math::
+   :nowrap:
+
+   \[
+   \begin{align}
+   \mathbf{w}_i = (m_i -2p_i)/\sqrt{2p_i(1-p_i)}
+   \end{align}
+   \]

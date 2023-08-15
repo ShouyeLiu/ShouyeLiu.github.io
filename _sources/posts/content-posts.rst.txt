@@ -28,6 +28,13 @@ Regression
 Bayesian regression 
 =========================
 
+.. toctree::
+   :maxdepth: 1
+
+   statistics/bayesianRegress08082023_sl
+
+
+
 `Mathmatical Statistical Bayesian Liear Regression </_static/_posts/bayes-lm.html>`_
 
 
@@ -37,4 +44,5 @@ Biostatics
 .. toctree::
    :maxdepth: 1
 
+   biostatistics/basicConceptBioS_sl
    biostatistics/polygenicRiskScore_sl

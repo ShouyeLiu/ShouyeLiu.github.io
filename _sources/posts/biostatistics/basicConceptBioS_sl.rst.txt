@@ -1,0 +1,11 @@
+===================================
+Basic Concepts
+===================================
+
+
+**Rare variants**:
+ Rare variants are defined as single nucleotide polymorphisms(SNPs) with a minor allele frequency (MAF) of less than 0.01. They often have larger phenotypic effects in comparison to low-frequency (less common) (0.01 < MAF < 0.05) or common (MAF > 0.05) disease-associated SNPs.
+
+ **Etiology (/ˌiːtiˈɒlədʒi/; alternatively spelled aetiology or ætiology,病原学)**
+
+ Etiology is the study of the causes, origins, or reasons behind the way that things are, or the way they function, or it can refer to the causes themselves.
