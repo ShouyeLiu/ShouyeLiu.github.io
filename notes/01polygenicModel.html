@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Genetic models</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ad64850d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css?v=995e94df" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.min.css?v=21c0b90a" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ad64850d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/01polygenicModel';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reference" href="../reference/content-reference.html" />
+    <link rel="prev" title="Notes" href="content-notes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="2025-05-20"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search across website"
+         aria-label="Search across website"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title"></p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../softwares/content-softwares.html">
+    BayesOmics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../fileFormats/content-fileFormats.html">
+    File formats
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="content-notes.html">
+    Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/content-reference.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ShouyeLiu" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../softwares/content-softwares.html">
+    BayesOmics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../fileFormats/content-fileFormats.html">
+    File formats
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="content-notes.html">
+    Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/content-reference.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ShouyeLiu" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Genetic models</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="content-notes.html" class="nav-link">Notes</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Genetic models</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="genetic-models">
+<h1>Genetic models<a class="headerlink" href="#genetic-models" title="Link to this heading">#</a></h1>
+<section id="bayesian-alphabet-framework">
+<h2>Bayesian alphabet framework<a class="headerlink" href="#bayesian-alphabet-framework" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id2">
+<caption><span class="caption-text"><strong>Summary of Effect Size Distributions for Polygenic Modeling</strong></span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Models</strong></p></th>
+<th class="head"><p><strong>Effect Size Distribution</strong></p></th>
+<th class="head"><p><strong>Formula</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.cambridge.org/core/journals/genetics-research/article/accuracy-of-genomic-selection-using-stochastic-search-variable-selection-in-australian-holstein-friesian-dairy-cattle/A012A54FB5BF1B7308CACDA91E262FD3">BayesA</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_i \sim t(\nu, \sigma^2_{\alpha})\)</span></p></td>
+<td><p>t Distribution</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://academic.oup.com/genetics/article/157/4/1819/6048353">BayesB</a>, <a class="reference external" href="https://link.springer.com/article/10.1186/1471-2105-12-186">BayesDπ</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_i \sim \pi t(0, \nu, \sigma^2_{\alpha}) + (1 - \pi) \delta_0\)</span></p></td>
+<td><p>Point-t Distribution</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://bmcproc.biomedcentral.com/articles/10.1186/1753-6561-4-S1-S5">BayesC</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_i \sim \pi t(0, \nu, \sigma^2_{\alpha}) + (1 - \pi) t(0, \nu, 0.01\sigma^2_{\alpha})\)</span></p></td>
+<td><p>t Mixture</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-186">BayesCπ</a> , <a class="reference external" href="https://projecteuclid.org/journals/annals-of-applied-statistics/volume-5/issue-3/Bayesian-variable-selection-regression-for-genome-wide-association-studies-and/10.1214/11-AOAS455.full">BVSR</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_i \sim \pi N(0, \sigma^2_{\alpha}) + (1 - \pi) \delta_0\)</span></p></td>
+<td><p>Point-Normal Distribution</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.tandfonline.com/doi/abs/10.1198/016214508000000337">Bayesian Lasso</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_i \sim DE(0, \theta)\)</span></p></td>
+<td><p>Double Exponential Distribution</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0022030212003918">BayesR</a> , <a class="reference external" href="https://www.nature.com/articles/s41467-019-12653-0">SBayesR</a> , <a class="reference external" href="https://www.nature.com/articles/s41588-024-01704-y">SBayesRC</a></p></td>
+<td><div class="math notranslate nohighlight">
+\[\beta_i \sim \pi_1 N(0, \sigma^2_{\alpha}) + \pi_2 N(0, 0.1\sigma^2_{\alpha})
++ \pi_3 N(0, 0.01\sigma^2_{\alpha}) + (1 -  \sum^{3}_{c = 1} \pi_c) \delta_0\]</div>
+</td>
+<td><p>Point-Normal Mixture</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.nature.com/articles/ng.608">LMM</a>, BLUP, <a class="reference external" href="https://www.cambridge.org/core/journals/genetics-research/article/markerassisted-selection-using-ridge-regression/ADF4BCE837CB074466273CEAD345C874">Ridge Regression</a> <a class="reference external" href="https://www.jstor.org/stable/1271436?seq=6">Ridge theory</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_i \sim N(0, \sigma^2_{\alpha})\)</span></p></td>
+<td><p>Normal Distribution</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1000130">NEG</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_i \sim NEG(0, \kappa, \theta)\)</span></p></td>
+<td><p>Normal-Exponential-Gamma</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003264">BSLMM</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_i \sim \pi N(0, \sigma^2_{\alpha} + \sigma^2_{\beta}) + (1 - \pi) N(0, \sigma^2_{\beta})\)</span></p></td>
+<td><p>Normal Mixture</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.nature.com/articles/s41588-018-0101-4">SBayesS</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_i \sim \pi N(0,[1p_j(1-p_j)]^S \sigma^2_{\beta}) + \phi(1 - \pi)\)</span></p></td>
+<td><p>Normal Mixture</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-text"><strong>Bayesian Polygenic Models and Their Inference Methods</strong></span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Models</strong></p></th>
+<th class="head"><p><strong>Inference</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>BayesA</p></td>
+<td><p>Gibbs sampling with Student-t prior on SNP effects. Variance components sampled via inverse-gamma.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BayesB</p></td>
+<td><p>Gibbs sampling with a mixture prior (point mass at zero + Student-t). Requires latent variable updates.</p></td>
+</tr>
+<tr class="row-even"><td><p>BayesC</p></td>
+<td><p>Gibbs sampling with a mixture prior (point mass at zero + Normal). SNP effects and variance components are sampled iteratively.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BayesCπ</p></td>
+<td><p>Similar to BayesC, but includes estimation of π (the proportion of nonzero SNPs) within the Gibbs sampling framework.</p></td>
+</tr>
+<tr class="row-even"><td><p>BayesR</p></td>
+<td><p>Gibbs sampling with a multi-component normal mixture prior (e.g., strong, moderate, weak effects + zero).</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bayesian Lasso</p></td>
+<td><p>Uses Gibbs sampling with an auxiliary variable formulation for the Laplace prior.</p></td>
+</tr>
+<tr class="row-even"><td><p>NEG (Normal-Exponential-Gamma)</p></td>
+<td><p>Hierarchical shrinkage prior estimated via Gibbs sampling.</p></td>
+</tr>
+<tr class="row-odd"><td><p>BSLMM (Bayesian Sparse Linear Mixed Model)</p></td>
+<td><p>Uses a mix of Gibbs sampling and variational inference, depending on implementation.</p></td>
+</tr>
+<tr class="row-even"><td><p>LMM (Linear Mixed Model)</p></td>
+<td><p>Typically solved using REML (Restricted Maximum Likelihood) or Expectation-Maximization (EM), not Gibbs.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ldsc-framework-and-its-extension">
+<h2>LDSC framework and its extension<a class="headerlink" href="#ldsc-framework-and-its-extension" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id4">
+<caption><span class="caption-text"><strong>LD score regression and its extension</strong></span><a class="headerlink" href="#id4" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Method</strong></p></th>
+<th class="head"><p><strong>Formula</strong></p></th>
+<th class="head"><p><strong>Key contribution</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.nature.com/articles/ng.3211">LDSC</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(E[\chi^2 | \ell_j] = N h^2 \frac{\ell_j}{M} + N \alpha + 1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\chi^{2}_{j}=N\hat{\beta}^2_j,\quad\ell_j := \sum_{k=1}^{M} r_{jk}^2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.nature.com/articles/ng.3404">HDL</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{Cov}[\mathbf{z}] = \frac{N h^2}{M} \mathbf{L} + \mathbf{R}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{L} := \mathbf{R}^\top \mathbf{R}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.nature.com/articles/s41588-025-02123-3">HDL-L</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\text{Cov}[\mathbf{z}_1, \mathbf{z}_2] = \frac{\sqrt{N_1 N_2} h_{12}}{M} \mathbf{L}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathcal{R}(h_{12})\equiv \frac{\mathcal{L} \left( h_{12} \mid \mathbf{z}, \hat{h}_1^2, \hat{h}_2^2 \right)}{\mathcal{L} \left( \hat{h}_{12} \mid \mathbf{z}, \hat{h}_1^2, \hat{h}_2^2 \right)}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.nature.com/articles/ng.3404">S-LDSC</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(E\left[\chi^2_j\right] = N \sum_{C} \tau_C \ell(j, C) + N \alpha + 1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ell(j,C) = \sum_{k \in C} r_{jk}^2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.nature.com/articles/ng.3404">MESC</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(E[\alpha_k^2 \mid \beta_{1k}, \dots, \beta_{Gk}] = E[\alpha^2] \sum_{i}^{G} \beta_{ik}^2 + E[\gamma^2]\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ell(j,C) = \sum_{k \in C} r_{jk}^2\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.nature.com/articles/s41588-021-00901-3">FMR</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{d}{d t} E \left( e^{it z + \frac{1}{2} t^2 \hat{\sigma}^2} \right)\approx it N \sigma^2 \sum_K w_K \ell_K (t)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\ell_K (t) = \sum_j r_{j}^2 \phi_K (r_j t)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="non-uniform-model-and-its-extension">
+<h2>Non-uniform model and its extension<a class="headerlink" href="#non-uniform-model-and-its-extension" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table" id="id5">
+<caption><span class="caption-text"><strong>LD score regression and its extension</strong></span><a class="headerlink" href="#id5" title="Link to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Method</strong></p></th>
+<th class="head"><p><strong>Formula</strong></p></th>
+<th class="head"><p><strong>Key contribution</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.nature.com/articles/ng.3865">LDAK</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbb{E}[h_j^2] \sim [f_j(1 - f_j)]^{1 + \alpha} \times w_j \times r_j\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_j \sim \mathcal{N}\left(0, r_j w_j \frac{\sigma_g^2}{W} \right) \quad W = \sum_j r_j w_j \left[ 2 f_j (1 - f_j) \right]^{1 + \alpha}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="content-notes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Notes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../reference/content-reference.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-alphabet-framework">Bayesian alphabet framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ldsc-framework-and-its-extension">LDSC framework and its extension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-uniform-model-and-its-extension">Non-uniform model and its extension</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+<!-- your html code here -->
+  <!-- <style> -->
+  <!--   /* Sidebar header (and topbar for mobile) */ -->
+  <!--   .wy-side-nav-search, .wy-nav-top { -->
+  <!--     background: #00ff00; -->
+  <!--   } -->
+  <!--   /* Sidebar */ -->
+  <!--   .wy-nav-side { -->
+  <!--     background: #ff0000; -->
+  <!--   } -->
+  <!-- </style> -->
+
+  </body>
+</html>

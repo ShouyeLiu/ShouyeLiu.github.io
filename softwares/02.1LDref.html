@@ -1,0 +1,651 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>LD calculation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ad64850d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css?v=995e94df" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.min.css?v=21c0b90a" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ad64850d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'softwares/02.1LDref';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="molecular QTLs" href="02.2molQTL.html" />
+    <link rel="prev" title="Data management" href="02.0dataManagement.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="2025-05-20"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search across website"
+         aria-label="Search across website"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title"></p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="content-softwares.html">
+    BayesOmics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../fileFormats/content-fileFormats.html">
+    File formats
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../notes/content-notes.html">
+    Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/content-reference.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ShouyeLiu" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="content-softwares.html">
+    BayesOmics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../fileFormats/content-fileFormats.html">
+    File formats
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../notes/content-notes.html">
+    Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/content-reference.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ShouyeLiu" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01.0installation.html">Installation</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="02.0dataManagement.html">Data management</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">LD calculation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.2molQTL.html">molecular QTLs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="04.0IntegrativeAnalysis.html">Integrative analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="04.1Imputation.html">Imputation and adjustment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="05.0dataResource.html">Data Resource</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="05.2LDandMolQTLs.html">LD and molecular QTLs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="06.0questions.html">FAQs</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="content-softwares.html" class="nav-link">BayesOmics</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="02.0dataManagement.html" class="nav-link">Data management</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">LD calculation</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="ld-calculation">
+<h1>LD calculation<a class="headerlink" href="#ld-calculation" title="Link to this heading">#</a></h1>
+<section id="gwas-low-rank-ld-matrix">
+<span id="lowrankldlbslgm"></span><h2>GWAS low-rank LD matrix<a class="headerlink" href="#gwas-low-rank-ld-matrix" title="Link to this heading">#</a></h2>
+<section id="options">
+<h3>Options<a class="headerlink" href="#options" title="Link to this heading">#</a></h3>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-block-info">
+<span class="sig-name descname"><span class="pre">--block-info</span></span><span class="sig-prename descclassname"> <span class="pre">ref4cM_v37.pos</span></span><a class="headerlink" href="#cmdoption-block-info" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Read the minimum width (cM) of a LD block from <a class="reference external" href="https://cnsgenomics.com/software/gctb/download/ref4cM_v37.pos">ref4cM_v37.pos</a>.</div>
+</div>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-make-block-ldm">
+<span class="sig-name descname"><span class="pre">--make-block-ldm</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-make-block-ldm" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Generate full LD matrix for each LD blocks.</div>
+</div>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-ldm">
+<span class="sig-name descname"><span class="pre">--ldm</span></span><span class="sig-prename descclassname"> <span class="pre">ldblockFolder</span></span><a class="headerlink" href="#cmdoption-ldm" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Input folder that contains a serise of binary files for blocks block*.ldm.bin, a text file for genome-wide SNP information snp.info, and a text file for block information ldm.info.</div>
+</div>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-merge-block-ldm-info">
+<span class="sig-name descname"><span class="pre">--merge-block-ldm-info</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-merge-block-ldm-info" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">merge LD matrix info files across blocks</div>
+</div>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-make-ldm-eigen">
+<span class="sig-name descname"><span class="pre">--make-ldm-eigen</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-make-ldm-eigen" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">perform eigen-decomposition for each block one by one and store the result in binary format block*.eigen.bin in folder <strong>ldblockFolder</strong></div>
+</div>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-make-eigen">
+<span class="sig-name descname"><span class="pre">--make-eigen</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-make-eigen" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Generate LD block from genotype file</div>
+</div>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<p><strong>Way 1. Generate low-rank LD matrix from blockwise full LD matrix</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">##Step 1. generate full LD matrices for each LD block</span>
+BayesOmics64<span class="w"> </span>--bfile<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--make-block-ldm
+<span class="w">    </span>--block-info<span class="w"> </span>ref4cMFile<span class="w"> </span>--out<span class="w"> </span>ldblockFolder
+<span class="c1">## Step 2. after all chromosomes/blocks are done,</span>
+<span class="c1">## run the command below to merge info files across blocks</span>
+BayesOmics64<span class="w"> </span>--ldm<span class="w"> </span>ldblockFolder<span class="w"> </span>--merge-block-ldm-info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span>ldblockFolder
+<span class="c1">## Step 3. Do eigen-decomposition for each block one by one,</span>
+<span class="c1">## and store the result in binary format block***.eigen.bin in folder ldm</span>
+BayesOmics64<span class="w"> </span>--ldm<span class="w"> </span>ldblockFolder<span class="w"> </span>--make-ldm-eigen<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--out<span class="w"> </span>ldblockFolder
+</pre></div>
+</div>
+<p>If you want to learn more about way 1 process, go to <a class="reference external" href="https://cnsgenomics.com/software/gctb/#SBayesRCTutorial">SBayesRC tutorial</a> website for details.</p>
+<p><strong>Way 2. Generate low-rank LD matrix from genotype directly</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>BayesOmics64<span class="w"> </span>--bfile<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--make-eigen<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--block-info<span class="w"> </span>ref4cMFile<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+<p>This option will generate three files: a text file that contains ld block information (test.eigen.ldblock.info), a text file that contains SNP information (test.eigen.ldblock.snp.info) and a binary file that contains the full LD matrix data (test.eigen.ldblock.bin).</p>
+</section>
+</section>
+<section id="xqtl-low-rank-ld-matrix">
+<h2>xQTL low-rank LD matrix<a class="headerlink" href="#xqtl-low-rank-ld-matrix" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Options<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>LD martrix for molecular region</p>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-make-eigen-gene">
+<span class="sig-name descname"><span class="pre">--make-eigen-gene</span></span><span class="sig-prename descclassname"> <span class="pre">test_besd</span></span><a class="headerlink" href="#cmdoption-make-eigen-gene" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Compute a low rank LD matrix reference for gene expression from the genotype data provided by –bfile option. This option will generate three files: a text file that contains ld block information (test.eigen.gene.info), a text file that contains SNP information (test.eigen.gene.snp.info) and a binary file that contains the full LD matrix data (test.eigen.gene.bin). The input file is <a class="reference external" href="https://yanglab.westlake.edu.cn/software/smr/#BESDformat">SMR BESD format</a>.</div>
+</div>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-add-gene-n">
+<span class="sig-name descname"><span class="pre">--add-gene-n</span></span><span class="sig-prename descclassname"> <span class="pre">geneSampleSize.txt</span></span><a class="headerlink" href="#cmdoption-add-gene-n" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Manage gene sample size</div>
+</div>
+<p>The content of <strong>**geneSampleSize.txt</strong>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ENSG00000183628<span class="w">       </span><span class="m">10000</span>
+ENSG00000100034<span class="w">       </span><span class="m">10000</span>
+......
+</pre></div>
+</div>
+<p>Columns are gene ensgid id and sample size.</p>
+<p>If you have individual sample size for each gene, you can use <strong>–add-gene-n</strong> flag to add it.
+if per gene sample size is missing, you can also add total sample size to <a class="reference external" href="https://yanglab.westlake.edu.cn/software/smr/#BESDformat">besd format</a> file by using <a class="reference external" href="https://yanglab.westlake.edu.cn/software/smr/#Mangethesamplesize">SMR</a> software, and BayesOmics
+will use total sample size for each gene. If both total and per gene sample size are missing, BayesOmics
+will use estimated gene sample size in the analysis.</p>
+</section>
+<section id="id2">
+<h3>Examples<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>make a low rank LD matrix for gene</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>BayesOmics64<span class="w"> </span>--bfile<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--beqtl-summary<span class="w"> </span>mybesd<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--var-prop<span class="w"> </span><span class="m">0</span>.9995<span class="w"> </span>--make-eigen-gene<span class="w">  </span>test_besd<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+<p>To accelerate this process, we provide an flag <code class="docutils literal notranslate"><span class="pre">--keep-one-gene</span></code> to do LD eigen-decompostion for each gene in parallel and then merge them into corresponding chromosome file.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## genearte low-rank gene LD for given gene</span>
+BayesOmics64<span class="w"> </span>--bfile<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--beqtl-summary<span class="w"> </span>mybesd<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--var-prop<span class="w"> </span><span class="m">0</span>.9995<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--keep-one-gene<span class="w"> </span>geneID<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--make-eigen-gene<span class="w"> </span>--out<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## merge multiple low rank gene LDs based on configure file</span>
+BayesOmics64<span class="w">  </span>--eigen-list<span class="w"> </span>multi_eigen.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--merge-eigen-gene<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>--out<span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-merge-eigen-gene">
+<span class="sig-name descname"><span class="pre">--merge-eigen-gene</span></span><span class="sig-prename descclassname">&#160; <span class="pre">multi_eigen.txt</span></span><a class="headerlink" href="#cmdoption-merge-eigen-gene" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Input multiple low-rank LD matrix for gene in eigen format (See the option –calc-eigen-gene). The root filenames of multiple low-rank LD matrix are given in a file, e.g. multi_eigen.txt</div>
+</div>
+<p>multi_grm.txt (full paths can be specified if the LD matrix files are in different directories)</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>test_chr1
+test_chr2
+test_chr3
+......
+test_chr22
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02.0dataManagement.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data management</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02.2molQTL.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">molecular QTLs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gwas-low-rank-ld-matrix">GWAS low-rank LD matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#options">Options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xqtl-low-rank-ld-matrix">xQTL low-rank LD matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Examples</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+<!-- your html code here -->
+  <!-- <style> -->
+  <!--   /* Sidebar header (and topbar for mobile) */ -->
+  <!--   .wy-side-nav-search, .wy-nav-top { -->
+  <!--     background: #00ff00; -->
+  <!--   } -->
+  <!--   /* Sidebar */ -->
+  <!--   .wy-nav-side { -->
+  <!--     background: #ff0000; -->
+  <!--   } -->
+  <!-- </style> -->
+
+  </body>
+</html>
