@@ -31,8 +31,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ad64850d" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -62,7 +63,7 @@
     <link rel="prev" title="BayesOmics" href="content-softwares.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="2025-05-20"/>
+    <meta name="docbuild:last-update" content="2025-05-23"/>
   </head>
   
   
@@ -402,10 +403,6 @@
                   
   <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
-<!-- BayesOmics is a versatile C++ tool designed for integrative analysis. -->
-<!-- ```{note} -->
-<!-- BayesOmics supports both summary and individual-level analysis. Currently, we have full tested summary-level method. -->
-<!-- ``` -->
 <section id="bayesomics-c">
 <h2>BayesOmics C++<a class="headerlink" href="#bayesomics-c" title="Link to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
@@ -414,7 +411,7 @@
 Executable files</label><div class="sd-tab-content docutils">
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The executable files are released under the <strong>GPL-3.0 License</strong>.<br />
+<p>The executable files are released under the <strong>GPL-3.0 License</strong>.
 Only <strong>Linux</strong> binaries for the <strong>x86_64</strong> architecture are available; users on macOS or Windows can compile the source code manually.</p>
 </div>
 <p>Find the latest x86_64 Linux release on <a class="reference external" href="https://github.com/ShouyeLiu/BayesOmics/releases/latest">GitHub</a>.</p>
@@ -441,28 +438,26 @@ Source codes</label><div class="sd-tab-content docutils">
 </section>
 <section id="sbayesomics-r">
 <h2>SBayesOmics R<a class="headerlink" href="#sbayesomics-r" title="Link to this heading">#</a></h2>
-<p>SBayesOmics is a R pacakge designed for simulation.</p>
+<p>SBayesOmics is an R package designed for simulation.</p>
 <div class="admonition-prerequisites admonition">
 <p class="admonition-title">Prerequisites</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/QuantGen/BGData"><code class="docutils literal notranslate"><span class="pre">BGData</span></code></a></p></li>
-<li><p><a class="reference external" href="https://github.com/Rdatatable/data.table"><code class="docutils literal notranslate"><span class="pre">data.table</span></code></a></p></li>
-<li><p><a class="reference external" href="https://ggplot2.tidyverse.org/"><code class="docutils literal notranslate"><span class="pre">ggplot2</span></code></a></p></li>
-<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/MASS/index.html"><code class="docutils literal notranslate"><span class="pre">MASS</span></code></a></p></li>
-<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/MCMCpack/index.html"><code class="docutils literal notranslate"><span class="pre">MCMCpack</span></code></a></p></li>
-<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/tictoc/index.html"><code class="docutils literal notranslate"><span class="pre">tictoc</span></code></a></p></li>
-<li><p><a class="reference external" href="http://pklab.med.harvard.edu/scw2014/WGCNA.html"><code class="docutils literal notranslate"><span class="pre">WGCNA</span></code></a></p></li>
+<li><p><a class="reference external" href="https://github.com/QuantGen/BGData">BGData</a></p></li>
+<li><p><a class="reference external" href="https://github.com/Rdatatable/data.table">data.table</a></p></li>
+<li><p><a class="reference external" href="https://ggplot2.tidyverse.org/">ggplot2</a></p></li>
+<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/MASS/index.html">MASS</a></p></li>
+<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/MCMCpack/index.html">MCMCpack</a></p></li>
+<li><p><a class="reference external" href="https://cran.r-project.org/web/packages/tictoc/index.html">tictoc</a></p></li>
+<li><p><a class="reference external" href="http://pklab.med.harvard.edu/scw2014/WGCNA.html">WGCNA</a></p></li>
 </ul>
 </div>
-<section id="install-the-development-version-from-github">
-<h3>Install the development version from <a class="reference external" href="https://github.com/ShouyeLiu/SBayesOmics">Github</a><a class="headerlink" href="#install-the-development-version-from-github" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="o">(</span>!require<span class="o">(</span><span class="s2">&quot;devtools&quot;</span>,<span class="w"> </span><span class="nv">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TRUE<span class="o">))</span><span class="w"> </span><span class="o">{</span>
-<span class="w">  </span>install.packages<span class="o">(</span><span class="s2">&quot;devtools&quot;</span><span class="o">)</span>
-<span class="o">}</span>
-devtools::install_github<span class="o">(</span><span class="s2">&quot;ShouyeLiu/SBayesOmics&quot;</span><span class="o">)</span>
+<p>Install the development version from <a class="reference external" href="https://github.com/ShouyeLiu/SBayesOmics">GitHub</a>:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nf">require</span><span class="p">(</span><span class="s">&quot;devtools&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;devtools&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;ShouyeLiu/SBayesOmics&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
 </section>
 <section id="updating-log">
 <h2>Updating log<a class="headerlink" href="#updating-log" title="Link to this heading">#</a></h2>
@@ -520,10 +515,7 @@ devtools::install_github<span class="o">(</span><span class="s2">&quot;ShouyeLiu
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesomics-c">BayesOmics C++</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sbayesomics-r">SBayesOmics R</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-development-version-from-github">Install the development version from Github</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sbayesomics-r">SBayesOmics R</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-log">Updating log</a></li>
 </ul>
   </nav></div>
