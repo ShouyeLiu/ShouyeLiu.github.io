@@ -426,11 +426,14 @@
 <div class="math notranslate nohighlight">
 \[\mathrm{SE}^{(t)} = \sqrt{\frac{n_c}{n_t}} \, \mathrm{SE}^{(c)}\]</div>
 </section>
-<section id="implementation-of-methods-to-adjust-sample-sizes-in-gwas-molqtl-summary">
-<h2>Implementation of methods to adjust sample sizes in GWAS (molQTL) summary<a class="headerlink" href="#implementation-of-methods-to-adjust-sample-sizes-in-gwas-molqtl-summary" title="Link to this heading">#</a></h2>
+<section id="implementation-of-method-to-adjust-sample-sizes-in-gwas-molqtl-summary">
+<h2>Implementation of method to adjust sample sizes in GWAS (molQTL) summary<a class="headerlink" href="#implementation-of-method-to-adjust-sample-sizes-in-gwas-molqtl-summary" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#############################################################</span>
+<span class="c1">### R demo for adjusting sample sizes in GWAS (molQTL) summary</span>
+<span class="c1">#############################################################</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
 <span class="nf">suppressPackageStartupMessages</span><span class="p">({</span>
 <span class="w">  </span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 <span class="w">  </span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
@@ -571,7 +574,7 @@
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-underlying-the-adjustment-of-sample-sizes-in-gwas-molqtl-summary-statistics">Theory underlying the adjustment of sample sizes in GWAS (molQTL) summary statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-of-methods-to-adjust-sample-sizes-in-gwas-molqtl-summary">Implementation of methods to adjust sample sizes in GWAS (molQTL) summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-of-method-to-adjust-sample-sizes-in-gwas-molqtl-summary">Implementation of method to adjust sample sizes in GWAS (molQTL) summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citation">Citation</a></li>
 </ul>
   </nav></div>
