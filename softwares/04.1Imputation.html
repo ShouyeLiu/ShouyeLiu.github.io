@@ -408,8 +408,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="imputation-and-adjustment">
 <h1>Imputation and adjustment<a class="headerlink" href="#imputation-and-adjustment" title="Link to this heading">#</a></h1>
-<section id="adjustment-of-sample-size-of-gwas-molqtl-summary-statistics">
-<h2>Adjustment of sample size of GWAS (molQTL) summary statistics<a class="headerlink" href="#adjustment-of-sample-size-of-gwas-molqtl-summary-statistics" title="Link to this heading">#</a></h2>
+<section id="theory-underlying-the-adjustment-of-sample-sizes-in-gwas-molqtl-summary-statistics">
+<h2>Theory underlying the adjustment of sample sizes in GWAS (molQTL) summary statistics<a class="headerlink" href="#theory-underlying-the-adjustment-of-sample-sizes-in-gwas-molqtl-summary-statistics" title="Link to this heading">#</a></h2>
 <p>For a given gene (or protein), we defined <span class="math notranslate nohighlight">\(b_j^{(c)}\)</span> as the molQTL effect for SNP <span class="math notranslate nohighlight">\(j\)</span> with the current sample size and <span class="math notranslate nohighlight">\(b_j^{(t)}\)</span> as that with the target sample size. Under the assumption of normality and unit phenotypic variance, the joint distribution of <span class="math notranslate nohighlight">\(b_j^{(c)}\)</span> and <span class="math notranslate nohighlight">\(b_j^{(t)}\)</span> can be approximated by a bivariate normal distribution.</p>
 <p>For each gene, given the marginal effect-size vector <span class="math notranslate nohighlight">\(\mathbf{b}^{(c)}\)</span> and LD matrix <span class="math notranslate nohighlight">\(\mathbf{R}\)</span>, the conditional distribution of <span class="math notranslate nohighlight">\(\mathbf{b}^{(t)} \mid \mathbf{b}^{(c)}\)</span> is:</p>
 <div class="math notranslate nohighlight">
@@ -425,6 +425,9 @@
 <p>Equivalently, <span class="math notranslate nohighlight">\(\mathrm{SE}^{(t)}\)</span> can be estimated as:</p>
 <div class="math notranslate nohighlight">
 \[\mathrm{SE}^{(t)} = \sqrt{\frac{n_c}{n_t}} \, \mathrm{SE}^{(c)}\]</div>
+</section>
+<section id="implementation-of-methods-to-adjust-sample-sizes-in-gwas-molqtl-summary">
+<h2>Implementation of methods to adjust sample sizes in GWAS (molQTL) summary<a class="headerlink" href="#implementation-of-methods-to-adjust-sample-sizes-in-gwas-molqtl-summary" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
@@ -515,6 +518,10 @@
 </div>
 </div>
 </section>
+<section id="citation">
+<h2>Citation<a class="headerlink" href="#citation" title="Link to this heading">#</a></h2>
+<p>[1] Shouye Liu, Xiaoyu Qian, Yang Wu, Zhili Zheng, Michael E. Goddard, Jian Yang, Peter M. Visscher, Jian Zeng <strong>Transcriptional and translational genetic control in blood contributes significantly to complex trait heritability and polygenic prediction</strong>. Preprint available on bioRxiv doi:</p>
+</section>
 </section>
 
 
@@ -563,7 +570,9 @@
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjustment-of-sample-size-of-gwas-molqtl-summary-statistics">Adjustment of sample size of GWAS (molQTL) summary statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-underlying-the-adjustment-of-sample-sizes-in-gwas-molqtl-summary-statistics">Theory underlying the adjustment of sample sizes in GWAS (molQTL) summary statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-of-methods-to-adjust-sample-sizes-in-gwas-molqtl-summary">Implementation of methods to adjust sample sizes in GWAS (molQTL) summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citation">Citation</a></li>
 </ul>
   </nav></div>
 
