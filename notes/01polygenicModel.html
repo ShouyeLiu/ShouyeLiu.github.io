@@ -31,9 +31,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ad64850d" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
@@ -61,11 +61,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/01polygenicModel';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reference" href="../reference/content-reference.html" />
+    <link rel="next" title="Technique details" href="02.0TechniqueDetails.html" />
     <link rel="prev" title="Notes" href="content-notes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="2025-05-23"/>
+    <meta name="docbuild:last-update" content="2025-05-27"/>
   </head>
   
   
@@ -332,6 +332,7 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Genetic models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02.0TechniqueDetails.html">Technique details</a></li>
 </ul>
 </div>
 </nav></div>
@@ -393,8 +394,8 @@
 <h1>Genetic models<a class="headerlink" href="#genetic-models" title="Link to this heading">#</a></h1>
 <section id="bayesian-alphabet-framework">
 <h2>Bayesian alphabet framework<a class="headerlink" href="#bayesian-alphabet-framework" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table" id="id2">
-<caption><span class="caption-text"><strong>Summary of Effect Size Distributions for Polygenic Modeling</strong></span><a class="headerlink" href="#id2" title="Link to this table">#</a></caption>
+<div class="pst-scrollable-table-container"><table class="table" id="id3">
+<caption><span class="caption-text"><strong>Summary of Effect Size Distributions for Polygenic Modeling</strong></span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Models</strong></p></th>
 <th class="head"><p><strong>Effect Size Distribution</strong></p></th>
@@ -424,8 +425,8 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0022030212003918">BayesR</a> , <a class="reference external" href="https://www.nature.com/articles/s41467-019-12653-0">SBayesR</a> , <a class="reference external" href="https://www.nature.com/articles/s41588-024-01704-y">SBayesRC</a></p></td>
 <td><div class="math notranslate nohighlight">
-\[\beta_i \sim \pi_1 N(0, \sigma^2_{\alpha}) + \pi_2 N(0, 0.1\sigma^2_{\alpha})
-+ \pi_3 N(0, 0.01\sigma^2_{\alpha}) + (1 -  \sum^{3}_{c = 1} \pi_c) \delta_0\]</div>
+\[\begin{split}\beta_i \sim [\pi_1 N(0, \sigma^2_{\alpha}) + \pi_2 N(0, 0.1\sigma^2_{\alpha}) \\
++ \pi_3 N(0, 0.01\sigma^2_{\alpha}) + (1 -  \sum^{3}_{c = 1} \pi_c) \delta_0]\end{split}\]</div>
 </td>
 <td><p>Point-Normal Mixture</p></td>
 </tr>
@@ -444,48 +445,6 @@
 <tr class="row-odd"><td><p><a class="reference external" href="https://www.nature.com/articles/s41588-018-0101-4">SBayesS</a></p></td>
 <td><p><span class="math notranslate nohighlight">\(\beta_i \sim \pi N(0,[1p_j(1-p_j)]^S \sigma^2_{\beta}) + \phi(1 - \pi)\)</span></p></td>
 <td><p>Normal Mixture</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="pst-scrollable-table-container"><table class="table" id="id3">
-<caption><span class="caption-text"><strong>Bayesian Polygenic Models and Their Inference Methods</strong></span><a class="headerlink" href="#id3" title="Link to this table">#</a></caption>
-<colgroup>
-<col style="width: 30.0%" />
-<col style="width: 70.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>Models</strong></p></th>
-<th class="head"><p><strong>Inference</strong></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>BayesA</p></td>
-<td><p>Gibbs sampling with Student-t prior on SNP effects. Variance components sampled via inverse-gamma.</p></td>
-</tr>
-<tr class="row-odd"><td><p>BayesB</p></td>
-<td><p>Gibbs sampling with a mixture prior (point mass at zero + Student-t). Requires latent variable updates.</p></td>
-</tr>
-<tr class="row-even"><td><p>BayesC</p></td>
-<td><p>Gibbs sampling with a mixture prior (point mass at zero + Normal). SNP effects and variance components are sampled iteratively.</p></td>
-</tr>
-<tr class="row-odd"><td><p>BayesCπ</p></td>
-<td><p>Similar to BayesC, but includes estimation of π (the proportion of nonzero SNPs) within the Gibbs sampling framework.</p></td>
-</tr>
-<tr class="row-even"><td><p>BayesR</p></td>
-<td><p>Gibbs sampling with a multi-component normal mixture prior (e.g., strong, moderate, weak effects + zero).</p></td>
-</tr>
-<tr class="row-odd"><td><p>Bayesian Lasso</p></td>
-<td><p>Uses Gibbs sampling with an auxiliary variable formulation for the Laplace prior.</p></td>
-</tr>
-<tr class="row-even"><td><p>NEG (Normal-Exponential-Gamma)</p></td>
-<td><p>Hierarchical shrinkage prior estimated via Gibbs sampling.</p></td>
-</tr>
-<tr class="row-odd"><td><p>BSLMM (Bayesian Sparse Linear Mixed Model)</p></td>
-<td><p>Uses a mix of Gibbs sampling and variational inference, depending on implementation.</p></td>
-</tr>
-<tr class="row-even"><td><p>LMM (Linear Mixed Model)</p></td>
-<td><p>Typically solved using REML (Restricted Maximum Likelihood) or Expectation-Maximization (EM), not Gibbs.</p></td>
 </tr>
 </tbody>
 </table>
@@ -545,6 +504,10 @@
 <td><p><span class="math notranslate nohighlight">\(\mathbb{E}[h_j^2] \sim [f_j(1 - f_j)]^{1 + \alpha} \times w_j \times r_j\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\beta_j \sim \mathcal{N}\left(0, r_j w_j \frac{\sigma_g^2}{W} \right) \quad W = \sum_j r_j w_j \left[ 2 f_j (1 - f_j) \right]^{1 + \alpha}\)</span></p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.nature.com/articles/s41588-018-0101-4">SBayesS</a></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_i \sim \pi N(0,[1p_j(1-p_j)]^S \sigma^2_{\beta}) + \phi(1 - \pi)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\beta_j = \delta_j \cdot \mathcal{N}\left(0, (2p_j q_j)^s \sigma_\beta^2\right) \quad \delta_j \sim \mathrm{Bernoulli}(\pi)\)</span></p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -571,11 +534,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../reference/content-reference.html"
+       href="02.0TechniqueDetails.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Reference</p>
+        <p class="prev-next-title">Technique details</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>LD calculation</title>
+    <title>Mediated heritability estimation</title>
   
   
   
@@ -56,11 +56,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'softwares/02.1LDref';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'softwares/04.3MediatedHeritability';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="molecular QTLs" href="02.2molQTL.html" />
-    <link rel="prev" title="Data management" href="02.0dataManagement.html" />
+    <link rel="next" title="Data Resource" href="05.0dataResource.html" />
+    <link rel="prev" title="Polygenic prediction" href="04.2PolygenicPrediction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
     <meta name="docbuild:last-update" content="2025-05-27"/>
@@ -330,15 +330,15 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01.0installation.html">Installation</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="02.0dataManagement.html">Data management</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">LD calculation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02.0dataManagement.html">Data management</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.1LDref.html">LD calculation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02.2molQTL.html">molecular QTLs</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="04.0IntegrativeAnalysis.html">Integrative analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="04.0IntegrativeAnalysis.html">Integrative analysis</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="04.1Imputation.html">Imputation and adjustment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04.2PolygenicPrediction.html">Polygenic prediction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04.3MediatedHeritability.html">Mediated heritability estimation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mediated heritability estimation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="05.0dataResource.html">Data Resource</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -387,9 +387,9 @@
     <li class="breadcrumb-item"><a href="content-softwares.html" class="nav-link">BayesOmics</a></li>
     
     
-    <li class="breadcrumb-item"><a href="02.0dataManagement.html" class="nav-link">Data management</a></li>
+    <li class="breadcrumb-item"><a href="04.0IntegrativeAnalysis.html" class="nav-link">Integrative analysis</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">LD calculation</li>
+    <li class="breadcrumb-item active" aria-current="page">Mediated...</li>
   </ul>
 </nav>
 </div>
@@ -406,160 +406,148 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="ld-calculation">
-<h1>LD calculation<a class="headerlink" href="#ld-calculation" title="Link to this heading">#</a></h1>
-<section id="gwas-low-rank-ld-matrix">
-<span id="lowrankldlbslgm"></span><h2>GWAS low-rank LD matrix<a class="headerlink" href="#gwas-low-rank-ld-matrix" title="Link to this heading">#</a></h2>
+  <section id="mediated-heritability-estimation">
+<h1>Mediated heritability estimation<a class="headerlink" href="#mediated-heritability-estimation" title="Link to this heading">#</a></h1>
+<style>
+  .zoom-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto;
+  }
+
+  .zoom-box img {
+    width: 1000px;
+    transition: transform 0.3s ease;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  ..
+     .zoom-box img:hover {
+       transform: scale(1.5);
+       z-index: 10;
+     }
+
+</style>
+
+<div class="zoom-box">
+  <span style="font-size: 16px; font-weight: 500; margin-bottom: 10px;">
+    Schematic overview of SBayesC(R)O-AIAO
+  </span>
+  <img src="../_static/_images/20250525-bayesian-bivariate-aiao-model.png" alt="Bayesian model integrating GWAS and molecular phenotype data" />
+</div><section id="summary-level-aiao-model">
+<h2>Summary-level AIAO model<a class="headerlink" href="#summary-level-aiao-model" title="Link to this heading">#</a></h2>
 <section id="options">
 <h3>Options<a class="headerlink" href="#options" title="Link to this heading">#</a></h3>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-block-info">
-<span class="sig-name descname"><span class="pre">--block-info</span></span><span class="sig-prename descclassname"> <span class="pre">param-ref4cM_v37.pos</span></span><a class="headerlink" href="#cmdoption-block-info" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-sbayes">
+<span class="sig-name descname"><span class="pre">--sbayes</span></span><span class="sig-prename descclassname"> <span class="pre">CO</span></span><a class="headerlink" href="#cmdoption-sbayes" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <div class="line-block">
-<div class="line">Read the minimum width (cM) of a LD block from <a class="reference external" href="https://github.com/ShouyeLiu/BayesOmics/blob/main/samples/pseudo/data/genotype/param-ref4cM_v37.pos">param-ref4cM_v37.pos</a>.</div>
+<div class="line">Bayesian model used for parameter estimation.</div>
 </div>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-make-block-ldm">
-<span class="sig-name descname"><span class="pre">--make-block-ldm</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-make-block-ldm" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-mcmc-type">
+<span class="sig-name descname"><span class="pre">--mcmc-type</span></span><span class="sig-prename descclassname"> <span class="pre">eieo</span></span><a class="headerlink" href="#cmdoption-mcmc-type" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <div class="line-block">
-<div class="line">Generate full LD matrix for each LD blocks.</div>
+<div class="line">Algorithm used for parameter estimation.</div>
 </div>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-ldm">
-<span class="sig-name descname"><span class="pre">--ldm</span></span><span class="sig-prename descclassname"> <span class="pre">ldblockFolder</span></span><a class="headerlink" href="#cmdoption-ldm" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-ldm-eigen">
+<span class="sig-name descname"><span class="pre">--ldm-eigen</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ldm-eigen" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <div class="line-block">
-<div class="line">Input folder that contains a serise of binary files for blocks block*.ldm.bin, a text file for genome-wide SNP information snp.info, and a text file for block information ldm.info.</div>
+<div class="line">GWAS LD low-rank matrix, see <a class="reference external" href="https://cnsgenomics.com/software/gctb/#SBayesRCTutorial">GCTB</a> for detail.</div>
 </div>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-merge-block-ldm-info">
-<span class="sig-name descname"><span class="pre">--merge-block-ldm-info</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-merge-block-ldm-info" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-ldm-eigen-gene">
+<span class="sig-name descname"><span class="pre">--ldm-eigen-gene</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ldm-eigen-gene" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <div class="line-block">
-<div class="line">merge LD matrix info files across blocks</div>
+<div class="line">xQTL LD low-rank matrix.</div>
 </div>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-make-ldm-eigen">
-<span class="sig-name descname"><span class="pre">--make-ldm-eigen</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-make-ldm-eigen" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-beqtl-summary">
+<span class="sig-name descname"><span class="pre">--beqtl-summary</span></span><span class="sig-prename descclassname"> <span class="pre">eqtlSummaryFile</span></span><a class="headerlink" href="#cmdoption-beqtl-summary" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <div class="line-block">
-<div class="line">perform eigen-decomposition for each block one by one and store the result in binary format block*.eigen.bin in folder <strong>ldblockFolder</strong></div>
-</div>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-make-eigen">
-<span class="sig-name descname"><span class="pre">--make-eigen</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-make-eigen" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<div class="line-block">
-<div class="line">Generate LD block from genotype file</div>
-</div>
-</section>
-<section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
-<p><strong>Way 1. Generate low-rank LD matrix from blockwise full LD matrix</strong></p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">##Step 1. generate full LD matrices for each LD block</span>
-BayesOmics64<span class="w"> </span>--bfile<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--make-block-ldm
-<span class="w">    </span>--block-info<span class="w"> </span>ref4cMFile<span class="w"> </span>--out<span class="w"> </span>ldblockFolder
-<span class="c1">## Step 2. after all chromosomes/blocks are done,</span>
-<span class="c1">## run the command below to merge info files across blocks</span>
-BayesOmics64<span class="w"> </span>--ldm<span class="w"> </span>ldblockFolder<span class="w"> </span>--merge-block-ldm-info<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--out<span class="w"> </span>ldblockFolder
-<span class="c1">## Step 3. Do eigen-decomposition for each block one by one,</span>
-<span class="c1">## and store the result in binary format block***.eigen.bin in folder ldm</span>
-BayesOmics64<span class="w"> </span>--ldm<span class="w"> </span>ldblockFolder<span class="w"> </span>--make-ldm-eigen<span class="w"> </span><span class="se">\</span>
-<span class="w">     </span>--out<span class="w"> </span>ldblockFolder
-</pre></div>
-</div>
-<p>If you want to learn more about way 1 process, go to <a class="reference external" href="https://cnsgenomics.com/software/gctb/#SBayesRCTutorial">SBayesRC tutorial</a> website for details.</p>
-<p><strong>Way 2. Generate low-rank LD matrix from genotype directly</strong></p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>BayesOmics64<span class="w"> </span>--bfile<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--make-eigen<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--block-info<span class="w"> </span>ref4cMFile<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--out<span class="w"> </span><span class="nb">test</span>
-</pre></div>
-</div>
-<p>This option will generate three files: a text file that contains ld block information (test.eigen.ldblock.info), a text file that contains SNP information (test.eigen.ldblock.snp.info) and a binary file that contains the full LD matrix data (test.eigen.ldblock.bin).</p>
-</section>
-</section>
-<section id="xqtl-low-rank-ld-matrix">
-<h2>xQTL low-rank LD matrix<a class="headerlink" href="#xqtl-low-rank-ld-matrix" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>Options<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>LD martrix for molecular region</p>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-make-eigen-gene">
-<span class="sig-name descname"><span class="pre">--make-eigen-gene</span></span><span class="sig-prename descclassname"> <span class="pre">test_besd</span></span><a class="headerlink" href="#cmdoption-make-eigen-gene" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<div class="line-block">
-<div class="line">Compute a low rank LD matrix reference for gene expression from the genotype data provided by –bfile option. This option will generate three files: a text file that contains ld block information (test.eigen.gene.info), a text file that contains SNP information (test.eigen.gene.snp.info) and a binary file that contains the full LD matrix data (test.eigen.gene.bin). The input file is <a class="reference external" href="https://yanglab.westlake.edu.cn/software/smr/#BESDformat">SMR BESD format</a>.</div>
+<div class="line">A common used format for molecular summary statistics, see <a class="reference internal" href="../fileFormats/content-fileFormats.html#besd"><span class="std std-ref">.besd</span></a> for details.</div>
 </div>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-add-gene-n">
-<span class="sig-name descname"><span class="pre">--add-gene-n</span></span><span class="sig-prename descclassname"> <span class="pre">geneSampleSize.txt</span></span><a class="headerlink" href="#cmdoption-add-gene-n" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">--add-gene-n</span></span><span class="sig-prename descclassname"> <span class="pre">gsamFile</span></span><a class="headerlink" href="#cmdoption-add-gene-n" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <div class="line-block">
-<div class="line">Manage gene sample size</div>
-</div>
-<p>The content of <strong>**geneSampleSize.txt</strong>:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ENSG00000183628<span class="w">       </span><span class="m">10000</span>
-ENSG00000100034<span class="w">       </span><span class="m">10000</span>
-......
-</pre></div>
-</div>
-<p>Columns are gene ensgid id and sample size.</p>
-<p>If you have individual sample size for each gene, you can use <strong>–add-gene-n</strong> flag to add it.
-if per gene sample size is missing, you can also add total sample size to <a class="reference external" href="https://yanglab.westlake.edu.cn/software/smr/#BESDformat">besd format</a> file by using <a class="reference external" href="https://yanglab.westlake.edu.cn/software/smr/#Mangethesamplesize">SMR</a> software, and BayesOmics
-will use total sample size for each gene. If both total and per gene sample size are missing, BayesOmics
-will use estimated gene sample size in the analysis.</p>
-</section>
-<section id="id2">
-<h3>Examples<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>make a low rank LD matrix for gene</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>BayesOmics64<span class="w"> </span>--bfile<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--beqtl-summary<span class="w"> </span>mybesd<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--var-prop<span class="w"> </span><span class="m">0</span>.9995<span class="w"> </span>--make-eigen-gene<span class="w">  </span>test_besd<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--out<span class="w"> </span><span class="nb">test</span>
-</pre></div>
-</div>
-<p>To accelerate this process, we provide an flag <code class="docutils literal notranslate"><span class="pre">--keep-one-gene</span></code> to do LD eigen-decompostion for each gene in parallel and then merge them into corresponding chromosome file.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## genearte low-rank gene LD for given gene</span>
-BayesOmics64<span class="w"> </span>--bfile<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--beqtl-summary<span class="w"> </span>mybesd<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--var-prop<span class="w"> </span><span class="m">0</span>.9995<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--keep-one-gene<span class="w"> </span>geneID<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--make-eigen-gene<span class="w"> </span>--out<span class="w"> </span><span class="nb">test</span>
-</pre></div>
-</div>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## merge multiple low rank gene LDs based on configure file</span>
-BayesOmics64<span class="w">  </span>--eigen-list<span class="w"> </span>multi_eigen.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--merge-eigen-gene<span class="w"> </span><span class="se">\</span>
-<span class="w">     </span>--out<span class="w"> </span><span class="nb">test</span>
-</pre></div>
+<div class="line">Store the sample sizes for each gene or each gene-SNP pair, see <a class="reference internal" href="../fileFormats/content-fileFormats.html#gsam"><span class="std std-ref">.gsam</span></a> for details.</div>
 </div>
 <dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-merge-eigen-gene">
-<span class="sig-name descname"><span class="pre">--merge-eigen-gene</span></span><span class="sig-prename descclassname">&#160; <span class="pre">multi_eigen.txt</span></span><a class="headerlink" href="#cmdoption-merge-eigen-gene" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object std" id="cmdoption-beqtl-summary-gz">
+<span class="sig-name descname"><span class="pre">--beqtl-summary-gz</span></span><span class="sig-prename descclassname"> <span class="pre">eqtlSummaryGZFile</span></span><a class="headerlink" href="#cmdoption-beqtl-summary-gz" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <div class="line-block">
-<div class="line">Input multiple low-rank LD matrix for gene in eigen format (See the option –calc-eigen-gene). The root filenames of multiple low-rank LD matrix are given in a file, e.g. multi_eigen.txt</div>
+<div class="line">Another more easy-used format for molecular summary statistics, see <a class="reference internal" href="../fileFormats/content-fileFormats.html#query-gz"><span class="std std-ref">.query.gz</span></a> for details.</div>
 </div>
-<p>multi_grm.txt (full paths can be specified if the LD matrix files are in different directories)</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>test_chr1
-test_chr2
-test_chr3
-......
-test_chr22
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-gwas-summary">
+<span class="sig-name descname"><span class="pre">--gwas-summary</span></span><span class="sig-prename descclassname"> <span class="pre">gwasFile</span></span><a class="headerlink" href="#cmdoption-gwas-summary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">COJO format GWAS summary statistics</div>
+</div>
+</section>
+<section id="command">
+<h3>Command<a class="headerlink" href="#command" title="Link to this heading">#</a></h3>
+<pre class="literal-block">BayesOmics64  --sbayes CO \
+  --mcmc-type eieo \
+  --ldm-eigen  ldmEigenFolder  \
+  --ldm-eigen-gene  ldmEigenGeneFile  \
+  --beqtl-summary-gz eqtlSummaryGZFile \ # or use --beqtl-summary eqtlSummaryFile
+  --gwas-summary  gwasFile   \
+  --out outFile</pre>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">### downlaod dataset</span>
+git<span class="w"> </span>clone<span class="w"> </span>git@github.com:ShouyeLiu/BayesOmics.git
+<span class="c1">## find data in the Cau folder: BayesOmics/samples/pseudo/data/Cau/summary/</span>
+<span class="nv">sumPath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1"># cauFolder path</span>
+<span class="nv">summaryFile</span><span class="o">=</span><span class="s2">&quot;pseudo-1kg-chr22-cau-h2snp0.4-h2med-0.4-h2cis-0.6-model&quot;</span>
+<span class="nv">outFile</span><span class="o">=</span><span class="s2">&quot;res-&quot;</span><span class="si">${</span><span class="nv">summaryFile</span><span class="si">}</span><span class="w"> </span><span class="c1">## outFilePath</span>
+<span class="c1">### downlaod binary tool</span>
+<span class="nb">cd</span><span class="w"> </span>MainPath<span class="w"> </span><span class="c1">## your main Path</span>
+wget<span class="w"> </span>https://github.com/ShouyeLiu/BayesOmics/releases/latest/download/BayesOmics64-static
+chmod<span class="w"> </span><span class="m">751</span><span class="w"> </span>BayesOmics64-static
+
+<span class="w"> </span>BayesOmics64-static<span class="w">  </span>--sbayes<span class="w"> </span>CO<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--ldm-eigen<span class="w"> </span><span class="si">${</span><span class="nv">sumPath</span><span class="si">}</span>/<span class="si">${</span><span class="nv">summaryFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--gwas-summary<span class="w"> </span><span class="si">${</span><span class="nv">sumPath</span><span class="si">}</span>/<span class="si">${</span><span class="nv">summaryFile</span><span class="si">}</span>.ma<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--ldm-eigen-gene<span class="w"> </span><span class="si">${</span><span class="nv">sumPath</span><span class="si">}</span>/<span class="si">${</span><span class="nv">summaryFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--beqtl-summary<span class="w">  </span><span class="si">${</span><span class="nv">sumPath</span><span class="si">}</span>/<span class="si">${</span><span class="nv">summaryFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--hsq<span class="w"> </span><span class="m">0</span>.1<span class="w">  </span><span class="se">\</span>
+<span class="w">   </span>--hsq-cis<span class="w"> </span><span class="m">0</span>.1<span class="w">  </span><span class="se">\</span>
+<span class="w">   </span>--mcmc-type<span class="w"> </span>aiao<span class="w">  </span><span class="se">\</span>
+<span class="w">   </span>--chain-length<span class="w"> </span><span class="m">5000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--burn-in<span class="w"> </span><span class="m">1800</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--seed<span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="se">\</span>
+<span class="w">   </span>--out-freq<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--out<span class="w">  </span>outFile
 </pre></div>
 </div>
 </section>
+</section>
+<section id="citations">
+<h2>Citations<a class="headerlink" href="#citations" title="Link to this heading">#</a></h2>
+<p>[1] Shouye Liu, Zhili Zheng, Julia Sidorenko, Jian Yang, Peter Visscher and Jian Zeng. A novel Bayesian integrative multivariate mixed model increases power for mediated heritability estimation. In preparation. Preprint available on bioRxiv doi:</p>
 </section>
 </section>
 
@@ -574,20 +562,20 @@ test_chr22
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="02.0dataManagement.html"
+       href="04.2PolygenicPrediction.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data management</p>
+        <p class="prev-next-title">Polygenic prediction</p>
       </div>
     </a>
     <a class="right-next"
-       href="02.2molQTL.html"
+       href="05.0dataResource.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">molecular QTLs</p>
+        <p class="prev-next-title">Data Resource</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -609,16 +597,13 @@ test_chr22
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gwas-low-rank-ld-matrix">GWAS low-rank LD matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-level-aiao-model">Summary-level AIAO model</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#options">Options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#command">Command</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xqtl-low-rank-ld-matrix">xQTL low-rank LD matrix</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Options</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Examples</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">Citations</a></li>
 </ul>
   </nav></div>
 

@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Public available genotypes</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ad64850d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css?v=995e94df" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.min.css?v=21c0b90a" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ad64850d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'softwares/05.1genoPubAvail';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="2025-05-27"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search across website"
+         aria-label="Search across website"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title"></p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="content-softwares.html">
+    BayesOmics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../fileFormats/content-fileFormats.html">
+    File formats
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../notes/content-notes.html">
+    Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/content-reference.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ShouyeLiu" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="content-softwares.html">
+    BayesOmics
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../fileFormats/content-fileFormats.html">
+    File formats
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../notes/content-notes.html">
+    Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/content-reference.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ShouyeLiu" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Public...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="public-available-genotypes">
+<h1>Public available genotypes<a class="headerlink" href="#public-available-genotypes" title="Link to this heading">#</a></h1>
+<section id="g-project">
+<h2>1000G project<a class="headerlink" href="#g-project" title="Link to this heading">#</a></h2>
+<section id="quality-control-of-genotypes">
+<h3>Quality control of genotypes<a class="headerlink" href="#quality-control-of-genotypes" title="Link to this heading">#</a></h3>
+<p>We use QC’ed genotypes from 1000G project and quality control process comes from <a class="reference external" href="https://dougspeed.com/reference-panel/">Doug Speed’s pipeline</a>. Here are modified scripts I used:</p>
+<p><strong>Set softwares and home path</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">plink19</span><span class="o">=</span><span class="s2">&quot;/home/uqsliu28//softwares/plink/plink19&quot;</span>
+<span class="nv">plink2</span><span class="o">=</span><span class="s2">&quot;/home/uqsliu28//softwares/plink/plink2&quot;</span>
+
+<span class="nv">datPath</span><span class="o">=</span><span class="s2">&quot;/home/uqsliu28/projects/datasets/1000g/&quot;</span>
+<span class="nv">datRaw</span><span class="o">=</span><span class="s2">&quot;/home/uqsliu28/projects/datasets/1000g/raw/&quot;</span>
+<span class="nv">datEur</span><span class="o">=</span><span class="s2">&quot;/home/uqsliu28/projects/datasets/1000g/eur&quot;</span>
+<span class="c1">## Use PLINK2 to decompress the pgen and pvar files</span>
+</pre></div>
+</div>
+<p><strong>Download raw files</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>wget<span class="w">  </span>https://www.dropbox.com/s/y6ytfoybz48dc0u/all_phase3.pgen.zst<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>
+wget<span class="w">  </span>https://www.dropbox.com/s/odlexvo8fummcvt/all_phase3.pvar.zst<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>
+wget<span class="w">  </span>https://www.dropbox.com/s/6ppo144ikdzery5/phase3_corrected.psam<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>
+</pre></div>
+</div>
+<p><strong>Use PLINK2 to decompress the pgen and pvar files</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">plink2</span><span class="si">}</span><span class="w"> </span>--zst-decompress<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/all_phase3.pgen.zst<span class="w"> </span>&gt;<span class="w">  </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/all_phase3.pgen
+<span class="si">${</span><span class="nv">plink2</span><span class="si">}</span><span class="w"> </span>--zst-decompress<span class="w">  </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/all_phase3.pvar.zst<span class="w"> </span>&gt;<span class="w">  </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/all_phase3.pvar
+</pre></div>
+</div>
+<p><strong>Identify non-Finnish Europeans</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>awk<span class="w"> </span>&lt;<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/phase3_corrected.psam<span class="w"> </span><span class="s1">&#39;($5==&quot;EUR&quot; &amp;&amp; $6!=&quot;FIN&quot;){print 0, $1}&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/eur.keep
+</pre></div>
+</div>
+<p><strong>Select SNP subsets</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## Use PLINK2 to convert to binary PLINK format, restricting to autsomal SNPs with MAF&gt;0.01 (and excluding duplicates and SNPs with name &quot;.&quot;)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/exclude.snps
+<span class="si">${</span><span class="nv">plink2</span><span class="si">}</span><span class="w"> </span>--make-bed<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/raw<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--pgen<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/all_phase3.pgen<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--pvar<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/all_phase3.pvar<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--psam<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/phase3_corrected.psam<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--maf<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--autosome<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--snps-only<span class="w"> </span>just-acgt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--max-alleles<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--rm-dup<span class="w"> </span>exclude-all<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--exclude<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/exclude.snps
+</pre></div>
+</div>
+<p><a href="#id1"><span class="problematic" id="id2">|</span></a>The genotype data will now be stored in binary PLINK format in the files raw.bed, raw.bim and raw.fam. The following commands insert population information and sex into the fam file and replace predictor names with generic names of the form Chr:BP (the latter is not required, but I find this format more convenient). They also save the original names.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>awk<span class="w"> </span><span class="s1">&#39;(NR==FNR){arr[$1]=$5&quot;_&quot;$6;ars[$1]=$4;next}{$1=$2;$2=arr[$1];$5=ars[$1];print $0}&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/phase3_corrected.psam<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/raw.fam<span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/clean.fam
+<span class="c1"># awk &lt; ${datRaw}/raw.bim &#39;{$2=$1&quot;:&quot;$4;print $0}&#39; &gt; ${datRaw}/clean.bim</span>
+<span class="c1"># awk &lt; ${datRaw}/raw.bim &#39;{print $1&quot;:&quot;$4, $2}&#39; &gt; ${datRaw}/ref.names</span>
+cp<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/raw.bim<span class="w">   </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/clean.bim
+cp<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/raw.bed<span class="w">   </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/clean.bed
+</pre></div>
+</div>
+<p><strong>Download genetic distances, then insert these using PLINK1.9</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://www.dropbox.com/s/slchsd0uyd4hii8/genetic_map_b37.zip<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>
+unzip<span class="w"> </span>genetic_map_b37.zip
+
+<span class="si">${</span><span class="nv">plink19</span><span class="si">}</span><span class="w"> </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/clean<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cm-map<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/genetic_map_b37/genetic_map_chr@_combined_b37.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--make-bed<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--maf<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--geno<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--hwe<span class="w"> </span>1e-6<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">datEur</span><span class="si">}</span>/1kg-p3-maf01-geno01-hwe1e-6
+</pre></div>
+</div>
+<p><strong>split whole chrom into single chromosome</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>chr<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..22<span class="o">}</span>
+<span class="k">do</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">plink19</span><span class="si">}</span><span class="w"> </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/clean<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--cm-map<span class="w"> </span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/genetic_map_b37/genetic_map_chr@_combined_b37.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--make-bed<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--maf<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--geno<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--hwe<span class="w"> </span>1e-6<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--chr<span class="w"> </span><span class="si">${</span><span class="nv">chr</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">datEur</span><span class="si">}</span>/ch<span class="si">${</span><span class="nv">chr</span><span class="si">}</span>-1kg-p3-maf01-geno01-hwe1e-6
+<span class="k">done</span>
+</pre></div>
+</div>
+<p><strong>Extract snps based on HapMap3 snplist</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">snplist</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span><span class="s2">/hapmap3.snplist&quot;</span>
+<span class="nv">hapmap3File</span><span class="o">=</span><span class="si">${</span><span class="nv">datRaw</span><span class="si">}</span>/hapmap3.snps
+<span class="nv">snplist</span><span class="o">=</span><span class="si">${</span><span class="nv">datHm3</span><span class="si">}</span>/hapmap3.snplist
+
+wget<span class="w">  </span>https://www.dropbox.com/s/xabjdu6squ6u56r/hapmap3.snps<span class="w"> </span>-O<span class="w"> </span><span class="si">${</span><span class="nv">hapmap3File</span><span class="si">}</span>
+awk<span class="w"> </span>-F<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w">  </span><span class="si">${</span><span class="nv">hapmap3File</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">snplist</span><span class="si">}</span>
+
+<span class="si">${</span><span class="nv">plink19</span><span class="si">}</span><span class="w"> </span>--bfile<span class="w">  </span><span class="si">${</span><span class="nv">datEur</span><span class="si">}</span>/1kg-p3-maf01-geno01-hwe1e-6<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--extract<span class="w"> </span><span class="si">${</span><span class="nv">snplist</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--make-bed<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--maf<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--geno<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--hwe<span class="w"> </span>1e-6<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">datHm3</span><span class="si">}</span>/hm3-1kg-p3-maf01-geno01-hwe1e-6
+<span class="c1">## split whole chrom into single chromosome</span>
+
+<span class="k">for</span><span class="w"> </span>chr<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..22<span class="o">}</span>
+<span class="k">do</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">plink19</span><span class="si">}</span><span class="w"> </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">datEur</span><span class="si">}</span>/ch<span class="si">${</span><span class="nv">chr</span><span class="si">}</span>-1kg-p3-maf01-geno01-hwe1e-6<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--extract<span class="w"> </span><span class="si">${</span><span class="nv">snplist</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--make-bed<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--maf<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--geno<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--hwe<span class="w"> </span>1e-6<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--chr<span class="w"> </span><span class="si">${</span><span class="nv">chr</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">datHm3</span><span class="si">}</span>/ch<span class="si">${</span><span class="nv">chr</span><span class="si">}</span>-hm3-1kg-p3-maf01-geno01-hwe1e-6
+<span class="k">done</span>
+</pre></div>
+</div>
+</section>
+<section id="construct-maps-to-link-ld-block-and-snps-and-link-gene-to-snps">
+<h3>Construct maps to link LD block and snps and link gene to snps.<a class="headerlink" href="#construct-maps-to-link-ld-block-and-snps-and-link-gene-to-snps" title="Link to this heading">#</a></h3>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
+<span class="w">  </span><span class="n">datPathInPack</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">system.file</span><span class="p">(</span><span class="s">&quot;extdata&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SBayesOmics&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="n">datPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;~/personal/R/BayesOmics/inst/extdata/1kgchr22/&quot;</span><span class="w">  </span><span class="c1">## your path to store plink format genotype files</span>
+<span class="w">  </span><span class="n">datPathInPack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outPath</span>
+
+<span class="w">  </span><span class="n">trainBfilePrefix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;ch22-hm3-1kg-p3-maf01-geno01-hwe1e-6&quot;</span><span class="w"> </span><span class="c1">### param 1</span>
+<span class="w">  </span><span class="n">genelistPrefix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;param-chr22-glist_ensgid_hg19_v40.txt&quot;</span><span class="w"> </span><span class="c1">### param 2</span>
+<span class="w">  </span><span class="n">ldlistPrefix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;chr22-ldblock-fourier-4cM.txt&quot;</span><span class="w"> </span><span class="c1">### param 3</span>
+<span class="w">  </span><span class="n">trainBfile</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">datPathInPack</span><span class="p">,</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="n">trainBfilePrefix</span><span class="p">)</span>
+<span class="w">  </span><span class="n">trainBimfilePrefix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">datPathInPack</span><span class="p">,</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="n">trainBfilePrefix</span><span class="p">,</span><span class="s">&quot;.bim&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="n">genelistFile</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">datPathInPack</span><span class="p">,</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="n">genelistPrefix</span><span class="p">)</span>
+
+<span class="w">  </span><span class="n">cutBlock</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;sub-1-block-&quot;</span>
+<span class="w">  </span><span class="n">cutBlock</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;sub-3-block-&quot;</span>
+<span class="w">  </span><span class="n">cutBlock</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;sub-all-block-&quot;</span>
+
+<span class="w">  </span><span class="n">ldlistFile</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">datPathInPack</span><span class="p">,</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="s">&quot;param-&quot;</span><span class="p">,</span><span class="n">cutBlock</span><span class="p">,</span><span class="n">ldlistPrefix</span><span class="p">)</span>
+<span class="w">  </span><span class="n">ld2SnpMapFile</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">cutBlock</span><span class="p">,</span><span class="s">&quot;chr22-ld-2-snp-map.rds&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">## generated</span>
+<span class="w">  </span><span class="n">WithoutLDAllSNP2GeneFile</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">cutBlock</span><span class="p">,</span><span class="s">&quot;chr22-snp-2-gene-map.rds&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">## generated</span>
+
+<span class="c1">########################################</span>
+<span class="c1">## 2.2 link snplist to ld block</span>
+<span class="c1">########################################</span>
+
+<span class="kr">if</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">){</span>
+<span class="n">bim</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="n">trainBimfilePrefix</span><span class="p">,</span><span class="n">data.table</span><span class="o">=</span><span class="bp">F</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">bim</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;SNPCHR&quot;</span><span class="p">,</span><span class="s">&quot;SNP&quot;</span><span class="p">,</span><span class="s">&quot;CM&quot;</span><span class="p">,</span><span class="s">&quot;POS&quot;</span><span class="p">,</span><span class="s">&quot;A1&quot;</span><span class="p">,</span><span class="s">&quot;A2&quot;</span><span class="p">)</span>
+<span class="n">ldlist</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="n">ldlistFile</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">ldlist</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;LDCHR&quot;</span><span class="p">,</span><span class="s">&quot;LDSTART&quot;</span><span class="p">,</span><span class="s">&quot;LDEND&quot;</span><span class="p">,</span><span class="s">&quot;LDBLOCK&quot;</span><span class="p">)</span>
+<span class="n">ldSnpMap</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ldlist</span>
+<span class="n">ldSnpMap</span><span class="o">$</span><span class="n">SNP</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
+<span class="n">ldSnpMap</span><span class="o">$</span><span class="n">SNPPOS</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
+
+<span class="c1">## annotation:</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Begin to annotate&quot;</span><span class="p">)</span>
+<span class="n">snplist</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">unique</span><span class="p">(</span><span class="n">bim</span><span class="o">$</span><span class="n">SNP</span><span class="p">)</span>
+<span class="n">tmpLdSnpMap</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">ge</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">dim</span><span class="p">(</span><span class="n">ldSnpMap</span><span class="p">)[</span><span class="m">1</span><span class="p">]){</span>
+<span class="w">  </span><span class="n">singleLd</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ldSnpMap</span><span class="p">[</span><span class="n">ge</span><span class="p">,]</span>
+<span class="w">  </span><span class="n">snpAnnoted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+<span class="w">  </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span>
+<span class="w">  </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">snpIdx</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">snplist</span><span class="p">)){</span>
+<span class="w">    </span><span class="n">singleSnp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bim</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">bim</span><span class="o">$</span><span class="n">SNP</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">snplist</span><span class="p">[</span><span class="n">snpIdx</span><span class="p">]),]</span>
+<span class="w">    </span><span class="kr">if</span><span class="p">(</span><span class="n">singleSnp</span><span class="o">$</span><span class="n">SNPCHR</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">singleLd</span><span class="o">$</span><span class="n">LDCHR</span><span class="w"> </span><span class="p">){</span>
+<span class="w">      </span><span class="n">snpPos</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">singleSnp</span><span class="o">$</span><span class="n">POS</span>
+<span class="w">      </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">snpPos</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">singleLd</span><span class="o">$</span><span class="n">LDSTART</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">snpPos</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">singleLd</span><span class="o">$</span><span class="n">LDEND</span><span class="p">){</span>
+<span class="w">        </span><span class="c1">## print(paste0(n ,&quot;-th matched singleLd: &quot;,singleLd,&quot; in LDCHR &quot;,singleLd$LDCHR))</span>
+<span class="w">        </span><span class="n">singleLd</span><span class="o">$</span><span class="n">SNP</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">singleSnp</span><span class="o">$</span><span class="n">SNP</span>
+<span class="w">        </span><span class="n">singleLd</span><span class="o">$</span><span class="n">SNPPOS</span><span class="w"> </span><span class="o">&lt;-</span><span class="w">  </span><span class="n">singleSnp</span><span class="o">$</span><span class="n">POS</span>
+<span class="w">        </span><span class="n">snpAnnoted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">snpAnnoted</span><span class="p">,</span><span class="n">snplist</span><span class="p">[</span><span class="n">snpIdx</span><span class="p">])</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
+<span class="w">        </span><span class="n">tmpLdSnpMap</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">tmpLdSnpMap</span><span class="p">,</span><span class="n">singleLd</span><span class="p">)</span>
+<span class="w">        </span><span class="c1"># print( paste0(ge,&quot;/&quot;,dim(singleLd)[1],&quot;-th &quot;,singleLd$LDBLOCK,&quot; has matched snps: &quot;,n) )</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">## remove annotated snps</span>
+<span class="w">  </span><span class="c1">## snplist &lt;- snplist[!snplist %in% snpAnnoted]</span>
+<span class="w">  </span><span class="kr">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">ge</span><span class="o">%%</span><span class="m">1</span><span class="p">))</span><span class="nf">print</span><span class="p">(</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">ge</span><span class="p">,</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="nf">dim</span><span class="p">(</span><span class="n">ldSnpMap</span><span class="p">)[</span><span class="m">1</span><span class="p">],</span><span class="s">&quot;-th &quot;</span><span class="p">,</span><span class="n">singleLd</span><span class="o">$</span><span class="n">GENE</span><span class="p">,</span><span class="s">&quot; has matched snps: &quot;</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">saveRDS</span><span class="p">(</span><span class="n">tmpLdSnpMap</span><span class="p">,</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">outPath</span><span class="p">,</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="n">ld2SnpMapFile</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">###################################################################</span>
+<span class="c1">## map snplist into genes within ld block based on physical position</span>
+<span class="c1">###################################################################</span>
+<span class="kr">if</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">){</span>
+<span class="c1">## bim &lt;- data.table::fread(trainBimfilePrefix,data.table=F)</span>
+<span class="w"> </span><span class="c1">## names(bim) &lt;- c(&quot;SNPCHR&quot;,&quot;SNP&quot;,&quot;CM&quot;,&quot;POS&quot;,&quot;A1&quot;,&quot;A2&quot;)</span>
+<span class="n">bim</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tmpLdSnpMap</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;LDCHR&quot;</span><span class="p">,</span><span class="s">&quot;SNP&quot;</span><span class="p">,</span><span class="s">&quot;SNPPOS&quot;</span><span class="p">)]</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">bim</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;SNPCHR&quot;</span><span class="p">,</span><span class="s">&quot;SNP&quot;</span><span class="p">,</span><span class="s">&quot;POS&quot;</span><span class="p">)</span>
+<span class="n">genelist</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.table</span><span class="o">::</span><span class="nf">fread</span><span class="p">(</span><span class="n">genelistFile</span><span class="p">)</span>
+
+<span class="nf">names</span><span class="p">(</span><span class="n">genelist</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;GCHR&quot;</span><span class="p">,</span><span class="s">&quot;GSTARTORI&quot;</span><span class="p">,</span><span class="s">&quot;GENDORI&quot;</span><span class="p">,</span><span class="s">&quot;GENE&quot;</span><span class="p">)</span>
+<span class="n">genelist</span><span class="p">[,</span><span class="n">midPos</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="n">GSTARTORI</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">GENDORI</span><span class="w"> </span><span class="p">)</span><span class="o">/</span><span class="m">2</span><span class="w"> </span><span class="p">]</span>
+<span class="n">cisWin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100000</span>
+<span class="n">genelist</span><span class="o">$</span><span class="n">GSTART</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">genelist</span><span class="o">$</span><span class="n">midPos</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">cisWin</span>
+<span class="n">genelist</span><span class="o">$</span><span class="n">GEND</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">genelist</span><span class="o">$</span><span class="n">midPos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cisWin</span>
+
+<span class="n">ldGeneMap</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">genelist</span>
+<span class="n">ldGeneMap</span><span class="o">$</span><span class="n">SNP</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
+<span class="n">ldGeneMap</span><span class="o">$</span><span class="n">SNPPOS</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA</span>
+
+<span class="c1">## annotation:</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Begin to annotate&quot;</span><span class="p">)</span>
+<span class="n">snplist</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">unique</span><span class="p">(</span><span class="n">bim</span><span class="o">$</span><span class="n">SNP</span><span class="p">)</span>
+<span class="n">geneSnpMap</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">ge</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">dim</span><span class="p">(</span><span class="n">ldGeneMap</span><span class="p">)[</span><span class="m">1</span><span class="p">]){</span>
+<span class="w">  </span><span class="n">gene</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ldGeneMap</span><span class="p">[</span><span class="n">ge</span><span class="p">,]</span>
+<span class="w">  </span><span class="n">snpAnnoted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+<span class="w">  </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0</span>
+<span class="w">  </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">snpIdx</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">snplist</span><span class="p">)){</span>
+<span class="w">    </span><span class="n">singleSnp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bim</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">bim</span><span class="o">$</span><span class="n">SNP</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">snplist</span><span class="p">[</span><span class="n">snpIdx</span><span class="p">]),]</span>
+<span class="w">    </span><span class="kr">if</span><span class="p">(</span><span class="n">singleSnp</span><span class="o">$</span><span class="n">SNPCHR</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">gene</span><span class="o">$</span><span class="n">GCHR</span><span class="w"> </span><span class="p">){</span>
+<span class="w">      </span><span class="n">snpPos</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">singleSnp</span><span class="o">$</span><span class="n">POS</span>
+<span class="w">      </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">snpPos</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">gene</span><span class="o">$</span><span class="n">GSTART</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">snpPos</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">gene</span><span class="o">$</span><span class="n">GEND</span><span class="p">){</span>
+<span class="w">        </span><span class="c1"># print(paste0(n ,&quot;-th matched gene: &quot;,gene,&quot; in GCHR &quot;,gene$GCHR))</span>
+<span class="w">        </span><span class="n">gene</span><span class="o">$</span><span class="n">SNP</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">singleSnp</span><span class="o">$</span><span class="n">SNP</span>
+<span class="w">        </span><span class="n">gene</span><span class="o">$</span><span class="n">SNPPOS</span><span class="w"> </span><span class="o">&lt;-</span><span class="w">  </span><span class="n">singleSnp</span><span class="o">$</span><span class="n">POS</span>
+<span class="w">        </span><span class="n">snpAnnoted</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">snpAnnoted</span><span class="p">,</span><span class="n">snplist</span><span class="p">[</span><span class="n">snpIdx</span><span class="p">])</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
+<span class="w">        </span><span class="n">geneSnpMap</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">geneSnpMap</span><span class="p">,</span><span class="n">gene</span><span class="p">)</span>
+<span class="w">        </span><span class="c1"># print( paste0(ge,&quot;/&quot;,dim(genelist)[1],&quot;-th &quot;,gene$GENE,&quot; has matched snps: &quot;,n) )</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">#  ## remove annotated snps</span>
+<span class="w">  </span><span class="c1"># if(!(ge%%1))print( paste0(ge,&quot;/&quot;,dim(ldGeneMap)[1],&quot;-th &quot;,gene$GENE,&quot; has matched snps: &quot;,n) )</span>
+<span class="p">}</span>
+<span class="c1"># data.table::fwrite(geneSnpMap,file = paste0(outPath,&quot;/&quot;,WithoutLDsnpInGeneFile) )</span>
+<span class="p">}</span>
+
+<span class="c1">## summary gene cutted</span>
+<span class="c1">########################################</span>
+<span class="c1">### 3.2 link all snp in chr22 to gene</span>
+<span class="c1">########################################</span>
+<span class="n">bim</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">tmpLdSnpMap</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;LDCHR&quot;</span><span class="p">,</span><span class="s">&quot;SNP&quot;</span><span class="p">,</span><span class="s">&quot;SNPPOS&quot;</span><span class="p">)]</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">bim</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;SNPCHR&quot;</span><span class="p">,</span><span class="s">&quot;SNP&quot;</span><span class="p">,</span><span class="s">&quot;POS&quot;</span><span class="p">)</span>
+<span class="c1">## simulate gwas and eQTL effect</span>
+<span class="n">geneSnpMap</span><span class="o">$</span><span class="n">eQTLIdx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span>
+
+<span class="n">mapSnp2LdInGene</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+<span class="n">mapSnp2LdOutGene</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+<span class="n">eQTLIdx2Ld</span><span class="w">  </span><span class="o">&lt;-</span><span class="w">  </span><span class="nf">c</span><span class="p">()</span>
+<span class="n">mapSnp2Gene</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+<span class="n">mapGene2Snp</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+
+<span class="n">geneNumInLD</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">geneSnpMap</span><span class="o">$</span><span class="n">SNP</span><span class="p">)))</span>
+<span class="n">mapList</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">SBayesOmics</span><span class="o">::</span><span class="nf">ConstructMapSnp2Gene</span><span class="p">(</span><span class="n">geneSnpMap</span><span class="p">,</span><span class="n">snplist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SNP&quot;</span><span class="p">,</span><span class="n">genelist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GENE&quot;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="s">&quot;eQTLIdx&quot;</span><span class="p">,</span>
+<span class="w">                              </span><span class="n">genePos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GSTART&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">snpPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SNPPOS&quot;</span><span class="p">)</span>
+<span class="c1">## map snp to gene</span>
+<span class="n">mapSnp2Gene</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mapList</span><span class="o">$</span><span class="n">mapSnp2Gene</span>
+<span class="n">geneNumInLD</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">geneNumInLD</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">mapSnp2Gene</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="c1">## map gene to snp</span>
+<span class="n">mapGene2Snp</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mapList</span><span class="o">$</span><span class="n">mapGeneSNP2eQTL</span>
+<span class="c1">## map eQTLs to ld</span>
+<span class="n">eQTLMatrix</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mapList</span><span class="o">$</span><span class="n">eQTLMatrix</span>
+<span class="c1">## map snp to ld</span>
+<span class="n">snpInGeneIdx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+<span class="n">snpOutGeneIdx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">()</span>
+<span class="kr">for</span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="w"> </span><span class="nf">dim</span><span class="p">(</span><span class="n">bim</span><span class="p">)[</span><span class="m">1</span><span class="p">]){</span>
+<span class="w">  </span><span class="n">snp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bim</span><span class="p">[</span><span class="n">j</span><span class="p">,][[</span><span class="s">&quot;SNP&quot;</span><span class="p">]]</span>
+<span class="w">  </span><span class="kr">if</span><span class="p">(</span><span class="nf">is.null</span><span class="p">(</span><span class="n">mapSnp2Gene</span><span class="p">[[</span><span class="n">snp</span><span class="p">]])</span><span class="w">  </span><span class="p">){</span>
+<span class="w">    </span><span class="c1">## snp in gene</span>
+<span class="w">    </span><span class="n">snpOutGeneIdx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">snpOutGeneIdx</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">snpInGeneIdx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">snpInGeneIdx</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w"> </span><span class="n">mapSnpInGene</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bim</span><span class="p">[</span><span class="n">snpInGeneIdx</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;SNP&quot;</span><span class="p">,</span><span class="s">&quot;POS&quot;</span><span class="p">)]</span>
+<span class="w"> </span><span class="n">mapSnpOutGene</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bim</span><span class="p">[</span><span class="n">snpOutGeneIdx</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;SNP&quot;</span><span class="p">,</span><span class="s">&quot;POS&quot;</span><span class="p">)]</span>
+<span class="w"> </span><span class="n">mapSnpGeneLd</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span>
+<span class="w">    </span><span class="n">eQTLMatrix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eQTLMatrix</span><span class="p">,</span>
+<span class="w">    </span><span class="n">mapSnpInGene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapSnpInGene</span><span class="p">,</span>
+<span class="w">    </span><span class="n">mapSnpOutGene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapSnpOutGene</span><span class="p">,</span>
+<span class="w">    </span><span class="n">geneSnpPosInfo</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="n">geneSnpMap</span><span class="p">,</span>
+<span class="w">    </span><span class="n">mapSnp2Gene</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">mapSnp2Gene</span><span class="p">,</span>
+<span class="w">    </span><span class="n">mapGene2Snp</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">mapGene2Snp</span><span class="p">,</span>
+<span class="w">    </span><span class="n">genelistNotOverlap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapList</span><span class="o">$</span><span class="n">genelistNotOverlap</span>
+<span class="p">)</span>
+<span class="nf">saveRDS</span><span class="p">(</span><span class="n">mapSnpGeneLd</span><span class="p">,</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="n">outPath</span><span class="p">,</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="n">WithoutLDAllSNP2GeneFile</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g-project">1000G project</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-control-of-genotypes">Quality control of genotypes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-maps-to-link-ld-block-and-snps-and-link-gene-to-snps">Construct maps to link LD block and snps and link gene to snps.</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+<!-- your html code here -->
+  <!-- <style> -->
+  <!--   /* Sidebar header (and topbar for mobile) */ -->
+  <!--   .wy-side-nav-search, .wy-nav-top { -->
+  <!--     background: #00ff00; -->
+  <!--   } -->
+  <!--   /* Sidebar */ -->
+  <!--   .wy-nav-side { -->
+  <!--     background: #ff0000; -->
+  <!--   } -->
+  <!-- </style> -->
+
+  </body>
+</html>
