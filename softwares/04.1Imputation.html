@@ -439,10 +439,10 @@
 <span class="nf">suppressPackageStartupMessages</span><span class="p">({</span>
 <span class="w">  </span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 <span class="w">  </span><span class="nf">library</span><span class="p">(</span><span class="n">data.table</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">library</span><span class="p">(</span><span class="n">patchwork</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">library</span><span class="p">(</span><span class="n">latex2exp</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">library</span><span class="p">(</span><span class="n">cowplot</span><span class="p">)</span>
 <span class="p">})</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">patchwork</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">latex2exp</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">cowplot</span><span class="p">)</span>
 <span class="nf">set.seed</span><span class="p">(</span><span class="m">1234</span><span class="p">)</span>
 <span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nf">requireNamespace</span><span class="p">(</span><span class="s">&quot;SBayesOmics&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">quietly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;ShouyeLiu/SBayesOmics&quot;</span><span class="p">)</span>
@@ -511,19 +511,6 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attaching package: ‘cowplot’
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:patchwork’:
-
-    align_plots
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The following object is masked from ‘package:lubridate’:
-
-    stamp
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 gene low-rank marices have been read.
 </pre></div>
 </div>
