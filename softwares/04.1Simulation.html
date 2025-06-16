@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Integrative analysis</title>
+    <title>Simulation</title>
   
   
   
@@ -50,13 +50,11 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'softwares/04.0IntegrativeAnalysis';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'softwares/04.1Simulation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Simulation" href="04.1Simulation.html" />
-    <link rel="prev" title="molecular QTLs" href="02.2molQTL.html" />
+    <link rel="next" title="Imputation and adjustment" href="04.1Imputation.html" />
+    <link rel="prev" title="Integrative analysis" href="04.0IntegrativeAnalysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
     <meta name="docbuild:last-update" content="2025-06-16"/>
@@ -240,6 +238,10 @@
   
 
   
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
 
     </header>
@@ -341,8 +343,8 @@
 <li class="toctree-l2"><a class="reference internal" href="02.2molQTL.html">molecular QTLs</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Integrative analysis</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="04.1Simulation.html">Simulation</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="04.0IntegrativeAnalysis.html">Integrative analysis</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Simulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04.1Imputation.html">Imputation and adjustment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04.2PolygenicPrediction.html">Polygenic prediction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04.3MediatedHeritability.html">Mediated heritability estimation</a></li>
@@ -393,7 +395,10 @@
     
     <li class="breadcrumb-item"><a href="content-softwares.html" class="nav-link">BayesOmics</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Integrative analysis</li>
+    
+    <li class="breadcrumb-item"><a href="04.0IntegrativeAnalysis.html" class="nav-link">Integrative analysis</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Simulation</li>
   </ul>
 </nav>
 </div>
@@ -410,30 +415,84 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="integrative-analysis">
-<h1>Integrative analysis<a class="headerlink" href="#integrative-analysis" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="04.1Simulation.html">Simulation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="04.1Simulation.html#r-scripts">R scripts</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="04.1Imputation.html">Imputation and adjustment</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="04.1Imputation.html#theory-underlying-the-adjustment-of-sample-sizes-in-gwas-molqtl-summary-statistics">Theory underlying the adjustment of sample sizes in GWAS (molQTL) summary statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04.1Imputation.html#implementation-of-method-to-adjust-sample-sizes-in-gwas-molqtl-summary">Implementation of method to adjust sample sizes in GWAS (molQTL) summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04.1Imputation.html#citation">Citation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="04.2PolygenicPrediction.html">Polygenic prediction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="04.2PolygenicPrediction.html#summary-level-bayesco-eieo">Summary-level BayesCO-EIEO</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="04.3MediatedHeritability.html">Mediated heritability estimation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="04.3MediatedHeritability.html#summary-level-aiao-model">Summary-level AIAO model</a></li>
-</ul>
-</li>
-</ul>
+  <section id="simulation">
+<h1>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h1>
+<style>
+  .zoom-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto;
+  }
+
+  .zoom-box img {
+    width: 1000px;
+    transition: transform 0.3s ease;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  ..
+     .zoom-box img:hover {
+       transform: scale(1.5);
+       z-index: 10;
+     }
+
+</style>
+
+<div class="zoom-box">
+  <span style="font-size: 24px; font-weight: 500; margin-bottom: 10px;">
+    Schematic overview of various simulations
+  </span>
+  <img src="../_static/_images/simulation_design_shouyeLiu2025.png" alt="schematic simulation" />
+</div><section id="r-scripts">
+<h2>R scripts<a class="headerlink" href="#r-scripts" title="Link to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="o">(</span><span class="nv">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ls<span class="o">())</span>
+library<span class="o">(</span>SBayesOmics<span class="o">)</span>
+datPathInPack<span class="w"> </span>&lt;-<span class="w"> </span>system.file<span class="o">(</span><span class="s2">&quot;extdata/pseudo1kgchr22&quot;</span>,<span class="w"> </span><span class="nv">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;SBayesOmics&quot;</span><span class="o">)</span>
+trainBfilePrefix<span class="w"> </span>&lt;-<span class="w"> </span><span class="s2">&quot;psuedo-1kg-chr22-causal-model-ind-10k-snp-11555&quot;</span>
+<span class="nv">paramSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1kg-cis-50k-&quot;</span>
+
+trainBfile<span class="w"> </span>&lt;-<span class="w"> </span>paste0<span class="o">(</span>datPathInPack,<span class="s2">&quot;/&quot;</span>,trainBfilePrefix<span class="o">)</span>
+
+snp2ldFile<span class="w"> </span>&lt;-<span class="w">    </span>paste0<span class="o">(</span>paramSuffix,<span class="s2">&quot;sub-all-block-chr22-ld-2-snp-map.rds&quot;</span><span class="o">)</span>
+WithoutLDAllSNP2GeneFile<span class="w"> </span>&lt;-<span class="w"> </span>paste0<span class="o">(</span>paramSuffix,<span class="s2">&quot;sub-all-block-&quot;</span>,<span class="s2">&quot;chr22-snp-2-gene-map.rds&quot;</span><span class="o">)</span>
+
+mapSnpGeneAcrossChrFile<span class="w"> </span>&lt;-<span class="w"> </span>paste0<span class="o">(</span>datPathInPack,<span class="s2">&quot;/&quot;</span>,WithoutLDAllSNP2GeneFile<span class="o">)</span>
+mapLd2SnpFile<span class="w"> </span>&lt;-<span class="w"> </span>paste0<span class="o">(</span>datPathInPack,<span class="s2">&quot;/&quot;</span>,snp2ldFile<span class="o">)</span>
+
+sim<span class="w"> </span>&lt;-<span class="w">  </span>simGWASMainOverlap<span class="o">(</span><span class="nv">isIndLevelBool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TRUE,
+<span class="w">                           </span><span class="nv">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>,
+<span class="w">                           </span>trainBfile,
+<span class="w">                           </span>mapSnpGeneAcrossChrFile,
+<span class="w">                           </span>mapLd2SnpFile,
+<span class="w">                           </span><span class="nv">simModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;b&quot;</span>,<span class="w">  </span><span class="c1">## a: causal model only; b: pleitropic model only; c: intergenic model only</span>
+<span class="w">                           </span><span class="nv">geneOverlap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;c&quot;</span>,<span class="w"> </span><span class="c1">## random overlap</span>
+<span class="w">                           </span><span class="nv">traitType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;a&quot;</span>,<span class="w"> </span><span class="c1">## continuous traits</span>
+<span class="w">                           </span><span class="nv">indNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2000</span>,<span class="w"> </span><span class="c1">## gwas number</span>
+<span class="w">                           </span><span class="nv">NumCGCau</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>,<span class="w"> </span><span class="c1">## number of causal genes</span>
+<span class="w">                           </span><span class="nv">NumCVPerGCau</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>,<span class="w">   </span><span class="c1">### number of causal variants per gene</span>
+<span class="w">                           </span><span class="nv">NumCGPle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>,<span class="w">   </span><span class="c1">## number of causal pleiotropic genes;</span>
+<span class="w">                           </span><span class="nv">NumCVPerGPle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>,<span class="w"> </span><span class="c1">## number of causal variants per pleiotropic gene</span>
+<span class="w">                           </span><span class="nv">NumCGNull</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>,<span class="w"> </span><span class="c1">### number of null gene</span>
+<span class="w">                           </span><span class="nv">NumCVPerGNull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>,<span class="w"> </span><span class="c1">### number of causal variants per null gene</span>
+<span class="w">                           </span><span class="nv">NumCVIG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>,<span class="w">  </span><span class="c1">## number of causal variants in intergenic region</span>
+<span class="w">                           </span><span class="nv">realGeno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TRUE,
+<span class="w">                           </span><span class="nv">ldwBool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TRUE,
+<span class="w">                           </span><span class="nv">cisOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TRUE,
+<span class="w">                           </span><span class="nv">h2cis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.5,<span class="w"> </span><span class="c1">## cis-heritability</span>
+<span class="w">                           </span><span class="nv">h2snp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.1,<span class="w"> </span><span class="c1">## total snp heritability</span>
+<span class="w">                           </span><span class="nv">h2med</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.05,<span class="w"> </span><span class="c1">## mediated heritability</span>
+<span class="w">                           </span><span class="nv">outPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>,
+<span class="w">                           </span><span class="nv">smrPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>,
+<span class="w">                           </span><span class="nv">totalOverlapBool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FALSE,
+<span class="w">                           </span><span class="nv">smrIndGenePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>,
+<span class="w">                           </span><span class="nv">smrIndFileSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mac&quot;</span>,
+<span class="w">                           </span><span class="nv">cauPleWithinGene</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>FALSE
+<span class="w">    </span><span class="o">)</span>
+</pre></div>
 </div>
+</section>
 </section>
 
 
@@ -447,20 +506,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="02.2molQTL.html"
+       href="04.0IntegrativeAnalysis.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">molecular QTLs</p>
+        <p class="prev-next-title">Integrative analysis</p>
       </div>
     </a>
     <a class="right-next"
-       href="04.1Simulation.html"
+       href="04.1Imputation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Simulation</p>
+        <p class="prev-next-title">Imputation and adjustment</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -470,6 +529,23 @@
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r-scripts">R scripts</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

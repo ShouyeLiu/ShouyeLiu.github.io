@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tutorials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ad64850d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css?v=995e94df" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-bootstrap.min.css?v=21c0b90a" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ad64850d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/content-tutorials';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File formats" href="../fileFormats/content-fileFormats.html" />
+    <link rel="prev" title="FAQs" href="../softwares/06.0questions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="2025-06-16"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search across website"
+         aria-label="Search across website"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title"></p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../softwares/content-softwares.html">
+    BayesOmics
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../fileFormats/content-fileFormats.html">
+    File formats
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../notes/content-notes.html">
+    Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/content-reference.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ShouyeLiu" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../softwares/content-softwares.html">
+    BayesOmics
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../fileFormats/content-fileFormats.html">
+    File formats
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../notes/content-notes.html">
+    Notes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../reference/content-reference.html">
+    Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ShouyeLiu" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Tutorials</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tutorials">
+<span id="id1"></span><h1>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">#</a></h1>
+<section id="prepare-datasets">
+<h2>Prepare datasets<a class="headerlink" href="#prepare-datasets" title="Link to this heading">#</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">### downlaod dataset</span>
+<span class="nv">curPath</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">&quot;</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ShouyeLiu/BayesOmics.git
+<span class="c1">### downlaod binary tool</span>
+wget<span class="w"> </span>https://github.com/ShouyeLiu/BayesOmics/releases/latest/download/BayesOmics64-static
+chmod<span class="w"> </span><span class="m">751</span><span class="w"> </span><span class="si">${</span><span class="nv">curPath</span><span class="si">}</span>/BayesOmics64-static
+</pre></div>
+</div>
+<section id="extract-simulated-dataset">
+<h3>Extract simulated dataset<a class="headerlink" href="#extract-simulated-dataset" title="Link to this heading">#</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">BayesOmics64</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">curPath</span><span class="si">}</span><span class="s2">/BayesOmics64-static&quot;</span>
+<span class="c1">## find data in the Cau folder: BayesOmics/samples/pseudo/data/Cau/summary/</span>
+<span class="nv">datPath</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">curPath</span><span class="si">}</span><span class="s2">/BayesOmics/samples/pseudo/data/Cau/&quot;</span>
+<span class="nv">indDatPath</span><span class="o">=</span><span class="si">${</span><span class="nv">datPath</span><span class="si">}</span>/ind/
+<span class="nv">sumPath</span><span class="o">=</span><span class="si">${</span><span class="nv">datPath</span><span class="si">}</span>/summary/
+<span class="nv">filename</span><span class="o">=</span><span class="s2">&quot;pseudo-1kg-chr22-cau-h2snp0.4-h2med-0.4-h2cis-0.6-model&quot;</span>
+<span class="nv">outPath</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">curPath</span><span class="si">}</span><span class="s2">/out/&quot;</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">outPath</span><span class="si">}</span>
+
+<span class="nv">trainBfile</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">indDatPath</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">snplist</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">indDatPath</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">.ma.snplist&quot;</span>
+<span class="nv">indlist</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">indDatPath</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">.indlist&quot;</span>
+<span class="nv">phenoFile</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">indDatPath</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">.pheno&quot;</span>
+<span class="nv">plistFile</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">indDatPath</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">.plist&quot;</span>
+<span class="nv">indGenelistFile</span><span class="o">=</span><span class="si">${</span><span class="nv">indlist</span><span class="si">}</span>
+
+<span class="nv">blockInfo</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">curPath</span><span class="si">}</span><span class="s2">/BayesOmics/samples/pseudo/data/genotype/param-ref4cM_v37.pos&quot;</span>
+
+<span class="nv">flistFile</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">sumPath</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">.flist&quot;</span>
+<span class="nv">gwasMaFile</span><span class="o">=</span><span class="si">${</span><span class="nv">sumPath</span><span class="si">}</span>/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.ma
+<span class="nv">xqtlFile</span><span class="o">=</span><span class="si">${</span><span class="nv">outPath</span><span class="si">}</span>/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>
+
+<span class="nv">gwasLDfolder</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">outPath</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">xqtlLDFile</span><span class="o">=</span><span class="si">${</span><span class="nv">outPath</span><span class="si">}</span>/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>
+<span class="nv">outSBCOFile</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">outPath</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">.sbco&quot;</span>
+<span class="nv">outBCOFile</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">outPath</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span><span class="s2">.bco&quot;</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">gwasLDfolder</span><span class="si">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-1-generate-low-rank-gwas-ld-reference">
+<h2>Step 1. Generate low-rank GWAS LD reference<a class="headerlink" href="#step-1-generate-low-rank-gwas-ld-reference" title="Link to this heading">#</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">BayesOmics64</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">trainBfile</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<span class="w">   </span>--extract<span class="w">  </span><span class="si">${</span><span class="nv">snplist</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--keep<span class="w">  </span><span class="si">${</span><span class="nv">indlistFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--make-block-ldm<span class="w">  </span><span class="se">\</span>
+<span class="w">   </span>--block-info<span class="w"> </span><span class="si">${</span><span class="nv">blockInfo</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">gwasLDfolder</span><span class="si">}</span>
+
+<span class="si">${</span><span class="nv">BayesOmics64</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--ldm<span class="w"> </span><span class="si">${</span><span class="nv">gwasLDfolder</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--merge-block-ldm-info<span class="w">  </span><span class="se">\</span>
+<span class="w">   </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">gwasLDfolder</span><span class="si">}</span>
+
+<span class="si">${</span><span class="nv">BayesOmics64</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--ldm<span class="w"> </span><span class="si">${</span><span class="nv">gwasLDfolder</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>--make-ldm-eigen<span class="w">  </span><span class="se">\</span>
+<span class="w">   </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">gwasLDfolder</span><span class="si">}</span>
+<span class="w"> </span><span class="c1">## end</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-generate-low-rank-xqtl-ld-reference">
+<h2>Step 2. Generate low-rank xQTL LD reference<a class="headerlink" href="#step-2-generate-low-rank-xqtl-ld-reference" title="Link to this heading">#</a></h2>
+<p>Convert xQTL summary statistic to smr BESD format. Before do this using sample dataset, we need to change filePath in flistFile. See <a class="reference external" href="https://yanglab.westlake.edu.cn/software/smr/#MakeaBESDfile">GCTA SMR</a> for details</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## Assume sample data is here</span>
+<span class="nv">mainPath</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">datPath</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nv">oldPath</span><span class="o">=</span><span class="s2">&quot;/Users/uqsliu28/Documents/personal/SbayesAnno/samples//summary/&quot;</span>
+<span class="nv">newUpdatedPath</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">sumPath</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1">## the location of gene phenotype</span>
+
+<span class="c1">## Before changing path</span>
+head<span class="w"> </span><span class="si">${</span><span class="nv">flistFile</span><span class="si">}</span>
+
+<span class="c1">## then replace genePhenotypePath in the plist file by using command</span>
+sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;s|</span><span class="si">${</span><span class="nv">oldPath</span><span class="si">}</span><span class="s2">|</span><span class="si">${</span><span class="nv">newUpdatedPath</span><span class="si">}</span><span class="s2">|&quot;</span><span class="w"> </span><span class="si">${</span><span class="nv">flistFile</span><span class="si">}</span>
+
+<span class="c1">## After changing path</span>
+head<span class="w"> </span><span class="si">${</span><span class="nv">flistFile</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>Now convert flist file into BESD format</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">BayesOmics64</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--eqtl-flist<span class="w"> </span><span class="si">${</span><span class="nv">flistFile</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--make-besd<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">xqtlFile</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>Generate xQTL low-rank LD matrix based on BESD format</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">BayesOmics64</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--bfile<span class="w"> </span><span class="si">${</span><span class="nv">trainBfile</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--beqtl-summary<span class="w"> </span><span class="si">${</span><span class="nv">xqtlFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--extract<span class="w"> </span><span class="si">${</span><span class="nv">snplist</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--keep<span class="w">  </span><span class="si">${</span><span class="nv">indlist</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--make-eigen-gene<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">xqtlLDFile</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>Save xQTL summary statistic to gz format</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">BayesOmics64</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--beqtl-summary<span class="w"> </span><span class="si">${</span><span class="nv">xqtlFile</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--make-query<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">xqtlFile</span><span class="si">}</span>.q
+</pre></div>
+</div>
+</section>
+<section id="step-3-perform-s-bayesomics-analysis">
+<h2>Step 3. Perform (S)BayesOmics analysis<a class="headerlink" href="#step-3-perform-s-bayesomics-analysis" title="Link to this heading">#</a></h2>
+<section id="summary-level-analysis">
+<h3>Summary-level analysis<a class="headerlink" href="#summary-level-analysis" title="Link to this heading">#</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">BayesOmics64</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--sbayes<span class="w"> </span>CO<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--ldm-eigen<span class="w">  </span><span class="si">${</span><span class="nv">gwasLDfolder</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--ldm-eigen-gene<span class="w">  </span><span class="si">${</span><span class="nv">xqtlLDFile</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--ldm-eigen-cutoff<span class="w"> </span><span class="m">0</span>.995<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--ldm-eigen-gene-cutoff<span class="w"> </span><span class="m">0</span>.995<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--beqtl-summary<span class="w"> </span><span class="si">${</span><span class="nv">xqtlFile</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--gwas-summary<span class="w">  </span><span class="si">${</span><span class="nv">gwasMaFile</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--piEffEqtl<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--piEffNonEqtl<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--hsq<span class="w">  </span><span class="m">0</span>.1<span class="se">\</span>
+<span class="w">  </span>--hsq-cis<span class="w"> </span><span class="m">0</span>.1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--sampleVare<span class="w">   </span><span class="se">\</span>
+<span class="w">  </span>--sampleVarEps<span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--chain-length<span class="w"> </span><span class="m">1000</span><span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--burn-in<span class="w"> </span><span class="m">400</span><span class="w">  </span><span class="se">\</span>
+<span class="w">  </span>--out-freq<span class="w"> </span><span class="m">100</span><span class="w">   </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span><span class="si">${</span><span class="nv">outSBCOFile</span><span class="si">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../softwares/06.0questions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">FAQs</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../fileFormats/content-fileFormats.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">File formats</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-datasets">Prepare datasets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-simulated-dataset">Extract simulated dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-generate-low-rank-gwas-ld-reference">Step 1. Generate low-rank GWAS LD reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-generate-low-rank-xqtl-ld-reference">Step 2. Generate low-rank xQTL LD reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-perform-s-bayesomics-analysis">Step 3. Perform (S)BayesOmics analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-level-analysis">Summary-level analysis</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+<!-- your html code here -->
+  <!-- <style> -->
+  <!--   /* Sidebar header (and topbar for mobile) */ -->
+  <!--   .wy-side-nav-search, .wy-nav-top { -->
+  <!--     background: #00ff00; -->
+  <!--   } -->
+  <!--   /* Sidebar */ -->
+  <!--   .wy-nav-side { -->
+  <!--     background: #ff0000; -->
+  <!--   } -->
+  <!-- </style> -->
+
+  </body>
+</html>
