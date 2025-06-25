@@ -1,0 +1,16 @@
+LD and molecular QTLs
+==============
+
+
+.. _DataResourcesLD:
+
+LD matrices
+-----------------
+Here we provide chromosome-specific low-rank LD matrices for GWAS LD blocks, and low-rank-LD matrices for eQTLs and pQTLs, if you want to calculate your own LD matrices, plese
+refer :ref:`GWAS and xQTL LD management <lowRankLDLBSLGM>` section.
+
+
+UKB-PPP pGWAS summary statistics
+-------------------------
+
+query.gz format UKB-PPP-pGWAS data can be download here.

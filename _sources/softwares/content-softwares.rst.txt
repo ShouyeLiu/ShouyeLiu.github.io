@@ -1,0 +1,63 @@
+
+BayesOmics
+===========
+
+Overview
+-----------
+
+**BayesOmics** is a C++ software package for statistical genetics, developed to support integrative analysis of omics data with a focus on genetic architecture, complex trait heritability, and causal inference.
+In parallel, **SBayesOmics** is an R package designed to provide complementary functionality for users working in R environments, enabling seamless application of Bayesian modeling techniques to omics data.
+
+Built with a modular and flexible design, BayesOmics implements a suite of Bayesian inference models to estimate genetic effect sizes, prioritize genes, and assess mediated heritability.
+
+Key features:
+
+- Efficient implementation of Bayesian linear models for high-dimensional datasets
+- Support for the integrative analysis of GWAS summary statistics with molecular QTLs (e.g., eQTLs, sQTLs, and pQTLs)
+- Flexible input formats and seamless handling of large-scale genetic and omics datasets
+- An extensible architecture that enables future model development and customization
+
+
+Progress
+-----------
+
+.. timeline::
+   - start: 2025-04-28
+     name: First release (v0.0.1)
+   ---
+   **{{dtrange}}**
+
+   *{{e.name}}*
+
+Credits
+----------
+
+Shouye Liu developed the software with support from `Jian Zeng <https://about.uq.edu.au/experts/14033>`_, `Zhili Zeng <https://www.atgu.mgh.harvard.edu/people/zhili-zheng/>`_, `Jian Yang <https://yanglab.westlake.edu.cn/people.html>`_, and `Peter Visscher <https://www.sjc.ox.ac.uk/discover/people/professor-peter-visscher/>`_ and currently maintains both the software and its manuals.
+
+Questions and help Requests
+---------------------------
+
+If you encounter any bugs or have questions, please either `open an issue on GitHub <https://github.com/ShouyeLiu/BayesOmics/issues>`_ or send an email to Shouye Liu (shouye.liu@uq.edu.au) and Jian Zeng (j.zeng@uq.edu.au).
+
+We recommend using the GitHub Issues page for faster tracking and discussion.
+
+.. raw:: html
+
+   <div style="text-align: center; margin-top: 2em;">
+     <script type="text/javascript" id="clustrmaps"
+         src="https://cdn.clustrmaps.com/map_v2.js?cl=333a44&w=a&t=n&d=PBIjR06xnBoH20mPWaQq7t_NyMcH9cBmvV_O9YuMzgA&cmo=f706c1&cmn=f930cc&co=ffffff&ct=808080">
+     </script>
+   </div>
+
+
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   01.0installation
+   02.0dataManagement
+   04.0IntegrativeAnalysis
+   05.0dataResource
+   06.0questions

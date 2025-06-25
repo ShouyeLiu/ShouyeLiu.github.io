@@ -1,0 +1,155 @@
+Polygenic prediction
+====================
+
+.. raw:: html
+
+   <style>
+     .zoom-box {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       margin: 30px auto;
+     }
+
+     .zoom-box img {
+       width: 1000px;
+       transition: transform 0.3s ease;
+       border-radius: 6px;
+       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+     }
+
+     ..
+        .zoom-box img:hover {
+          transform: scale(1.5);
+          z-index: 10;
+        }
+
+   </style>
+
+   <div class="zoom-box">
+     <span style="font-size: 16px; font-weight: 500; margin-bottom: 10px;">
+       Schematic overview of SBayesCO-EIEO
+     </span>
+     <img src="../_static/_images/20250326-bayesian-bivariate-eieo-model.png" alt="(S)BayesCO-EIEO schematic" />
+   </div>
+
+..
+   Individual-level BayesCO-EIEO
+   -----------
+
+   Options
+   ````````````
+
+   .. option:: --bayes CO
+   | Bayesian model used for parameter estimation.
+
+   .. option:: --bfile bfile
+   | plink bfile format, see `.bim <https://www.cog-genomics.org/plink/1.9/formats#bim>`_, `.fam <https://www.cog-genomics.org/plink/1.9/formats#fam>`_ and `.bed <https://www.cog-genomics.org/plink/1.9/formats#bed>`_ for details.
+
+   .. option:: --pheno traitPhenoFile
+   | phenotype file for the complex trait, see :ref:`pheno` for details.
+
+   .. option:: --gene  flistFile
+   | Individual-level gene (molecular) information see :ref:`flist` for details.
+
+   .. option:: --keep traitIndListFile
+   | A common used format for molecular summary statistics, see :ref:`besd` for details.
+
+   .. option:: --keep-gene molIndListFile
+   | Store the sample sizes for each gene or each gene-SNP pair, see :ref:`gsam` for details.
+
+   Examples
+   ``````````
+
+   .. parsed-literal::
+
+      BayesOmics64 --bayes CO \\
+        --bfile   \\
+        --keep   \\
+        --pheno   \\
+        --gene  \\
+        --keep-gene  \\
+        --out
+
+
+Summary-level BayesCO-EIEO
+---------
+
+Options
+````````````
+.. option:: --sbayes CO
+| Bayesian model used for parameter estimation.
+
+.. option:: --mcmc-type eieo
+| Algorithm used for parameter estimation.
+
+.. option:: --ldm-eigen
+| GWAS LD low-rank matrix, see `GCTB <https://cnsgenomics.com/software/gctb/#SBayesRCTutorial>`_ for detail.
+
+.. option:: --ldm-eigen-gene
+| xQTL LD low-rank matrix.
+
+.. option:: --beqtl-summary eqtlSummaryFile
+| A common used format for molecular summary statistics, see :ref:`besd` for details.
+
+.. option:: --add-gene-n gsamFile
+| Store the sample sizes for each gene or each gene-SNP pair, see :ref:`gsam` for details.
+
+.. option:: --beqtl-summary-gz eqtlSummaryGZFile
+| Another more easy-used format for molecular summary statistics, see :ref:`query.gz` for details.
+
+.. option:: --gwas-summary gwasFile
+| COJO format GWAS summary statistics
+
+
+Command
+``````````
+
+.. parsed-literal::
+
+  BayesOmics64  --sbayes CO \\
+    --mcmc-type eieo \\
+    --ldm-eigen  ldmEigenFolder  \\
+    --ldm-eigen-gene  ldmEigenGeneFile  \\
+    --beqtl-summary-gz eqtlSummaryGZFile \\ # or use --beqtl-summary eqtlSummaryFile
+    --gwas-summary  gwasFile   \\
+    --out outFile
+
+Examples
+``````````
+
+.. code-block:: bash
+
+  ### downlaod dataset
+  git clone git@github.com:ShouyeLiu/BayesOmics.git
+  ## find data in the Cau folder: BayesOmics/samples/pseudo/data/Cau/summary/
+  sumPath="" # cauFolder path
+  summaryFile="pseudo-1kg-chr22-cau-h2snp0.4-h2med-0.4-h2cis-0.6-model"
+  outFile="res-"${summaryFile} ## outFilePath
+  ### downlaod binary tool
+  cd MainPath ## your main Path
+  wget https://github.com/ShouyeLiu/BayesOmics/releases/latest/download/BayesOmics64-static
+  chmod 751 BayesOmics64-static
+
+   BayesOmics64-static  --sbayes CO \
+     --ldm-eigen ${sumPath}/${summaryFile} \
+     --gwas-summary ${sumPath}/${summaryFile}.ma \
+     --ldm-eigen-gene ${sumPath}/${summaryFile} \
+     --beqtl-summary  ${sumPath}/${summaryFile} \
+     --hsq 0.1  \
+     --hsq-cis 0.1  \
+     --mcmc-type eieo  \
+     --chain-length 5000 \
+     --burn-in 1800 \
+     --seed 10  \
+     --out-freq 500 \
+     --out  outFile
+
+
+
+
+..
+   Citation
+   --------
+
+      [1] Shouye Liu, Suet Ching Phoebe Hui, Yang Wu, Zhili Zheng, Michael E. Goddard, Hao Cheng,Jian Yang, Peter M. Visscher, Jian Zeng. **Development of a statistical method to incorporate blood-related molecular QTL effects for polygenic prediction**. In manuscript. Preprint available on bioRxiv doi:

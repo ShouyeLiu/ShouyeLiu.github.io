@@ -1,0 +1,208 @@
+
+:notoc:
+
+.. _tutorials:
+
+Tutorials
+==================
+
+
+..
+   .. toctree::
+      :maxdepth: 2
+      :hidden:
+
+      01.0DatePrepration.md
+      02.0performAnalysis
+
+
+
+Prepare datasets
+----------------
+
+.. code-block:: sh
+
+  ### downlaod dataset
+  curPath="$PWD"
+  git clone https://github.com/ShouyeLiu/BayesOmics.git
+  ### downlaod binary tool
+  wget https://github.com/ShouyeLiu/BayesOmics/releases/latest/download/BayesOmics64-static
+  chmod 751 ${curPath}/BayesOmics64-static
+
+
+Extract simulated dataset
+````````````````````````````````````
+.. code-block:: sh
+
+   BayesOmics64="${curPath}/BayesOmics64-static"
+   ## find data in the Cau folder: BayesOmics/samples/pseudo/data/Cau/summary/
+   datPath="${curPath}/BayesOmics/samples/pseudo/data/Cau/"
+   indDatPath=${datPath}/ind/
+   sumPath=${datPath}/summary/
+   filename="pseudo-1kg-chr22-cau-h2snp0.4-h2med-0.4-h2cis-0.6-model"
+   outPath="${curPath}/out/"
+   mkdir -p ${outPath}
+
+   trainBfile="${indDatPath}/${filename}"
+   snplist="${indDatPath}/${filename}.ma.snplist"
+   indlist="${indDatPath}/${filename}.indlist"
+   phenoFile="${indDatPath}/${filename}.pheno"
+   plistFile="${indDatPath}/${filename}.plist"
+   indGenelistFile=${indlist}
+
+   blockInfo="${curPath}/BayesOmics/samples/pseudo/data/genotype/param-ref4cM_v37.pos"
+
+   flistFile="${sumPath}/${filename}.flist"
+   gwasMaFile=${sumPath}/${filename}.ma
+   xqtlFile=${outPath}/${filename}
+
+   gwasLDfolder="${outPath}/${filename}"
+   xqtlLDFile=${outPath}/${filename}
+   outSBCOFile="${outPath}/${filename}.sbco"
+   outBCOFile="${outPath}/${filename}.bco"
+   mkdir -p ${gwasLDfolder}
+
+Step 1. Generate low-rank GWAS LD reference
+----------------
+
+.. code-block:: sh
+
+  ${BayesOmics64} \
+     --bfile ${trainBfile}  \
+     --extract  ${snplist} \
+     --keep  ${indlistFile} \
+     --make-block-ldm  \
+     --block-info ${blockInfo} \
+     --out ${gwasLDfolder}
+
+  ${BayesOmics64} \
+     --ldm ${gwasLDfolder} \
+     --merge-block-ldm-info  \
+     --out ${gwasLDfolder}
+
+  ${BayesOmics64} \
+     --ldm ${gwasLDfolder} \
+     --make-ldm-eigen  \
+     --out ${gwasLDfolder}
+   ## end
+
+
+Step 2. Generate low-rank xQTL LD reference
+----------------
+
+Convert xQTL summary statistic to smr BESD format. Before do this using sample dataset, we need to change filePath in flistFile. See `GCTA SMR <https://yanglab.westlake.edu.cn/software/smr/#MakeaBESDfile>`_ for details
+
+.. code-block:: sh
+
+    ## Assume sample data is here
+    mainPath="${datPath}"
+    oldPath="/Users/uqsliu28/Documents/personal/SbayesAnno/samples//summary/"
+    newUpdatedPath="${sumPath}" ## the location of gene phenotype
+
+    ## Before changing path
+    head ${flistFile}
+
+    ## then replace genePhenotypePath in the plist file by using command
+    sed -i -e "s|${oldPath}|${newUpdatedPath}|" ${flistFile}
+
+    ## After changing path
+    head ${flistFile}
+
+Now convert flist file into BESD format
+
+.. code-block:: sh
+
+   ${BayesOmics64} \
+     --eqtl-flist ${flistFile}  \
+     --make-besd \
+     --out ${xqtlFile}
+
+Generate xQTL low-rank LD matrix based on BESD format
+
+.. code-block:: sh
+
+   ${BayesOmics64} \
+     --bfile ${trainBfile}  \
+     --beqtl-summary ${xqtlFile} \
+     --extract ${snplist} \
+     --keep  ${indlist} \
+     --make-eigen-gene \
+     --out ${xqtlLDFile}
+
+Save xQTL summary statistic to gz format
+
+.. code-block:: sh
+
+   ${BayesOmics64} \
+     --beqtl-summary ${xqtlFile}  \
+     --make-query \
+     --out ${xqtlFile}.q
+
+
+Step 3. Perform (S)BayesOmics analysis
+--------------------------------
+
+Summary-level analysis
+`````````
+.. code-block:: sh
+
+   ${BayesOmics64} \
+     --sbayes CO \
+     --ldm-eigen  ${gwasLDfolder}  \
+     --ldm-eigen-gene  ${xqtlLDFile}  \
+     --ldm-eigen-cutoff 0.995  \
+     --ldm-eigen-gene-cutoff 0.995  \
+     --beqtl-summary ${xqtlFile}  \
+     --gwas-summary  ${gwasMaFile}  \
+     --piEffEqtl 0.01 \
+     --piEffNonEqtl 0.01 \
+     --hsq  0.1\
+     --hsq-cis 0.1 \
+     --sampleVare   \
+     --sampleVarEps  \
+     --chain-length 1000  \
+     --burn-in 400  \
+     --out-freq 100   \
+     --out ${outSBCOFile}
+
+..
+   Individual-level analysis
+   ````````````````````````````
+
+   Before do this using sample dataset, we need to change filePath in plistFile. See :ref:`plist format <IndLevInput>` for details
+
+   .. code-block:: sh
+
+       ## Assume sample data is here
+       mainPath="${datPath}"
+       oldPath="/Users/uqsliu28/Documents/personal/SbayesAnno/samples//ind/"
+       newUpdatedPath="${indDatPath}" ## the location of gene phenotype
+
+       ## Before changing path
+       head ${plistFile}
+
+       ## then replace genePhenotypePath in the plist file by using command
+       sed -i -e "s|${oldPath}|${newUpdatedPath}|" ${plistFile}
+
+       ## After changing path
+       head ${plistFile}
+
+
+
+   .. code-block:: sh
+
+      ${BayesOmics64} \
+        --bayes CO \
+        --bfile ${trainBfile}  \
+        --keep  ${indlistFile} \
+        --pheno ${phenoFile}  \
+        --gene  ${plistFile} \
+        --keep-gene ${indGenelistFile}  \
+        --piEffEqtl 0.01 \
+        --piEffNonEqtl 0.01 \
+        --hsq  0.1 \
+        --hsq-cis 0.1 \
+        --chain-length 1000  \
+        --burn-in 400  \
+        --out-freq 100   \
+        --out ${outBCOFile}

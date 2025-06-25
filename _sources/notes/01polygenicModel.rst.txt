@@ -1,0 +1,90 @@
+
+Genetic models
+==================
+
+Bayesian alphabet framework
+-----------------
+.. list-table:: **Summary of Effect Size Distributions for Polygenic Modeling**
+   :header-rows: 1
+
+   * - **Models**
+     - **Effect Size Distribution**
+     - **Formula**
+   * - `BayesA <https://www.cambridge.org/core/journals/genetics-research/article/accuracy-of-genomic-selection-using-stochastic-search-variable-selection-in-australian-holstein-friesian-dairy-cattle/A012A54FB5BF1B7308CACDA91E262FD3>`_
+     - :math:`\beta_i \sim t(\nu, \sigma^2_{\alpha})`
+     - t Distribution
+   * - `BayesB <https://academic.oup.com/genetics/article/157/4/1819/6048353>`_, `BayesDπ <https://link.springer.com/article/10.1186/1471-2105-12-186>`_
+     - :math:`\beta_i \sim \pi t(0, \nu, \sigma^2_{\alpha}) + (1 - \pi) \delta_0`
+     - Point-t Distribution
+   * - `BayesC <https://bmcproc.biomedcentral.com/articles/10.1186/1753-6561-4-S1-S5>`_
+     - :math:`\beta_i \sim \pi t(0, \nu, \sigma^2_{\alpha}) + (1 - \pi) t(0, \nu, 0.01\sigma^2_{\alpha})`
+     - t Mixture
+   * - `BayesCπ <https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-186>`_ , `BVSR <https://projecteuclid.org/journals/annals-of-applied-statistics/volume-5/issue-3/Bayesian-variable-selection-regression-for-genome-wide-association-studies-and/10.1214/11-AOAS455.full>`_
+     - :math:`\beta_i \sim \pi N(0, \sigma^2_{\alpha}) + (1 - \pi) \delta_0`
+     - Point-Normal Distribution
+   * - `Bayesian Lasso <https://www.tandfonline.com/doi/abs/10.1198/016214508000000337>`_
+     - :math:`\beta_i \sim DE(0, \theta)`
+     - Double Exponential Distribution
+   * - `BayesR <https://www.sciencedirect.com/science/article/pii/S0022030212003918>`_ , `SBayesR <https://www.nature.com/articles/s41467-019-12653-0>`_ , `SBayesRC <https://www.nature.com/articles/s41588-024-01704-y>`_
+     - .. math::
+
+          \beta_i \sim [\pi_1 N(0, \sigma^2_{\alpha}) + \pi_2 N(0, 0.1\sigma^2_{\alpha}) \\
+          + \pi_3 N(0, 0.01\sigma^2_{\alpha}) + (1 -  \sum^{3}_{c = 1} \pi_c) \delta_0]
+     - Point-Normal Mixture
+   * - `LMM <https://www.nature.com/articles/ng.608>`_, BLUP, `Ridge Regression <https://www.cambridge.org/core/journals/genetics-research/article/markerassisted-selection-using-ridge-regression/ADF4BCE837CB074466273CEAD345C874>`_ `Ridge theory <https://www.jstor.org/stable/1271436?seq=6>`_
+     - :math:`\beta_i \sim N(0, \sigma^2_{\alpha})`
+     - Normal Distribution
+   * -  `NEG <https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1000130>`_
+     - :math:`\beta_i \sim NEG(0, \kappa, \theta)`
+     - Normal-Exponential-Gamma
+   * - `BSLMM <https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003264>`_
+     - :math:`\beta_i \sim \pi N(0, \sigma^2_{\alpha} + \sigma^2_{\beta}) + (1 - \pi) N(0, \sigma^2_{\beta})`
+     - Normal Mixture
+   * - `SBayesS <https://www.nature.com/articles/s41588-018-0101-4>`_
+     - :math:`\beta_i \sim \pi N(0,[1p_j(1-p_j)]^S \sigma^2_{\beta}) + \phi(1 - \pi)`
+     - Normal Mixture
+
+LDSC framework and its extension
+-------------
+
+.. list-table:: **LD score regression and its extension**
+   :header-rows: 1
+
+   * - **Method**
+     - **Formula**
+     - **Key contribution**
+   * - `LDSC <https://www.nature.com/articles/ng.3211>`_
+     - :math:`E[\chi^2 | \ell_j] = N h^2 \frac{\ell_j}{M} + N \alpha + 1`
+     - :math:`\chi^{2}_{j}=N\hat{\beta}^2_j,\quad\ell_j := \sum_{k=1}^{M} r_{jk}^2`
+   * - `HDL <https://www.nature.com/articles/ng.3404>`_
+     - :math:`\text{Cov}[\mathbf{z}] = \frac{N h^2}{M} \mathbf{L} + \mathbf{R}`
+     - :math:`\mathbf{L} := \mathbf{R}^\top \mathbf{R}`
+   * - `HDL-L <https://www.nature.com/articles/s41588-025-02123-3>`_
+     - :math:`\text{Cov}[\mathbf{z}_1, \mathbf{z}_2] = \frac{\sqrt{N_1 N_2} h_{12}}{M} \mathbf{L}`
+     - :math:`\mathcal{R}(h_{12})\equiv \frac{\mathcal{L} \left( h_{12} \mid \mathbf{z}, \hat{h}_1^2, \hat{h}_2^2 \right)}{\mathcal{L} \left( \hat{h}_{12} \mid \mathbf{z}, \hat{h}_1^2, \hat{h}_2^2 \right)}`
+   * - `S-LDSC <https://www.nature.com/articles/ng.3404>`_
+     - :math:`E\left[\chi^2_j\right] = N \sum_{C} \tau_C \ell(j, C) + N \alpha + 1`
+     - :math:`\ell(j,C) = \sum_{k \in C} r_{jk}^2`
+   * - `MESC <https://www.nature.com/articles/ng.3404>`_
+     - :math:`E[\alpha_k^2 \mid \beta_{1k}, \dots, \beta_{Gk}] = E[\alpha^2] \sum_{i}^{G} \beta_{ik}^2 + E[\gamma^2]`
+     - :math:`\ell(j,C) = \sum_{k \in C} r_{jk}^2`
+   * - `FMR <https://www.nature.com/articles/s41588-021-00901-3>`_
+     - :math:`\frac{d}{d t} E \left( e^{it z + \frac{1}{2} t^2 \hat{\sigma}^2} \right)\approx it N \sigma^2 \sum_K w_K \ell_K (t)`
+     - :math:`\ell_K (t) = \sum_j r_{j}^2 \phi_K (r_j t)`
+
+
+Non-uniform model and its extension
+-------------
+
+.. list-table:: **LD score regression and its extension**
+   :header-rows: 1
+
+   * - **Method**
+     - **Formula**
+     - **Key contribution**
+   * - `LDAK <https://www.nature.com/articles/ng.3865>`_
+     - :math:`\mathbb{E}[h_j^2] \sim [f_j(1 - f_j)]^{1 + \alpha} \times w_j \times r_j`
+     - :math:`\beta_j \sim \mathcal{N}\left(0, r_j w_j \frac{\sigma_g^2}{W} \right) \quad W = \sum_j r_j w_j \left[ 2 f_j (1 - f_j) \right]^{1 + \alpha}`
+   * - `SBayesS <https://www.nature.com/articles/s41588-018-0101-4>`_
+     - :math:`\beta_i \sim \pi N(0,[1p_j(1-p_j)]^S \sigma^2_{\beta}) + \phi(1 - \pi)`
+     - :math:`\beta_j = \delta_j \cdot \mathcal{N}\left(0, (2p_j q_j)^s \sigma_\beta^2\right) \quad \delta_j \sim \mathrm{Bernoulli}(\pi)`

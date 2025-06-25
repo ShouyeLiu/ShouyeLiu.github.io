@@ -1,0 +1,160 @@
+molecular QTLs
+================
+
+
+.. _xQTLDatManagement:
+
+molQTL summary statistics
+-----------------------------
+
+Options
+````````
+
+.. option:: --eqtl-flist flistfile
+
+| read flist eQTL format
+
+
+.. option:: --add-gene-n geneSampleSizeFile
+
+| Add specific sample size for each gene-snp pair
+
+.. option:: --keep-gene
+
+| extract genes from files.
+
+
+.. _xQTLDatFormat:
+
+Convertion between SMR BESD format and gz format
+`````````````````````````
+**Convert plist format to besd format**
+
+.. code-block:: sh
+
+  BayesOmics64 --eqtl-flist flistFile \
+      --make-besd --out mybesd
+
+Since BESD format can save effect size and se only, a compressed gz format has been designed to incorporate more useful information
+
+psuedo-1kg-chr22-causal-model.q.query.gz
+
+.. code-block:: sh
+
+  GeneID	     GeneChr  GeneLength   GenePhyPos	SNPID     SNPChr   SNPPhyPos  A1  A2  A1Freq	BETA	    SE   Pvalue	N
+  ENSG00000070413	22     2000000     19066881.0	rs2073776   22    19024651    C   T	0.499	0.0015	0.0044	0.72	100000
+  ENSG00000070413	22     2000000     19066881.0	rs6623      22    19025381    C   T	0.499	0.0016	0.0044	0.70	100000
+  ENSG00000070413	22     2000000     19066881.0	rs10160     22    19026025    G   A	0.498	-0.003	0.0044	0.44	100000
+  ......
+
+So we can convert BESD format to query.gz format if additional gene sample size is needed
+
+.. code-block:: sh
+
+  BayesOmics64 --beqtl-summary mybesd \
+      --make-query  --out myquery
+
+
+Please see `SMR flist to besd <https://yanglab.westlake.edu.cn/software/smr/#MakeaBESDfile>`_ for details.
+
+
+**Extract a single genes basd on gene input file**
+
+.. code-block:: sh
+
+  BayesOmics64 --beqtl-summary mybesd \
+      --keep-one-gene geneID \
+      --make-query --out myquery
+
+
+
+**Add gene sample size**
+
+There are two ways to add sample size into analysis:
+
+1) when all SNPs within the same gene have the same sample size,
+
+.. code-block:: sh
+
+  GeneID	N
+  ENSG00000182902	10000
+  ENSG00000183628	10000
+  ENSG00000100346	10000
+  ......
+
+we suggest that adding sample size information into BESD format directly by the folloing command:
+
+.. code-block:: sh
+
+  BayesOmics64 --beqtl-summary mybesd \
+      --add-gene-n geneSampleSizeFile\
+      --make-query \
+      --out myquery
+
+2) when SNPs with the same gene may have different sample size (usually occur in meta analysis, like eQTLs from eQTLGen project),
+
+.. code-block:: sh
+
+  GeneID	N
+  ENSG00000182902	10000
+  ENSG00000183628	10000
+  ENSG00000100346	10000
+  ......
+
+we suggest that adding these sample size into gz format by the following command:
+
+.. code-block:: sh
+
+  BayesOmics64 --beqtl-summary mybesd \
+      --add-gene-n geneSampleSizeFile\
+      --make-query \
+      --out myquery
+
+.. tip::
+
+   **A)** If you're adding gene sample size to the analysis, the original sample size in the BESD or gz file will be replaced and gene-snp pairs with NA sample size will be deleted automatically. **B)** If per gene sample size is missing, you can also add total sample size to `besd format <https://yanglab.westlake.edu.cn/software/smr/#BESDformat>`_ file by using `SMR <https://yanglab.westlake.edu.cn/software/smr/#Mangethesamplesize>`_ software, and we will use total sample size for each gene. **C)** If both total and per gene sample size are missing, we will use estimated gene sample size in the analysis (add this function later).
+
+.. warning::
+
+   Since the LD matrix is the low-rank LD, it's important to ensure that the gene and SNP set in the **geneSampleSizeFile** are identical to those in the BESD or gz file. If they're not identical, you'll need to perform QC first to ensure they match first.
+
+**Merge multiple besd file into one***
+
+.. code-block:: sh
+
+  BayesOmics64 --beqtl-list mybesdListFile.txt --merge-besd --out mergeBesd
+
+Input file format
+mybesdListFile.txt (full paths can be specified if the besd files are in different directories)
+
+.. code-block:: sh
+
+  test_1
+  test_2
+  test_3
+  ......
+  test_22
+
+
+QC for molQTLs
+`````````````````````````
+It will very convenient to do manipulations on molQTL datasets using R, as the following example:
+
+.. code-block:: r
+
+   library(tidyverse)
+   library(data.table)
+   eqtl = fread(paste0("example.query.gz"))
+   ####################################
+   cisWin = 1000000
+   dat = eqtl %>%
+    group_by(GeneChr) %>%
+    mutate(
+    cisStart = pmax(0, GenePhyPos - cisWin),
+    cisEnd = GenePhyPos + cisWin
+   ) %>%
+   filter(GeneChr == SNPChr) %>%  # Ensure SNP and gene are on the same chromosome
+   filter(SNPPhyPos >= cisStart & SNPPhyPos <= cisEnd) %>%
+   filter(abs(BETA) > 1e-6) %>%
+   select(all_of(colnames(eqtl))) %>%
+   ungroup() %>%  arrange(GeneChr,GenePhyPos, GeneID, SNPPhyPos)

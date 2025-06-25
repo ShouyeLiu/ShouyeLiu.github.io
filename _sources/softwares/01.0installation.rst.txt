@@ -1,0 +1,64 @@
+Installation
+============
+
+BayesOmics C++
+--------------
+
+.. tab-set::
+
+   .. tab-item:: Executable files
+
+      .. note::
+
+         The executable files are released under the **GPL-3.0 License**.  
+         Only **Linux** binaries for the **x86_64** architecture are available; users on macOS or Windows can compile the source code manually.
+
+      Find the latest x86_64 Linux release on `GitHub <https://github.com/ShouyeLiu/BayesOmics/releases/latest>`_.
+
+   .. tab-item:: Source codes
+
+      .. admonition:: Prerequisites
+         :class: important
+
+         - `CMake <https://cmake.org/>`_ >= 3.22.1  
+         - `BOOST <https://www.boost.org/>`_ >= 1.82.0  
+         - `Eigen <https://eigen.tuxfamily.org/index.php?title=Main_Page>`_ >= 3.4.0  
+         - `OpenMP <https://www.openmp.org/>`_ > 4.5  
+         - `Armadillo <https://arma.sourceforge.net/>`_ >= 12.6.2  
+
+      The source code is available for download using the following command, and for discussion on `GitHub <https://github.com/ShouyeLiu/BayesOmics>`_:
+
+      .. code-block:: bash
+
+         git clone https://github.com/ShouyeLiu/BayesOmics.git
+
+SBayesOmics R
+-------------
+
+SBayesOmics is an R package designed for simulation.
+
+.. admonition:: Prerequisites
+
+   - `BGData <https://github.com/QuantGen/BGData>`_  
+   - `data.table <https://github.com/Rdatatable/data.table>`_  
+   - `ggplot2 <https://ggplot2.tidyverse.org/>`_  
+   - `MASS <https://cran.r-project.org/web/packages/MASS/index.html>`_  
+   - `MCMCpack <https://cran.r-project.org/web/packages/MCMCpack/index.html>`_  
+   - `tictoc <https://cran.r-project.org/web/packages/tictoc/index.html>`_  
+   - `WGCNA <http://pklab.med.harvard.edu/scw2014/WGCNA.html>`_  
+
+Install the development version from `GitHub <https://github.com/ShouyeLiu/SBayesOmics>`_:
+
+.. code-block:: r
+
+   if (!require("devtools", quietly = TRUE)) {
+     install.packages("devtools")
+   }
+   devtools::install_github("ShouyeLiu/SBayesOmics")
+
+Updating log
+------------
+
+**Version 0.0.1 (28 Apr 2025)**
+
+- First release

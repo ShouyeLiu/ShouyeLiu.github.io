@@ -1,0 +1,6 @@
+Technique details
+================
+
+- `01.Estimation of beta and its se based on z-score <../_static/_posts/2025-03-22-DataScaleCheck.html>`_
+
+- `02.Logistic regression and implementation <../_static/_posts/2025-04-18-LogisticLinearRegression.html>`_

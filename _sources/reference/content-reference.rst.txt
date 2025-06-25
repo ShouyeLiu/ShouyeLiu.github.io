@@ -1,0 +1,15 @@
+:notoc:
+:html_theme.sidebar_secondary.remove:
+
+.. _reference:
+
+=============
+Reference
+=============
+
+
+Resources
+---------
+
+- :ref:`genindex`
+- :ref:`search`

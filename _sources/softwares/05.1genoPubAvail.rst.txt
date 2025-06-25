@@ -1,0 +1,305 @@
+Public available genotypes
+===========
+
+1000G project
+-------------------
+
+Quality control of genotypes
+````````````````
+
+We use QC'ed genotypes from 1000G project and quality control process comes from `Doug Speed's pipeline <https://dougspeed.com/reference-panel/>`_. Here are modified scripts I used:
+
+**Set softwares and home path**
+
+.. code-block:: sh
+
+    plink19="/home/uqsliu28//softwares/plink/plink19"
+    plink2="/home/uqsliu28//softwares/plink/plink2"
+
+    datPath="/home/uqsliu28/projects/datasets/1000g/"
+    datRaw="/home/uqsliu28/projects/datasets/1000g/raw/"
+    datEur="/home/uqsliu28/projects/datasets/1000g/eur"
+    ## Use PLINK2 to decompress the pgen and pvar files
+
+**Download raw files**
+
+.. code-block:: sh
+
+    wget  https://www.dropbox.com/s/y6ytfoybz48dc0u/all_phase3.pgen.zst -P ${datRaw}
+    wget  https://www.dropbox.com/s/odlexvo8fummcvt/all_phase3.pvar.zst -P ${datRaw}
+    wget  https://www.dropbox.com/s/6ppo144ikdzery5/phase3_corrected.psam -P ${datRaw}
+
+**Use PLINK2 to decompress the pgen and pvar files**
+
+.. code-block:: sh
+
+    ${plink2} --zst-decompress ${datRaw}/all_phase3.pgen.zst >  ${datRaw}/all_phase3.pgen
+    ${plink2} --zst-decompress  ${datRaw}/all_phase3.pvar.zst >  ${datRaw}/all_phase3.pvar
+
+**Identify non-Finnish Europeans**
+
+.. code-block:: sh
+
+    awk < ${datRaw}/phase3_corrected.psam '($5=="EUR" && $6!="FIN"){print 0, $1}' > ${datRaw}/eur.keep
+
+**Select SNP subsets**
+
+.. code-block:: sh
+
+    ## Use PLINK2 to convert to binary PLINK format, restricting to autsomal SNPs with MAF>0.01 (and excluding duplicates and SNPs with name ".")
+
+    echo "." > ${datRaw}/exclude.snps
+    ${plink2} --make-bed \
+        --out ${datRaw}/raw \
+        --pgen ${datRaw}/all_phase3.pgen \
+        --pvar ${datRaw}/all_phase3.pvar \
+        --psam ${datRaw}/phase3_corrected.psam \
+        --maf 0.01 \
+        --autosome \
+        --snps-only just-acgt \
+        --max-alleles 2 \
+        --rm-dup exclude-all \
+        --exclude ${datRaw}/exclude.snps
+
+|The genotype data will now be stored in binary PLINK format in the files raw.bed, raw.bim and raw.fam. The following commands insert population information and sex into the fam file and replace predictor names with generic names of the form Chr:BP (the latter is not required, but I find this format more convenient). They also save the original names.
+
+.. code-block:: sh
+
+    awk '(NR==FNR){arr[$1]=$5"_"$6;ars[$1]=$4;next}{$1=$2;$2=arr[$1];$5=ars[$1];print $0}' ${datRaw}/phase3_corrected.psam ${datRaw}/raw.fam > ${datRaw}/clean.fam
+    # awk < ${datRaw}/raw.bim '{$2=$1":"$4;print $0}' > ${datRaw}/clean.bim
+    # awk < ${datRaw}/raw.bim '{print $1":"$4, $2}' > ${datRaw}/ref.names
+    cp ${datRaw}/raw.bim   ${datRaw}/clean.bim
+    cp ${datRaw}/raw.bed   ${datRaw}/clean.bed
+
+**Download genetic distances, then insert these using PLINK1.9**
+
+.. code-block:: sh
+
+    wget https://www.dropbox.com/s/slchsd0uyd4hii8/genetic_map_b37.zip -P ${datRaw}
+    unzip genetic_map_b37.zip
+
+    ${plink19} --bfile ${datRaw}/clean \
+        --cm-map ${datRaw}/genetic_map_b37/genetic_map_chr@_combined_b37.txt \
+        --make-bed \
+        --maf 0.01 \
+        --geno 0.01 \
+        --hwe 1e-6 \
+        --out ${datEur}/1kg-p3-maf01-geno01-hwe1e-6
+
+**split whole chrom into single chromosome**
+
+.. code-block:: sh
+
+    for chr in {1..22}
+    do
+        ${plink19} --bfile ${datRaw}/clean \
+            --cm-map ${datRaw}/genetic_map_b37/genetic_map_chr@_combined_b37.txt \
+            --make-bed \
+            --maf 0.01 \
+            --geno 0.01 \
+            --hwe 1e-6 \
+            --chr ${chr} \
+            --out ${datEur}/ch${chr}-1kg-p3-maf01-geno01-hwe1e-6
+    done
+
+**Extract snps based on HapMap3 snplist**
+
+.. code-block:: sh
+
+    snplist="${datRaw}/hapmap3.snplist"
+    hapmap3File=${datRaw}/hapmap3.snps
+    snplist=${datHm3}/hapmap3.snplist
+
+    wget  https://www.dropbox.com/s/xabjdu6squ6u56r/hapmap3.snps -O ${hapmap3File}
+    awk -F ' ' '{print $1}'  ${hapmap3File} > ${snplist}
+
+    ${plink19} --bfile  ${datEur}/1kg-p3-maf01-geno01-hwe1e-6 \
+        --extract ${snplist} \
+        --make-bed \
+        --maf 0.01 \
+        --geno 0.01 \
+        --hwe 1e-6 \
+        --out ${datHm3}/hm3-1kg-p3-maf01-geno01-hwe1e-6
+    ## split whole chrom into single chromosome
+
+    for chr in {1..22}
+    do
+        ${plink19} --bfile ${datEur}/ch${chr}-1kg-p3-maf01-geno01-hwe1e-6 \
+           --extract ${snplist} \
+           --make-bed \
+           --maf 0.01 \
+           --geno 0.01 \
+           --hwe 1e-6 \
+           --chr ${chr} \
+           --out ${datHm3}/ch${chr}-hm3-1kg-p3-maf01-geno01-hwe1e-6
+    done
+
+Construct maps to link LD block and snps and link gene to snps.
+``````
+
+.. code-block:: r
+
+    rm(list = ls())
+    datPathInPack <- system.file("extdata", package = "SBayesOmics")
+    datPath = "~/personal/R/BayesOmics/inst/extdata/1kgchr22/"  ## your path to store plink format genotype files
+    datPathInPack = outPath
+
+    trainBfilePrefix <- "ch22-hm3-1kg-p3-maf01-geno01-hwe1e-6" ### param 1
+    genelistPrefix <- "param-chr22-glist_ensgid_hg19_v40.txt" ### param 2
+    ldlistPrefix <- "chr22-ldblock-fourier-4cM.txt" ### param 3
+    trainBfile <- paste0(datPathInPack,"/",trainBfilePrefix)
+    trainBimfilePrefix <- paste0(datPathInPack,"/",trainBfilePrefix,".bim")
+    genelistFile <- paste0(datPathInPack,"/",genelistPrefix)
+
+    cutBlock <- "sub-1-block-"
+    cutBlock <- "sub-3-block-"
+    cutBlock <- "sub-all-block-"
+
+    ldlistFile <- paste0(datPathInPack,"/","param-",cutBlock,ldlistPrefix)
+    ld2SnpMapFile <- paste0(cutBlock,"chr22-ld-2-snp-map.rds") ## generated
+    WithoutLDAllSNP2GeneFile <- paste0(cutBlock,"chr22-snp-2-gene-map.rds") ## generated
+
+  ########################################
+  ## 2.2 link snplist to ld block
+  ########################################
+
+  if(TRUE){
+  bim <- data.table::fread(trainBimfilePrefix,data.table=F)
+  names(bim) <- c("SNPCHR","SNP","CM","POS","A1","A2")
+  ldlist <- data.table::fread(ldlistFile)
+  names(ldlist) <- c("LDCHR","LDSTART","LDEND","LDBLOCK")
+  ldSnpMap <- ldlist
+  ldSnpMap$SNP <- NA
+  ldSnpMap$SNPPOS <- NA
+
+  ## annotation:
+  print("Begin to annotate")
+  snplist <- unique(bim$SNP)
+  tmpLdSnpMap <- c()
+
+  for (ge in 1:dim(ldSnpMap)[1]){
+    singleLd <- ldSnpMap[ge,]
+    snpAnnoted <- c()
+    n <- 0
+    for (snpIdx in 1:length(snplist)){
+      singleSnp <- bim[which(bim$SNP == snplist[snpIdx]),]
+      if(singleSnp$SNPCHR == singleLd$LDCHR ){
+        snpPos <- singleSnp$POS
+        if (snpPos >= singleLd$LDSTART & snpPos <= singleLd$LDEND){
+          ## print(paste0(n ,"-th matched singleLd: ",singleLd," in LDCHR ",singleLd$LDCHR))
+          singleLd$SNP <- singleSnp$SNP
+          singleLd$SNPPOS <-  singleSnp$POS
+          snpAnnoted <- c(snpAnnoted,snplist[snpIdx])
+          n <- n + 1
+          tmpLdSnpMap <- rbind(tmpLdSnpMap,singleLd)
+          # print( paste0(ge,"/",dim(singleLd)[1],"-th ",singleLd$LDBLOCK," has matched snps: ",n) )
+        }
+      }
+    }
+    ## remove annotated snps
+    ## snplist <- snplist[!snplist %in% snpAnnoted]
+    if(!(ge%%1))print( paste0(ge,"/",dim(ldSnpMap)[1],"-th ",singleLd$GENE," has matched snps: ",n) )
+  }
+
+  saveRDS(tmpLdSnpMap,file = paste0(outPath,"/",ld2SnpMapFile) )
+  }
+  ###################################################################
+  ## map snplist into genes within ld block based on physical position
+  ###################################################################
+  if(TRUE){
+  ## bim <- data.table::fread(trainBimfilePrefix,data.table=F)
+   ## names(bim) <- c("SNPCHR","SNP","CM","POS","A1","A2")
+  bim <- tmpLdSnpMap[,c("LDCHR","SNP","SNPPOS")]
+  names(bim) <- c("SNPCHR","SNP","POS")
+  genelist <- data.table::fread(genelistFile)
+
+  names(genelist) <- c("GCHR","GSTARTORI","GENDORI","GENE")
+  genelist[,midPos := (GSTARTORI + GENDORI )/2 ]
+  cisWin = 100000
+  genelist$GSTART <- genelist$midPos - cisWin
+  genelist$GEND   <- genelist$midPos + cisWin
+
+  ldGeneMap <- genelist
+  ldGeneMap$SNP <- NA
+  ldGeneMap$SNPPOS <- NA
+
+  ## annotation:
+  print("Begin to annotate")
+  snplist <- unique(bim$SNP)
+  geneSnpMap <- c()
+
+  for (ge in 1:dim(ldGeneMap)[1]){
+    gene <- ldGeneMap[ge,]
+    snpAnnoted <- c()
+    n <- 0
+    for (snpIdx in 1:length(snplist)){
+      singleSnp <- bim[which(bim$SNP == snplist[snpIdx]),]
+      if(singleSnp$SNPCHR == gene$GCHR ){
+        snpPos <- singleSnp$POS
+        if (snpPos >= gene$GSTART & snpPos <= gene$GEND){
+          # print(paste0(n ,"-th matched gene: ",gene," in GCHR ",gene$GCHR))
+          gene$SNP <- singleSnp$SNP
+          gene$SNPPOS <-  singleSnp$POS
+          snpAnnoted <- c(snpAnnoted,snplist[snpIdx])
+          n <- n + 1
+          geneSnpMap <- rbind(geneSnpMap,gene)
+          # print( paste0(ge,"/",dim(genelist)[1],"-th ",gene$GENE," has matched snps: ",n) )
+        }
+      }
+    }
+    #  ## remove annotated snps
+    # if(!(ge%%1))print( paste0(ge,"/",dim(ldGeneMap)[1],"-th ",gene$GENE," has matched snps: ",n) )
+  }
+  # data.table::fwrite(geneSnpMap,file = paste0(outPath,"/",WithoutLDsnpInGeneFile) )
+  }
+
+  ## summary gene cutted
+  ########################################
+  ### 3.2 link all snp in chr22 to gene
+  ########################################
+  bim <- tmpLdSnpMap[,c("LDCHR","SNP","SNPPOS")]
+  names(bim) <- c("SNPCHR","SNP","POS")
+  ## simulate gwas and eQTL effect
+  geneSnpMap$eQTLIdx <- 1
+
+  mapSnp2LdInGene <- c()
+  mapSnp2LdOutGene <- c()
+  eQTLIdx2Ld  <-  c()
+  mapSnp2Gene  <- c()
+  mapGene2Snp  <- c()
+
+  geneNumInLD <- c()
+  print(table(table(geneSnpMap$SNP)))
+  mapList <- SBayesOmics::ConstructMapSnp2Gene(geneSnpMap,snplist = "SNP",genelist = "GENE",value="eQTLIdx",
+                                genePos = "GSTART", snpPos = "SNPPOS")
+  ## map snp to gene
+  mapSnp2Gene<- mapList$mapSnp2Gene
+  geneNumInLD <- c(geneNumInLD,length(mapSnp2Gene) )
+  ## map gene to snp
+  mapGene2Snp<- mapList$mapGeneSNP2eQTL
+  ## map eQTLs to ld
+  eQTLMatrix<- mapList$eQTLMatrix
+  ## map snp to ld
+  snpInGeneIdx <- c()
+  snpOutGeneIdx <- c()
+  for(j in 1: dim(bim)[1]){
+    snp = bim[j,][["SNP"]]
+    if(is.null(mapSnp2Gene[[snp]])  ){
+      ## snp in gene
+      snpOutGeneIdx <- c(snpOutGeneIdx,j)
+      } else {
+        snpInGeneIdx <- c(snpInGeneIdx,j)
+      }
+    }
+   mapSnpInGene<- bim[snpInGeneIdx,c("SNP","POS")]
+   mapSnpOutGene<- bim[snpOutGeneIdx,c("SNP","POS")]
+   mapSnpGeneLd <- list(
+      eQTLMatrix = eQTLMatrix,
+      mapSnpInGene = mapSnpInGene,
+      mapSnpOutGene = mapSnpOutGene,
+      geneSnpPosInfo  =  geneSnpMap,
+      mapSnp2Gene  = mapSnp2Gene,
+      mapGene2Snp  = mapGene2Snp,
+      genelistNotOverlap = mapList$genelistNotOverlap
+  )
+  saveRDS(mapSnpGeneLd,file = paste0(outPath,"/",WithoutLDAllSNP2GeneFile))

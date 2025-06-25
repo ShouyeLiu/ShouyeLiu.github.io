@@ -1,0 +1,360 @@
+
+.. _fileFormats:
+
+============================
+File formats
+============================
+
+
+Details of input file formats: `.ma`_ | `.besd`_ | `.epi`_ | `.esi`_ | `.query.gz`_ | `.gsam`_ | `.flist`_ | `.pheno`_ | `.plist`_ | `.eigen.gene.bin`_ | `.eigen.gene.info`_ | `.eigen.gene.snp.info`_ | `.eigen.ldblock.bin`_ | `.eigen.ldblock.info`_ | `.eigen.ldblock.snp.info`_
+
+Details of output file formats: `.gene.hsqRes`_ | `.gene.snpRes.gz`_ | `.log`_ | `.parRes`_ | `.snpRes`_
+
+
+.. _cojoMa:
+
+.ma
+================
+
+A `.ma` file typically contains tab-separated columns with allele frequency and summary statistics information.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 15 85
+
+   * - Column
+     - Description
+   * - **SNP**
+     - SNP identifier (e.g., `rsID`)
+   * - **A1**
+     - Effect allele
+   * - **A2**
+     - Non-effect allele
+   * - **freq**
+     - Frequency of the effect allele (A1)
+   * - **b**
+     - Effect size estimate (regression coefficient)
+   * - **se**
+     - Standard error of the effect size
+   * - **P**
+     - P-value for the association test
+   * - **N**
+     - P-value for the association test
+
+Example of a `.ma` File
+-----------------------
+
+.. code-block:: sh
+
+    SNP      A1   A2     FRQ    b     se     P        N
+    rs12345   A    G    0.45   0.02   0.01   0.001    10000
+    rs67890   C    T    0.12  -0.03   0.02   0.05     10000
+
+
+.. _besd:
+
+.besd
+================
+
+.. _epi:
+
+.epi
+================
+
+.. list-table:: Individual-level gene information
+   :widths: 15 30
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - **Chr**
+     - Chromosome number
+   * - **GeneID**
+     - Gene or probe identifier (e.g., ENSG ID)
+   * - **WinLength**
+     - Start position of gene
+   * - **midPos**
+     - End position of gene
+   * - **N**
+     - gene sample size
+   * - **Orientation**
+     - Strand orientation (e.g., NA for unstranded data)
+
+.. _esi:
+
+.esi
+================
+
+.. list-table:: Individual-level gene information
+   :widths: 15 30
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - **Chrom**
+     - Chromosome number
+   * - **ID**
+     - SNP identifier (e.g., `rsID`)
+   * - **GenPos**
+     - Genetic position (in Morgans or centiMorgans)
+   * - **PhysPos**
+     - Physical position on the chromosome (base pairs)
+   * - **A1**
+     - Effect allele
+   * - **A2**
+     - Non-effect allele
+   * - **A1Freq**
+     - Frequency of the effect allele (A1)
+
+.. _query.gz:
+
+.query.gz
+================
+
+.. list-table:: A more flexible compressed data format for molecular summary statistics
+   :widths: 15 30
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - **GeneID**
+     - Ensembl gene ID (e.g., `ENSG00000187905`)
+   * - **GeneChr**
+     - Chromosome number of the gene
+   * - **GeneLength**
+     - Length of the gene (may be -999 if unavailable)
+   * - **GenePhyPos**
+     - Physical position of the gene (in base pairs)
+   * - **SNPID**
+     - SNP identifier (e.g., `rs428214`)
+   * - **SNPChr**
+     - Chromosome number of the SNP
+   * - **SNPPhyPos**
+     - Physical position of the SNP (in base pairs)
+   * - **A1**
+     - Effect allele
+   * - **A2**
+     - Non-effect allele
+   * - **A1Freq**
+     - Frequency of the effect allele (A1)
+   * - **BETA**
+     - Effect size estimate for the SNP on the gene
+   * - **SE**
+     - Standard error of the effect size
+   * - **Pvalue**
+     - p-value of the association
+   * - **N**
+     - Sample size used in the analysis
+
+.. _gsam:
+
+.gsam
+================
+
+
+.. list-table:: Description of .gsam (two-columns format)
+   :widths: 30 20
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - **GeneID**
+     - gene unique ID
+   * - **N**
+     - per gene sample size
+
+.. list-table:: Description of .gsam (three-columns format)
+   :widths: 30 20
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - **GeneID**
+     - gene unique ID
+   * - **SNPID**
+     - SNP ID
+   * - **N**
+     - sample size for gene-snp pair
+
+.. _flist:
+
+.flist
+================
+
+.. list-table:: Individual-level gene information
+   :widths: 15 30
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - **Chr**
+     - Chromosome number
+   * - **GeneID**
+     - Gene or probe identifier (e.g., ENSG ID)
+   * - **Start**
+     - Start position of gene
+   * - **end**
+     - End position of gene
+   * - **Orientation**
+     - Strand orientation (e.g., NA for unstranded data)
+   * - **genePath**
+     - Path to the `.pheno` file containing molecular phenotypes
+
+.. _pheno:
+
+.pheno
+================
+
+.. _plist:
+
+.plist
+================
+
+.. list-table:: Gene-Level Summary Information
+   :widths: 15 30
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - **Chr**
+     - Chromosome number
+   * - **ProbeID**
+     - Gene or probe identifier (e.g., ENSG ID)
+   * - **GeneticDistance**
+     - Genetic distance (in Morgans or centiMorgans)
+   * - **ProbeBp**
+     - Physical position of the probe (base pairs)
+   * - **Gene**
+     - Gene symbol or identifier
+   * - **N**
+     - Sample size used for analysis
+   * - **Orientation**
+     - Strand orientation (e.g., NA for unstranded data)
+   * - **PathOfEsd**
+     - Path to the `.esd` file containing simulation or effect size data
+
+
+.. _.eigen.gene.bin:
+
+.eigen.gene.bin
+================
+
+.. _eigen.gene.info:
+
+.eigen.gene.info
+================
+
+
+.. _eigen.gene.snp.info:
+
+.eigen.gene.snp.info
+================
+
+.. list-table:: Description of .eigen.gene.snp.info
+   :widths: 15 25
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - **Chrom**
+     - Chromosome number
+   * - **ID**
+     - SNP identifier (e.g., `rsID`)
+   * - **GenPos**
+     - Genetic position (in Morgans or centiMorgans)
+   * - **PhysPos**
+     - Physical position on the chromosome (base pairs)
+   * - **A1**
+     - Effect allele
+   * - **A2**
+     - Non-effect allele
+   * - **A1Freq**
+     - Frequency of the effect allele (A1)
+   * - **N**
+     - Sample size used for analysis
+
+
+.. _eigen.ldblock.bin:
+
+.eigen.ldblock.bin
+================
+
+.. _eigen.ldblock.info:
+
+.eigen.ldblock.info
+================
+
+.. list-table:: Description of .eigen.ldblock.info
+   :widths: 15 25
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - **Chrom**
+     - Chromosome number
+   * - **LDBLOCK**
+     - Linkage Disequilibrium (LD) block identifier
+   * - **start**
+     - Start position of the LD block (base pairs)
+   * - **end**
+     - End position of the LD block (base pairs)
+   * - **snpInLdBlock**
+     - Representative SNP in the LD block
+   * - **NumSnpInLdBlock**
+     - Total number of SNPs within the LD block
+
+
+.. _eigen.ldblock.snp.info:
+
+.eigen.ldblock.snp.info
+================
+
+.. list-table:: Description of .eigen.ldblock.snp.info
+   :widths: 15 25
+   :header-rows: 1
+
+   * - Column
+     - Description
+   * - **Chrom**
+     - Chromosome number
+   * - **ID**
+     - SNP identifier (e.g., `rsID`)
+   * - **GenPos**
+     - Genetic position (in Morgans or centiMorgans)
+   * - **PhysPos**
+     - Physical position on the chromosome (base pairs)
+   * - **A1**
+     - Effect allele
+   * - **A2**
+     - Non-effect allele
+   * - **A1Freq**
+     - Frequency of the effect allele (A1)
+   * - **N**
+     - Sample size used for analysis
+
+
+.. _gene.hsqRes:
+
+.gene.hsqRes
+================
+
+
+.. _gene.snpRes.gz:
+
+.gene.snpRes.gz
+================
+
+.. _log:
+
+.log
+================
+
+.. _parRes:
+
+.parRes
+================
+
+.. _snpRes:
+
+.snpRes
+================

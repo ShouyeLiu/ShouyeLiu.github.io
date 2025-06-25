@@ -1,0 +1,9 @@
+Data Resource
+==============
+
+.. toctree::
+   :maxdepth: 2
+
+   ..
+      05.1genoPubAvail
+   05.2LDandMolQTLs

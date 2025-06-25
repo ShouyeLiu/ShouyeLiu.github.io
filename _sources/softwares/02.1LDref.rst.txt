@@ -1,0 +1,138 @@
+
+LD calculation
+================
+
+.. _lowRankLDLBSLGM:
+
+GWAS low-rank LD matrix
+-----------------------
+
+Options
+````````
+
+.. option:: --block-info param-ref4cM_v37.pos
+
+| Read the minimum width (cM) of a LD block from `param-ref4cM_v37.pos <https://github.com/ShouyeLiu/BayesOmics/blob/main/samples/pseudo/data/genotype/param-ref4cM_v37.pos>`_.
+
+.. option:: --make-block-ldm
+
+| Generate full LD matrix for each LD blocks.
+
+.. option:: --ldm ldblockFolder
+| Input folder that contains a serise of binary files for blocks block*.ldm.bin, a text file for genome-wide SNP information snp.info, and a text file for block information ldm.info.
+
+.. option:: --merge-block-ldm-info
+
+| merge LD matrix info files across blocks
+
+.. option:: --make-ldm-eigen
+
+| perform eigen-decomposition for each block one by one and store the result in binary format block*.eigen.bin in folder **ldblockFolder**
+
+.. option:: --make-eigen
+
+| Generate LD block from genotype file
+
+
+Examples
+````````
+**Way 1. Generate low-rank LD matrix from blockwise full LD matrix**
+
+.. code-block:: sh
+
+    ##Step 1. generate full LD matrices for each LD block
+    BayesOmics64 --bfile test --make-block-ldm
+        --block-info ref4cMFile --out ldblockFolder
+    ## Step 2. after all chromosomes/blocks are done,
+    ## run the command below to merge info files across blocks
+    BayesOmics64 --ldm ldblockFolder --merge-block-ldm-info \
+        --out ldblockFolder
+    ## Step 3. Do eigen-decomposition for each block one by one,
+    ## and store the result in binary format block***.eigen.bin in folder ldm
+    BayesOmics64 --ldm ldblockFolder --make-ldm-eigen \
+         --out ldblockFolder
+If you want to learn more about way 1 process, go to `SBayesRC tutorial <https://cnsgenomics.com/software/gctb/#SBayesRCTutorial>`_ website for details.
+
+**Way 2. Generate low-rank LD matrix from genotype directly**
+
+.. code-block:: sh
+
+  BayesOmics64 --bfile test --make-eigen \
+      --block-info ref4cMFile \
+      --out test
+
+This option will generate three files: a text file that contains ld block information (test.eigen.ldblock.info), a text file that contains SNP information (test.eigen.ldblock.snp.info) and a binary file that contains the full LD matrix data (test.eigen.ldblock.bin).
+
+xQTL low-rank LD matrix
+-----------------------
+
+Options
+````````
+
+LD martrix for molecular region
+
+.. option:: --make-eigen-gene test_besd
+
+| Compute a low rank LD matrix reference for gene expression from the genotype data provided by --bfile option. This option will generate three files: a text file that contains ld block information (test.eigen.gene.info), a text file that contains SNP information (test.eigen.gene.snp.info) and a binary file that contains the full LD matrix data (test.eigen.gene.bin). The input file is `SMR BESD format <https://yanglab.westlake.edu.cn/software/smr/#BESDformat>`_.
+
+
+
+.. option:: --add-gene-n geneSampleSize.txt
+
+| Manage gene sample size
+The content of ****geneSampleSize.txt**:
+
+.. code-block:: sh
+
+  ENSG00000183628	10000
+  ENSG00000100034	10000
+  ......
+
+Columns are gene ensgid id and sample size.
+
+
+If you have individual sample size for each gene, you can use **--add-gene-n** flag to add it.
+if per gene sample size is missing, you can also add total sample size to `besd format <https://yanglab.westlake.edu.cn/software/smr/#BESDformat>`_ file by using `SMR <https://yanglab.westlake.edu.cn/software/smr/#Mangethesamplesize>`_ software, and BayesOmics
+will use total sample size for each gene. If both total and per gene sample size are missing, BayesOmics
+will use estimated gene sample size in the analysis.
+
+Examples
+````````
+make a low rank LD matrix for gene
+
+.. code-block:: sh
+
+  BayesOmics64 --bfile test --beqtl-summary mybesd \
+      --var-prop 0.9995 --make-eigen-gene  test_besd \
+      --out test
+
+To accelerate this process, we provide an flag ``--keep-one-gene`` to do LD eigen-decompostion for each gene in parallel and then merge them into corresponding chromosome file.
+
+.. code-block:: sh
+
+  ## genearte low-rank gene LD for given gene
+  BayesOmics64 --bfile test \
+      --beqtl-summary mybesd \
+      --var-prop 0.9995 \
+      --keep-one-gene geneID \
+      --make-eigen-gene --out test
+
+.. code-block:: sh
+
+  ## merge multiple low rank gene LDs based on configure file
+  BayesOmics64  --eigen-list multi_eigen.txt \
+      --merge-eigen-gene \
+       --out test
+
+.. option:: --merge-eigen-gene  multi_eigen.txt
+| Input multiple low-rank LD matrix for gene in eigen format (See the option --calc-eigen-gene). The root filenames of multiple low-rank LD matrix are given in a file, e.g. multi_eigen.txt
+
+multi_grm.txt (full paths can be specified if the LD matrix files are in different directories)
+
+.. code-block:: sh
+
+  test_chr1
+  test_chr2
+  test_chr3
+  ......
+  test_chr22

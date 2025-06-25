@@ -1,0 +1,10 @@
+Integrative analysis
+====================
+
+.. toctree::
+   :maxdepth: 2
+
+   04.1Simulation
+   04.1Imputation
+   04.2PolygenicPrediction
+   04.3MediatedHeritability

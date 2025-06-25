@@ -1,0 +1,104 @@
+:notoc:
+:html_theme.sidebar_secondary.remove:
+
+   .. About me
+..    ==========
+
+
+.. Currently, I am a third-year PhD student from `IMB <https://www.google.com/search?client=firefox-b-d&q=uq+imb>`_, `University of Queensland <https://www.uq.edu.au/>`_, where I have the honor of being supervised by `Dr. JianZeng <https://researchers.uq.edu.au/researcher/14033>`_, `Prof. Jian Yang <https://en.westlake.edu.cn/faculty/jian-yang.html>`_ and `Prof. Peter Visscher <https://www.sjc.ox.ac.uk/discover/people/professor-peter-visscher/>`_.
+
+.. | **Email:** `shouye.liu@uq.edu.au <mailto:shouye.liu@uq.edu.au>`_
+
+
+.. | **Github:** `https://github.com/ShouyeLiu <https://github.com/ShouyeLiu>`_
+
+
+.. .. | **Google Scholar:** `Google Scholar <https://scholar.google.com/citations?user=ETCPafMAAAAJ&hl=en>`_
+
+
+.. .. grid:: 2
+
+..     .. grid-item-card::  Projects involved
+
+..         - `BayesOmics <https://github.com/ShouyeLiu/BayesOmics>`_
+..         - `SBayesOmics <https://github.com/ShouyeLiu/SBayesOmics>`_
+..         - `GCTB-SBayesRC <https://cnsgenomics.com/software/gctb/#SBayesRCTutorial>`_
+..         - `GCTA-mBAT-combo <https://yanglab.westlake.edu.cn/software/gcta/#mBAT-combo>`_ 
+
+
+..     .. grid-item-card::  Interests
+
+..         - Integration of omics with GWAS information
+..         - Development of scalable and highly efficient computational algorithms
+
+
+
+
+..
+   Statistic genetics summary
+   -----------------
+   ..
+      refhttps://markmap.js.org/
+
+   .. raw:: html
+
+       <iframe id="contentFrame" name="contentFrame" src="_static/_researchMindMap/mindmap-research-field.html" width="800" height="600" title="Example Iframe"></iframe>
+
+
+..
+   News
+   -----------------
+   .. timeline::
+      - start: 2021-04-01
+        name: Start PhD study
+      - start: 2023-04-01
+        name: 2nd event
+      ---
+      **{{dtrange}}**
+
+      *{{e.name}}*
+
+
+..
+   ## Table of Contents
+
+
+
+.. .. toctree::
+..    :maxdepth: 2
+..    :hidden:
+
+..    start/start
+
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   softwares/content-softwares
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   tutorials/content-tutorials
+
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   fileFormats/content-fileFormats
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   notes/content-notes
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   reference/content-reference
