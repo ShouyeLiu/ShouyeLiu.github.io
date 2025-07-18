@@ -32,7 +32,7 @@ Progress
 Credits
 ----------
 
-Shouye Liu developed the software with support from `Jian Zeng <https://about.uq.edu.au/experts/14033>`_, `Zhili Zeng <https://www.atgu.mgh.harvard.edu/people/zhili-zheng/>`_, `Jian Yang <https://yanglab.westlake.edu.cn/people.html>`_, and `Peter Visscher <https://www.sjc.ox.ac.uk/discover/people/professor-peter-visscher/>`_ and currently maintains both the software and its manuals.
+Shouye Liu developed the software with support from `Jian Zeng <https://about.uq.edu.au/experts/14033>`_, `Jian Yang <https://yanglab.westlake.edu.cn/people.html>`_, and `Peter Visscher <https://www.sjc.ox.ac.uk/discover/people/professor-peter-visscher/>`_ and currently maintains both the software and its manuals.
 
 Questions and help Requests
 ---------------------------
