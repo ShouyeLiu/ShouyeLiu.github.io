@@ -1,0 +1,66 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "752c39fb",
+   "metadata": {},
+   "source": [
+    "Common method evaluation strategy\n",
+    "===============\n",
+    "\n",
+    "### Visual Summary of Prediction Outcomes and Statistical Error Rates\n",
+    "\n",
+    "<div style=\"display: flex; align-items: flex-start;\">\n",
+    "\n",
+    "  <!-- 左图 -->\n",
+    "  <img src=\"../_static/_images/2025-07-25-confusion-matrix.png\">\n",
+    "\n",
+    "  <div>\n",
+    "\n",
+    "</div>\n",
+    "</div>\n",
+    "\n",
+    "This matrix maps the relationship between predicted class $\\hat{Y}$  \n",
+    "and actual hypothesis $H_0/H_1$,  \n",
+    "with corresponding error rates and outcome labels:\n",
+    "\n",
+    "- **TN** (True Negative): $(0|0)$ → Correct rejection of $H_0$\n",
+    "- **FP** (False Positive): $(1|0)$ → Type I error ($\\alpha$)\n",
+    "- **FN** (False Negative): $(0|1)$ → Type II error ($\\beta$)\n",
+    "- **TP** (True Positive): $(1|1)$ → Correct detection of $H_1$\n",
+    "\n",
+    "### Confusion Matrix Evaluation Metrics\n",
+    "| **Metric Name** | **Formula** | **Interpretation** | **Hypothesis Testing** |\n",
+    "|-----------------|-------------|---------------------|-------------------------|\n",
+    "| **1. True Positive Rate (TPR)**  <br> *Recall / Sensitivity* | $TPR = \\frac{TP}{TP + FN}$  <br> $= \\frac{TP}{\\text{actual } H_1} = 1 - \\beta$ | Probability of detecting a true alternative $(H_1)$ | Equivalent to **Power** |\n",
+    "| **2. False Negative Rate (FNR)** | $FNR = \\frac{FN}{TP + FN}$  <br> $= \\frac{FN}{\\text{actual } H_1} = \\beta$ | Missed detection: actual $(H_1)$, but predicted $(H_0)$ | **Type II Error Rate** |\n",
+    "| **3. False Positive Rate (FPR)** | $FPR = \\frac{FP}{FP + TN}$  <br> $= \\frac{FP}{\\text{actual } H_0} = \\alpha$ | False alarm: actual $(H_0)$, but predicted $(H_1)$ | **Type I Error Rate** |\n",
+    "| **4. True Negative Rate (TNR)**  <br> *Specificity* | $TNR = \\frac{TN}{TN + FP}$  <br> $= \\frac{TN}{\\text{actual } H_0} = 1 - \\alpha$ | Probability of correctly retaining $(H_0)$ | Complement of Type I error |\n",
+    "| **5. Precision (PPV)**  <br> *Positive Predictive Value* | $PPV = \\frac{TP}{TP + FP}$  <br> $= \\frac{TP}{\\text{predicted } H_1} = \\frac{1 - \\beta}{(1 - \\beta) + \\alpha}$ | Among predicted $(H_1)$, how many are truly $(H_1)$ | Trust in detected signals |\n",
+    "| **6. Negative Predictive Value (NPV)** | $NPV = \\frac{TN}{TN + FN}$  <br> $= \\frac{TN}{\\text{predicted } H_0} = \\frac{1 - \\alpha}{(1 - \\alpha) + \\beta}$ | Among predicted $(H_0)$, how many are truly $(H_0)$ | Trust in rejected signals |\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "R",
+   "language": "R",
+   "name": "ir"
+  },
+  "language_info": {
+   "codemirror_mode": "r",
+   "file_extension": ".r",
+   "mimetype": "text/x-r-source",
+   "name": "R",
+   "pygments_lexer": "r",
+   "version": "4.4.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

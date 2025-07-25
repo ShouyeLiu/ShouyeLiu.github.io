@@ -50,14 +50,16 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/02.0TechniqueDetails';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reference" href="../reference/content-reference.html" />
+    <link rel="next" title="Diagnose scale issue of summary statistics" href="02.1DataScaleCheck.html" />
     <link rel="prev" title="Genetic models" href="01polygenicModel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="2025-07-18"/>
+    <meta name="docbuild:last-update" content="2025-07-25"/>
   </head>
   
   
@@ -338,7 +340,12 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01polygenicModel.html">Genetic models</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Technique details</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Technique details</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.1DataScaleCheck.html">Diagnose scale issue of summary statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.2LogisticLinearRegression.html">Logistic regression and implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.3methodEvaluation.html">Common method evaluation strategy</a></li>
+</ul>
+</details></li>
 </ul>
 </div>
 </nav></div>
@@ -398,10 +405,20 @@
                   
   <section id="technique-details">
 <h1>Technique details<a class="headerlink" href="#technique-details" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p><a class="reference external" href="../_static/_posts/2025-03-22-DataScaleCheck.html">01.Estimation of beta and its se based on z-score</a></p></li>
-<li><p><a class="reference external" href="../_static/_posts/2025-04-18-LogisticLinearRegression.html">02.Logistic regression and implementation</a></p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="02.1DataScaleCheck.html">Diagnose scale issue of summary statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02.2LogisticLinearRegression.html">Logistic regression and implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.2LogisticLinearRegression.html#math-background">1. Math background</a></li>
 </ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02.3methodEvaluation.html">Common method evaluation strategy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.3methodEvaluation.html#visual-summary-of-prediction-outcomes-and-statistical-error-rates">Visual Summary of Prediction Outcomes and Statistical Error Rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.3methodEvaluation.html#confusion-matrix-evaluation-metrics">Confusion Matrix Evaluation Metrics</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 
 
@@ -424,11 +441,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../reference/content-reference.html"
+       href="02.1DataScaleCheck.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Reference</p>
+        <p class="prev-next-title">Diagnose scale issue of summary statistics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

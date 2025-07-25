@@ -2,3 +2,5 @@
 .doctrees
 .doctrees/
 .buildinfo
+.buildinfo.bak
+.buildinfo
