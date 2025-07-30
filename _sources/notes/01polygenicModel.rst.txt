@@ -41,7 +41,7 @@ Bayesian alphabet framework
      - :math:`\beta_i \sim \pi N(0, \sigma^2_{\alpha} + \sigma^2_{\beta}) + (1 - \pi) N(0, \sigma^2_{\beta})`
      - Normal Mixture
    * - `SBayesS <https://www.nature.com/articles/s41588-018-0101-4>`_
-     - :math:`\beta_i \sim \pi N(0,[1p_j(1-p_j)]^S \sigma^2_{\beta}) + \phi(1 - \pi)`
+     - :math:`\beta_i \sim \pi N(0,[2p_j(1-p_j)]^S \sigma^2_{\beta}) + \phi(1 - \pi)`
      - Normal Mixture
 
 LDSC framework and its extension
@@ -86,5 +86,5 @@ Non-uniform model and its extension
      - :math:`\mathbb{E}[h_j^2] \sim [f_j(1 - f_j)]^{1 + \alpha} \times w_j \times r_j`
      - :math:`\beta_j \sim \mathcal{N}\left(0, r_j w_j \frac{\sigma_g^2}{W} \right) \quad W = \sum_j r_j w_j \left[ 2 f_j (1 - f_j) \right]^{1 + \alpha}`
    * - `SBayesS <https://www.nature.com/articles/s41588-018-0101-4>`_
-     - :math:`\beta_i \sim \pi N(0,[1p_j(1-p_j)]^S \sigma^2_{\beta}) + \phi(1 - \pi)`
+     - :math:`\beta_i \sim \pi N(0,[2p_j(1-p_j)]^S \sigma^2_{\beta}) + \phi(1 - \pi)`
      - :math:`\beta_j = \delta_j \cdot \mathcal{N}\left(0, (2p_j q_j)^s \sigma_\beta^2\right) \quad \delta_j \sim \mathrm{Bernoulli}(\pi)`
