@@ -27,6 +27,7 @@
     "conda config --add channels conda-forge\n",
     "conda config --show channels\n",
     "```\n",
+    "(condaInstallRpackage)=\n",
     "#### Install r and necessary package into python base env\n",
     "```\n",
     "mamba install -c conda-forge r-base r-tidyverse r-data.table \\\n",

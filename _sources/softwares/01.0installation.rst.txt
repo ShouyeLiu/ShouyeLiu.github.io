@@ -47,7 +47,7 @@ SBayesOmics is an R package designed for simulation.
    - `tictoc <https://cran.r-project.org/web/packages/tictoc/index.html>`_  
    - `WGCNA <http://pklab.med.harvard.edu/scw2014/WGCNA.html>`_  
 
-Install the development version from `GitHub <https://github.com/ShouyeLiu/SBayesOmics>`_:
+Above packages can be installed from :ref:`Conda environment <condaInstallRpackage>` directly. Or you can install the development version of *SBayesOmics* from `GitHub <https://github.com/ShouyeLiu/SBayesOmics>`_:
 
 .. code-block:: r
 
