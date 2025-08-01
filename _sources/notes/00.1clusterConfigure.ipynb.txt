@@ -1,0 +1,59 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "3f0b6bc9",
+   "metadata": {},
+   "source": [
+    "# Cluster configuration"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "019cead9",
+   "metadata": {},
+   "source": [
+    "## Configure conda miniforge environments\n",
+    "\n",
+    "#### Download [miniforge](https://github.com/conda-forge/miniforge)\n",
+    "```bash\n",
+    "wget -O Miniforge3.sh \"https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh\"\n",
+    "```\n",
+    "Here  we need to set conda-forge as the only channel to avoid potential conflicts.\n",
+    "\n",
+    "```bash\n",
+    "conda config --remove-key channels 2>/dev/null || true\n",
+    "conda config --show channels\n",
+    "conda config --add channels conda-forge\n",
+    "conda config --show channels\n",
+    "```\n",
+    "#### Install r and necessary package into python base env\n",
+    "```\n",
+    "mamba install -c conda-forge r-base r-tidyverse r-data.table \\\n",
+    "    r-bh r-rcpp r-devtools r-remotes\n",
+    "mamba install -c conda-forge r-essentials r-ggplot2 r-data.table \\\n",
+    "    r-tidyverse r-tictoc r-optparse r-latex2exp r-ggextra r-lattice \\\n",
+    "    r-ggplotify r-gridgraphics r-upsetr r-ggpubr r-rcolorbrewer \\\n",
+    "    r-devtools r-gridextra r-configr  r-envstats r-matrixcalc \\\n",
+    "    r-mcmcpack r-truncnorm \n",
+    "mamba install -c conda-forge zlib r-genio\n",
+    "mamba install bioconda::r-wgcna\n",
+    "```\n",
+    "#### Install R package [WGCNA](https://fuzzyatelin.github.io/bioanth-stats/module-F21-Group1/module-F21-Group1.html) and [BGData](https://github.com/QuantGen/BGData)\n",
+    "```R\n",
+    "install.packages(\"BiocManager\")\n",
+    "BiocManager::install(c(\"WGCNA\", \"devtools\"))\n",
+    "remotes::install_github(\"QuantGen/BGData\")\n",
+    "```\n",
+    "\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

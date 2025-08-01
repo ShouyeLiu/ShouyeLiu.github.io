@@ -4,5 +4,6 @@ Notes
 .. toctree::
    :maxdepth: 2
 
+   00.0configure
    01polygenicModel
    02.0TechniqueDetails

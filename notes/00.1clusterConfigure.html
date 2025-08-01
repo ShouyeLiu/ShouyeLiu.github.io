@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Polygenic prediction</title>
+    <title>Cluster configuration</title>
   
   
   
@@ -50,11 +50,11 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'softwares/04.2PolygenicPrediction';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/00.1clusterConfigure';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Mediated heritability estimation" href="04.3MediatedHeritability.html" />
-    <link rel="prev" title="Imputation and adjustment" href="04.1Imputation.html" />
+    <link rel="next" title="Genetic models" href="01polygenicModel.html" />
+    <link rel="prev" title="System and Cluster configuration" href="00.0configure.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
     <meta name="docbuild:last-update" content="2025-08-01"/>
@@ -145,8 +145,8 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="content-softwares.html">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../softwares/content-softwares.html">
     BayesOmics
   </a>
 </li>
@@ -166,8 +166,8 @@
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../notes/content-notes.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="content-notes.html">
     Notes
   </a>
 </li>
@@ -267,8 +267,8 @@
 <nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-<li class="nav-item current active">
-  <a class="nav-link nav-internal" href="content-softwares.html">
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../softwares/content-softwares.html">
     BayesOmics
   </a>
 </li>
@@ -288,8 +288,8 @@
 </li>
 
 
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../notes/content-notes.html">
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="content-notes.html">
     Notes
   </a>
 </li>
@@ -337,24 +337,17 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01.0installation.html">Installation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="02.0dataManagement.html">Data management</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="02.1LDref.html">LD calculation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02.2molQTL.html">molecular QTLs</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00.0configure.html">System and Cluster configuration</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Cluster configuration</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="04.0IntegrativeAnalysis.html">Integrative analysis</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="04.1Simulation.html">Simulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04.1Imputation.html">Imputation and adjustment</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Polygenic prediction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04.3MediatedHeritability.html">Mediated heritability estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01polygenicModel.html">Genetic models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="02.0TechniqueDetails.html">Technique details</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="02.1DataScaleCheck.html">Diagnose scale issue of summary statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.2LogisticLinearRegression.html">Logistic regression and implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02.3methodEvaluation.html">Common method evaluation strategy</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="05.0dataResource.html">Data Resource</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="05.2LDandMolQTLs.html">LD and molecular QTLs</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1"><a class="reference internal" href="06.0questions.html">FAQs</a></li>
 </ul>
 </div>
 </nav></div>
@@ -393,12 +386,12 @@
       </a>
     </li>
     
-    <li class="breadcrumb-item"><a href="content-softwares.html" class="nav-link">BayesOmics</a></li>
+    <li class="breadcrumb-item"><a href="content-notes.html" class="nav-link">Notes</a></li>
     
     
-    <li class="breadcrumb-item"><a href="04.0IntegrativeAnalysis.html" class="nav-link">Integrative analysis</a></li>
+    <li class="breadcrumb-item"><a href="00.0configure.html" class="nav-link">System and Cluster configuration</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">Polygenic prediction</li>
+    <li class="breadcrumb-item active" aria-current="page">Cluster...</li>
   </ul>
 </nav>
 </div>
@@ -415,141 +408,42 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="polygenic-prediction">
-<h1>Polygenic prediction<a class="headerlink" href="#polygenic-prediction" title="Link to this heading">#</a></h1>
-<style>
-  .zoom-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 30px auto;
-  }
-
-  .zoom-box img {
-    width: 1000px;
-    transition: transform 0.3s ease;
-    border-radius: 6px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  ..
-     .zoom-box img:hover {
-       transform: scale(1.5);
-       z-index: 10;
-     }
-
-</style>
-
-<div class="zoom-box">
-  <span style="font-size: 16px; font-weight: 500; margin-bottom: 10px;">
-    Schematic overview of SBayesCO-EIEO
-  </span>
-  <img src="../_static/_images/20250326-bayesian-bivariate-eieo-model.png" alt="(S)BayesCO-EIEO schematic" />
-</div><section id="summary-level-bayesco-eieo">
-<h2>Summary-level BayesCO-EIEO<a class="headerlink" href="#summary-level-bayesco-eieo" title="Link to this heading">#</a></h2>
-<section id="options">
-<h3>Options<a class="headerlink" href="#options" title="Link to this heading">#</a></h3>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-sbayes">
-<span class="sig-name descname"><span class="pre">--sbayes</span></span><span class="sig-prename descclassname"> <span class="pre">CO</span></span><a class="headerlink" href="#cmdoption-sbayes" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<div class="line-block">
-<div class="line">Bayesian model used for parameter estimation.</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="cluster-configuration">
+<h1>Cluster configuration<a class="headerlink" href="#cluster-configuration" title="Link to this heading">#</a></h1>
+<section id="configure-conda-miniforge-environments">
+<h2>Configure conda miniforge environments<a class="headerlink" href="#configure-conda-miniforge-environments" title="Link to this heading">#</a></h2>
+<section id="download-miniforge">
+<h3>Download <a class="reference external" href="https://github.com/conda-forge/miniforge">miniforge</a><a class="headerlink" href="#download-miniforge" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-O<span class="w"> </span>Miniforge3.sh<span class="w"> </span><span class="s2">&quot;https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-</span><span class="k">$(</span>uname<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>uname<span class="w"> </span>-m<span class="k">)</span><span class="s2">.sh&quot;</span>
+</pre></div>
 </div>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-mcmc-type">
-<span class="sig-name descname"><span class="pre">--mcmc-type</span></span><span class="sig-prename descclassname"> <span class="pre">eieo</span></span><a class="headerlink" href="#cmdoption-mcmc-type" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<div class="line-block">
-<div class="line">Algorithm used for parameter estimation.</div>
-</div>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-ldm-eigen">
-<span class="sig-name descname"><span class="pre">--ldm-eigen</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ldm-eigen" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<div class="line-block">
-<div class="line">GWAS LD low-rank matrix, see <a class="reference external" href="https://cnsgenomics.com/software/gctb/#SBayesRCTutorial">GCTB</a> for detail.</div>
-</div>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-ldm-eigen-gene">
-<span class="sig-name descname"><span class="pre">--ldm-eigen-gene</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-ldm-eigen-gene" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<div class="line-block">
-<div class="line">xQTL LD low-rank matrix.</div>
-</div>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-beqtl-summary">
-<span class="sig-name descname"><span class="pre">--beqtl-summary</span></span><span class="sig-prename descclassname"> <span class="pre">eqtlSummaryFile</span></span><a class="headerlink" href="#cmdoption-beqtl-summary" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<div class="line-block">
-<div class="line">A common used format for molecular summary statistics, see <a class="reference internal" href="../fileFormats/content-fileFormats.html#besd"><span class="std std-ref">.besd</span></a> for details.</div>
-</div>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-add-gene-n">
-<span class="sig-name descname"><span class="pre">--add-gene-n</span></span><span class="sig-prename descclassname"> <span class="pre">gsamFile</span></span><a class="headerlink" href="#cmdoption-add-gene-n" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<div class="line-block">
-<div class="line">Store the sample sizes for each gene or each gene-SNP pair, see <a class="reference internal" href="../fileFormats/content-fileFormats.html#gsam"><span class="std std-ref">.gsam</span></a> for details.</div>
-</div>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-beqtl-summary-gz">
-<span class="sig-name descname"><span class="pre">--beqtl-summary-gz</span></span><span class="sig-prename descclassname"> <span class="pre">eqtlSummaryGZFile</span></span><a class="headerlink" href="#cmdoption-beqtl-summary-gz" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<div class="line-block">
-<div class="line">Another more easy-used format for molecular summary statistics, see <a class="reference internal" href="../fileFormats/content-fileFormats.html#query-gz"><span class="std std-ref">.query.gz</span></a> for details.</div>
-</div>
-<dl class="std option">
-<dt class="sig sig-object std" id="cmdoption-gwas-summary">
-<span class="sig-name descname"><span class="pre">--gwas-summary</span></span><span class="sig-prename descclassname"> <span class="pre">gwasFile</span></span><a class="headerlink" href="#cmdoption-gwas-summary" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
-
-<div class="line-block">
-<div class="line">COJO format GWAS summary statistics</div>
+<p>Here  we need to set conda-forge as the only channel to avoid potential conflicts.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--remove-key<span class="w"> </span>channels<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+conda<span class="w"> </span>config<span class="w"> </span>--show<span class="w"> </span>channels
+conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>conda-forge
+conda<span class="w"> </span>config<span class="w"> </span>--show<span class="w"> </span>channels
+</pre></div>
 </div>
 </section>
-<section id="command">
-<h3>Command<a class="headerlink" href="#command" title="Link to this heading">#</a></h3>
-<pre class="literal-block">BayesOmics64  --sbayes CO \
-  --mcmc-type eieo \
-  --ldm-eigen  ldmEigenFolder  \
-  --ldm-eigen-gene  ldmEigenGeneFile  \
-  --beqtl-summary-gz eqtlSummaryGZFile \ # or use --beqtl-summary eqtlSummaryFile
-  --gwas-summary  gwasFile   \
-  --out outFile</pre>
+<section id="install-r-and-necessary-package-into-python-base-env">
+<h3>Install r and necessary package into python base env<a class="headerlink" href="#install-r-and-necessary-package-into-python-base-env" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">r</span><span class="o">-</span><span class="n">base</span> <span class="n">r</span><span class="o">-</span><span class="n">tidyverse</span> <span class="n">r</span><span class="o">-</span><span class="n">data</span><span class="o">.</span><span class="n">table</span> \
+    <span class="n">r</span><span class="o">-</span><span class="n">bh</span> <span class="n">r</span><span class="o">-</span><span class="n">rcpp</span> <span class="n">r</span><span class="o">-</span><span class="n">devtools</span> <span class="n">r</span><span class="o">-</span><span class="n">remotes</span>
+<span class="n">mamba</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">r</span><span class="o">-</span><span class="n">essentials</span> <span class="n">r</span><span class="o">-</span><span class="n">ggplot2</span> <span class="n">r</span><span class="o">-</span><span class="n">data</span><span class="o">.</span><span class="n">table</span> \
+    <span class="n">r</span><span class="o">-</span><span class="n">tidyverse</span> <span class="n">r</span><span class="o">-</span><span class="n">tictoc</span> <span class="n">r</span><span class="o">-</span><span class="n">optparse</span> <span class="n">r</span><span class="o">-</span><span class="n">latex2exp</span> <span class="n">r</span><span class="o">-</span><span class="n">ggextra</span> <span class="n">r</span><span class="o">-</span><span class="n">lattice</span> \
+    <span class="n">r</span><span class="o">-</span><span class="n">ggplotify</span> <span class="n">r</span><span class="o">-</span><span class="n">gridgraphics</span> <span class="n">r</span><span class="o">-</span><span class="n">upsetr</span> <span class="n">r</span><span class="o">-</span><span class="n">ggpubr</span> <span class="n">r</span><span class="o">-</span><span class="n">rcolorbrewer</span> \
+    <span class="n">r</span><span class="o">-</span><span class="n">devtools</span> <span class="n">r</span><span class="o">-</span><span class="n">gridextra</span> <span class="n">r</span><span class="o">-</span><span class="n">configr</span>  <span class="n">r</span><span class="o">-</span><span class="n">envstats</span> <span class="n">r</span><span class="o">-</span><span class="n">matrixcalc</span> \
+    <span class="n">r</span><span class="o">-</span><span class="n">mcmcpack</span> <span class="n">r</span><span class="o">-</span><span class="n">truncnorm</span> 
+<span class="n">mamba</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">zlib</span> <span class="n">r</span><span class="o">-</span><span class="n">genio</span>
+<span class="n">mamba</span> <span class="n">install</span> <span class="n">bioconda</span><span class="p">::</span><span class="n">r</span><span class="o">-</span><span class="n">wgcna</span>
+</pre></div>
+</div>
 </section>
-<section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">### downlaod dataset</span>
-git<span class="w"> </span>clone<span class="w"> </span>git@github.com:ShouyeLiu/BayesOmics.git
-<span class="c1">## find data in the Cau folder: BayesOmics/samples/pseudo/data/Cau/summary/</span>
-<span class="nv">sumPath</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="c1"># cauFolder path</span>
-<span class="nv">summaryFile</span><span class="o">=</span><span class="s2">&quot;pseudo-1kg-chr22-cau-h2snp0.4-h2med-0.4-h2cis-0.6-model&quot;</span>
-<span class="nv">outFile</span><span class="o">=</span><span class="s2">&quot;res-&quot;</span><span class="si">${</span><span class="nv">summaryFile</span><span class="si">}</span><span class="w"> </span><span class="c1">## outFilePath</span>
-<span class="c1">### downlaod binary tool</span>
-<span class="nb">cd</span><span class="w"> </span>MainPath<span class="w"> </span><span class="c1">## your main Path</span>
-wget<span class="w"> </span>https://github.com/ShouyeLiu/BayesOmics/releases/latest/download/BayesOmics64-static
-chmod<span class="w"> </span><span class="m">751</span><span class="w"> </span>BayesOmics64-static
-
-<span class="w"> </span>BayesOmics64-static<span class="w">  </span>--sbayes<span class="w"> </span>CO<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--ldm-eigen<span class="w"> </span><span class="si">${</span><span class="nv">sumPath</span><span class="si">}</span>/<span class="si">${</span><span class="nv">summaryFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--gwas-summary<span class="w"> </span><span class="si">${</span><span class="nv">sumPath</span><span class="si">}</span>/<span class="si">${</span><span class="nv">summaryFile</span><span class="si">}</span>.ma<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--ldm-eigen-gene<span class="w"> </span><span class="si">${</span><span class="nv">sumPath</span><span class="si">}</span>/<span class="si">${</span><span class="nv">summaryFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--beqtl-summary<span class="w">  </span><span class="si">${</span><span class="nv">sumPath</span><span class="si">}</span>/<span class="si">${</span><span class="nv">summaryFile</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--hsq<span class="w"> </span><span class="m">0</span>.1<span class="w">  </span><span class="se">\</span>
-<span class="w">   </span>--hsq-cis<span class="w"> </span><span class="m">0</span>.1<span class="w">  </span><span class="se">\</span>
-<span class="w">   </span>--mcmc-type<span class="w"> </span>eieo<span class="w">  </span><span class="se">\</span>
-<span class="w">   </span>--chain-length<span class="w"> </span><span class="m">5000</span><span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--burn-in<span class="w"> </span><span class="m">1800</span><span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--seed<span class="w"> </span><span class="m">10</span><span class="w">  </span><span class="se">\</span>
-<span class="w">   </span>--out-freq<span class="w"> </span><span class="m">500</span><span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>--out<span class="w">  </span>outFile
+<section id="install-r-package-wgcna-and-bgdata">
+<h3>Install R package <a class="reference external" href="https://fuzzyatelin.github.io/bioanth-stats/module-F21-Group1/module-F21-Group1.html">WGCNA</a> and <a class="reference external" href="https://github.com/QuantGen/BGData">BGData</a><a class="headerlink" href="#install-r-package-wgcna-and-bgdata" title="Link to this heading">#</a></h3>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;BiocManager&quot;</span><span class="p">)</span>
+<span class="n">BiocManager</span><span class="o">::</span><span class="nf">install</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;WGCNA&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;devtools&quot;</span><span class="p">))</span>
+<span class="n">remotes</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;QuantGen/BGData&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -567,20 +461,20 @@ chmod<span class="w"> </span><span class="m">751</span><span class="w"> </span>B
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="04.1Imputation.html"
+       href="00.0configure.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Imputation and adjustment</p>
+        <p class="prev-next-title">System and Cluster configuration</p>
       </div>
     </a>
     <a class="right-next"
-       href="04.3MediatedHeritability.html"
+       href="01polygenicModel.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Mediated heritability estimation</p>
+        <p class="prev-next-title">Genetic models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -602,10 +496,10 @@ chmod<span class="w"> </span><span class="m">751</span><span class="w"> </span>B
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-level-bayesco-eieo">Summary-level BayesCO-EIEO</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#options">Options</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#command">Command</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-conda-miniforge-environments">Configure conda miniforge environments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-miniforge">Download miniforge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-r-and-necessary-package-into-python-base-env">Install r and necessary package into python base env</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-r-package-wgcna-and-bgdata">Install R package WGCNA and BGData</a></li>
 </ul>
 </li>
 </ul>
@@ -615,7 +509,7 @@ chmod<span class="w"> </span><span class="m">751</span><span class="w"> </span>B
 
   
   <div class="tocsection editthispage">
-    <a href="https://github.com/ShouyeLiu/ShouyeLiu/edit/master/docs/source/softwares/04.2PolygenicPrediction.rst">
+    <a href="https://github.com/ShouyeLiu/ShouyeLiu/edit/master/docs/source/notes/00.1clusterConfigure.ipynb">
       <i class="fa-solid fa-pencil"></i>
       
       

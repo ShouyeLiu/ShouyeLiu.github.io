@@ -32,7 +32,7 @@ Progress
 Credits
 ----------
 
-Shouye Liu developed the software with support from `Jian Zeng <https://about.uq.edu.au/experts/14033>`_, `Jian Yang <https://yanglab.westlake.edu.cn/people.html>`_, and `Peter Visscher <https://www.sjc.ox.ac.uk/discover/people/professor-peter-visscher/>`_ and currently maintains both the software and its manuals.
+Shouye Liu developed the software with support from `Jian Zeng <https://about.uq.edu.au/experts/14033>`_, `Zhili Zheng <https://www.atgu.mgh.harvard.edu/people/zhili-zheng/>`_, `Jian Yang <https://yanglab.westlake.edu.cn/people.html>`_, and `Peter Visscher <https://www.sjc.ox.ac.uk/discover/people/professor-peter-visscher/>`_ and currently maintains both the software and its manuals.
 
 Questions and help Requests
 ---------------------------
@@ -45,9 +45,10 @@ We recommend using the GitHub Issues page for faster tracking and discussion.
 
    <div style="text-align: center; margin-top: 2em;">
      <script type="text/javascript" id="clustrmaps"
-         src="https://cdn.clustrmaps.com/map_v2.js?cl=333a44&w=a&t=n&d=PBIjR06xnBoH20mPWaQq7t_NyMcH9cBmvV_O9YuMzgA&cmo=f706c1&cmn=f930cc&co=ffffff&ct=808080">
+         src="https://cdn.clustrmaps.com/map_v2.js?cl=7d8591&w=a&t=n&d=PBIjR06xnBoH20mPWaQq7t_NyMcH9cBmvV_O9YuMzgA&cmo=f706c1&cmn=f930cc&co=ffffff&ct=808080">
      </script>
    </div>
+
 
 
 
